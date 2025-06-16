@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\evolutionmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\evolutionmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\statrangebutton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\statrangebutton.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\datamanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\datamanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 317,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\App.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\App.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\App.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\App.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-05-14T14:14:33.526Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EvolutionManager.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\EvolutionManager.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\EvolutionManager.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\EvolutionManager.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\EvolutionManager.tsx",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowCkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-05-29T05:38:50.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DataManager.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DataManager.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DataManager.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DataManager.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\DataManager.tsx",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowBoAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-05-27T14:50:41.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StatManager.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\StatManager.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\StatManager.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\StatManager.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\StatManager.tsx",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwAoAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-05-27T13:40:15.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "statRangeButton.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\statRangeButton.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\statRangeButton.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\statRangeButton.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\statRangeButton.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-05-22T06:11:31.127Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

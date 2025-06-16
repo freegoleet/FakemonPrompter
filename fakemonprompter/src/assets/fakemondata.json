@@ -1,0 +1,19 @@
+{
+    "Data": {
+        "Size": ["Tiny", "Small", "Medium", "Large", "Huge"],
+        "Diet": ["Herbivore", "Carnivore", "Omnivore"],
+        "Climate": ["Tropical", "Dry", "Temperate", "Continental", "Polar"],
+        "Nature": ["Forest", "Field", "Desert", "River", "Coast", "Mountain", "Hills"],
+        "Types": ["Water", "Grass", "Fire", "Poison", "Fairy", "Dark", "Steel", "Dragon", "Ground",
+        "Rock", "Flying", "Fighting", "Psychic", "Bug", "Ice"]
+    },
+    "Stats": {
+        "Hp": [10, 150],
+        "Attack": [10, 150],
+        "Defence": [10, 150],
+        "SpAttack": [10, 150],
+        "SpDefence": [10, 150],
+        "Speed": [10, 150],
+        "Total": [300, 600]
+    }
+}
