@@ -1,19 +1,63 @@
 {
-    "Data": {
-        "Size": ["Tiny", "Small", "Medium", "Large", "Huge"],
-        "Diet": ["Herbivore", "Carnivore", "Omnivore"],
-        "Climate": ["Tropical", "Dry", "Temperate", "Continental", "Polar"],
-        "Nature": ["Forest", "Field", "Desert", "River", "Coast", "Mountain", "Hills"],
-        "Types": ["Water", "Grass", "Fire", "Poison", "Fairy", "Dark", "Steel", "Dragon", "Ground",
-        "Rock", "Flying", "Fighting", "Psychic", "Bug", "Ice"]
+  "Data": {
+    "Size": [ "Tiny", "Small", "Medium", "Large", "Huge" ],
+    "Diet": [ "Herbivore", "Carnivore", "Omnivore" ],
+    "Climate": [ "Tropical", "Dry", "Temperate", "Continental", "Polar" ],
+    "Habitat": [ "Forest", "Field", "Desert", "River", "Coast", "Mountain", "Hills" ],
+    "Types": [
+      "Water",
+      "Grass",
+      "Fire",
+      "Poison",
+      "Fairy",
+      "Dark",
+      "Steel",
+      "Dragon",
+      "Ground",
+      "Rock",
+      "Flying",
+      "Fighting",
+      "Psychic",
+      "Bug",
+      "Ice"
+    ]
+  },
+  "Stats": {
+    "Stage1": {
+      "Hp": [ 10, 75 ],
+      "Attack": [ 10, 75 ],
+      "Defence": [ 10, 75 ],
+      "SpAttack": [ 10, 75 ],
+      "SpDefence": [ 10, 75 ],
+      "Speed": [ 10, 75 ],
+      "Total": [ 275, 350 ]
     },
-    "Stats": {
-        "Hp": [10, 150],
-        "Attack": [10, 150],
-        "Defence": [10, 150],
-        "SpAttack": [10, 150],
-        "SpDefence": [10, 150],
-        "Speed": [10, 150],
-        "Total": [300, 600]
+    "Stage2": {
+      "Hp": [ 10, 90 ],
+      "Attack": [ 10, 90 ],
+      "Defence": [ 10, 90 ],
+      "SpAttack": [ 10, 90 ],
+      "SpDefence": [ 10, 90 ],
+      "Speed": [ 10, 90 ],
+      "Total": [ 350, 425 ]
+    },
+    "Stage3": {
+      "Hp": [ 10, 120 ],
+      "Attack": [ 10, 120 ],
+      "Defence": [ 10, 120 ],
+      "SpAttack": [ 10, 120 ],
+      "SpDefence": [ 10, 120 ],
+      "Speed": [ 10, 120 ],
+      "Total": [ 425, 500 ]
+    },
+    "Stage4": {
+      "Hp": [ 10, 150 ],
+      "Attack": [ 10, 150 ],
+      "Defence": [ 10, 150 ],
+      "SpAttack": [ 10, 150 ],
+      "SpDefence": [ 10, 150 ],
+      "Speed": [ 10, 150 ],
+      "Total": [ 525, 600 ]
     }
+  }
 }

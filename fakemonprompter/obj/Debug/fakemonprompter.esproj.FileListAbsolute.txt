@@ -1,1 +1,2 @@
 C:\Repositories\Web-Programming\React+TS\FakemonPrompter\FakemonPrompter\obj\Debug\fakemonprompter.esproj.CoreCompileInputs.cache
+C:\Repositories\FakemonPrompter\FakemonPrompter\obj\Debug\fakemonprompter.esproj.CoreCompileInputs.cache

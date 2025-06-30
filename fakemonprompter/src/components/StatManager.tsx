@@ -1,93 +1,153 @@
-import React, { useState, type ReactElement } from 'react';
+import { useState, type ReactElement } from 'react';
 import fakemonData from '../assets/fakemondata.json';
+import styles from '../styles/StatManager.module.css';
 
 type Stats = {
     value: Record<string, number>;
 }
 
-export function StatManager() {
+type StatRange = {
+    value: Record<string, number[]>;
+}
+
+export function StatManager(stages: number, statIncrement: number) {
+    const initialStatRange: Record<number, StatRange> = {};
     const [currentStats, setCurrentStats] = useState<Record<number, Stats>>({});
+    const [statRange, setStatRange] = useState<Record<number, StatRange>>(initialStatRange);
 
-    const [statRange, setStatRange] = useState<Record<string, number[]>>(
-        Object.keys(fakemonData.Stats).reduce((acc, key) => {
-            acc[key] = fakemonData.Stats[key as keyof typeof fakemonData.Stats];
-            return acc;
-        }, {} as Record<string, number[]>)
-    );
-
+    for (const [stageKey, stageValue] of Object.entries(fakemonData.Stats)) {
+        const stageNumber = parseInt(stageKey.replace('Stage', ''), 10);
+        initialStatRange[stageNumber] = { value: stageValue };
+    }
+    
     function randomRange(min: number, max: number) {
-        const minimum = Math.ceil(min);
-        const maximum = Math.floor(max);
-        return Math.floor(Math.random() * (maximum - minimum) + minimum);
+        const maxRange = Math.ceil(max);
+        const minRange = Math.floor(min);
+        return Math.floor(Math.random() * (maxRange - minRange) + minRange);
     }
 
-    function randomizeStat(stat: string): number {
-        const randomValue = randomRange(statRange[stat][0], statRange[stat][1]);
-        return randomValue;
+    function randomizeStat(min: number, max: number): number {
+        if (statIncrement === 0) {
+            throw new Error("statIncrement must not be zero.");
+        }
+        const maxValue = Math.ceil(max / statIncrement);
+        const minValue = Math.floor(min / statIncrement);
+        return randomRange(minValue, maxValue) * statIncrement;
     }
 
-    function randomizeAllFakemonStats() {
+    function RandomizeAllStatsOfStage(stage: number): Record<string, number> {
         function getRandomStatKey(): string {
-            const keys = Object.keys(statRange).filter(key => key !== 'Total');
+            const keys = Object.keys(statRange[stage].value).filter(key => key !== 'Total');
             return keys[Math.floor(Math.random() * keys.length)];
         }
 
-        const tempStats: Record<string, number> = Object.keys(statRange).reduce((acc, key) => {
+        const tempStats: Record<string, number> = Object.keys(statRange[stage].value).reduce((acc, key) => {
             acc[key] = 0;
             return acc;
         }, {} as Record<string, number>);
 
-        const finalSum = randomRange(statRange.Total[0], statRange.Total[1]);
+        const minStats: Record<string, number> = Object.fromEntries(
+            Object.entries(statRange[stage].value)
+                .filter(([key]) => key)
+                .map(([key, value]) => [key, value[0]])
+        );
+
+        if (stage - 1 > 0) {
+            for (const key in minStats) {   
+                if (currentStats[stage - 1].value[key] > minStats[key]) {
+                    minStats[key] = currentStats[stage - 1].value[key];
+                }
+            }
+        }
+
+        const finalSum = randomizeStat(statRange[stage].value.Total[0], statRange[stage].value.Total[1]);
         tempStats['Total'] = finalSum;
 
         let currentSum = 0;
-        for (const key in statRange) {
+        for (const key in statRange[stage].value) {
             if (key === 'Total') continue;
-            const value = randomizeStat(key);
+            const value = randomizeStat(minStats[key], statRange[stage].value[key][1]);
             tempStats[key] = value;
             currentSum += value;
         }
 
         const difference = finalSum - currentSum;
 
-        for (let i = 0; i < Math.abs(difference); i++) {
+        for (let i = 0; i < Math.abs(difference); i += statIncrement) {
             const statToModify: string = getRandomStatKey();
             if (difference > 0) {
-                if (tempStats[statToModify] >= statRange[statToModify][1]) {
-                    i--;
+                if (tempStats[statToModify] >= statRange[stage].value[statToModify][1]) {
+                    i -= statIncrement;
                     continue;
                 }
-                tempStats[statToModify] += 1;
+                tempStats[statToModify] += statIncrement;
             } else {
-                if (tempStats[statToModify] <= statRange[statToModify][0]) {
-                    i--;
+                if (tempStats[statToModify] <= minStats[statToModify]) {
+                    i -= statIncrement;
                     continue;
                 }
-                tempStats[statToModify] -= 1;
+                tempStats[statToModify] -= statIncrement;
             }
         }
 
-        for (const key in tempStats) {
-            setCurrentStats(prevStats => ({
-                ...prevStats,
-                [key]: tempStats[key]
-            }));
+        setCurrentStats(prevStats => ({
+            ...prevStats,
+            [stage]: {
+                value: { ...tempStats }
+            }
+        }));
+
+        if (stage < stages) {
+            RandomizeAllStatsOfStage(stage + 1);
         }
+
+        return tempStats;
     }
 
-    function writeAllStats() {
+    function WriteAllStats() {
         const result: ReactElement[] = [];
-        for (const key in currentStats.value) {
-            const statValue = currentStats.value[key];
-            const statRangeValue = statRange[key];
+
+        function WriteStatSpread(stage: number, tempStats: Record<string, number> = {} ) {
+            const spread: ReactElement[] = [];
+
+            const stats = Object.keys(tempStats).length === 0 ? currentStats[stage].value : tempStats;
+            for (const key in stats) {
+                const statValue = stats[key];
+                const statRangeValue = statRange[stage].value[key];
+                spread.push(
+                    <div key={key} style={{ display: 'flex', gap: '1rem', width: '100%' }}>
+                        <div style={{ flex: '2 1 0', textAlign: 'right' }}>{key}:</div>
+                        <div style={{ flex: '1 1 0', textAlign: 'center' }}>{statValue}</div>
+                        <div style={{ flex: '2 1 0', textAlign: 'left' }}>{writeStatRange(key, statRangeValue)}</div>
+                    </div>
+                );
+            }
+            return spread;
+        }
+
+        let tempStats: Record<string, number> = {};
+
+        for (let i = 1; i < stages + 1; i++) {
+            if (currentStats[i] === undefined) {
+                tempStats = RandomizeAllStatsOfStage(i);
+            }
+
             result.push(
-                <div key={key} style={{ display: 'flex', gap: '1rem', width: '100%' }}>
-                    <div style={{ flex: '2 1 0', textAlign: 'right' }}>{key}:</div>
-                    <div style={{ flex: '1 1 0', textAlign: 'center' }}>{statValue}</div>
-                    <div style={{ flex: '2 1 0', textAlign: 'left' }}>{writeStatRange(key, statRangeValue)}</div>
+                <div
+                    key={`Stage${i}`}
+                    className={
+                        `${styles.statsStageDisplay}`}>
+                    <div style={{ margin: '8px' }}>
+                        Stage {i}
+                        {WriteStatSpread(i, tempStats)}
+                        <button onClick={() => RandomizeAllStatsOfStage(i)}>
+                            Randomize Stats
+                        </button>
+                    </div>
                 </div>
             );
         }
+
         return result;
     }
 
@@ -121,12 +181,9 @@ export function StatManager() {
     return (
         <>
             <div>
-                <button onClick={randomizeAllFakemonStats}>
-                    Randomize All Stats
-                </button>
-            </div>
-            <div>
-                Stats: {writeAllStats()}
+                <div style={{ display: 'flex' }}>
+                    {WriteAllStats()}
+                </div>
             </div>
         </>
     )

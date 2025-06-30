@@ -1,0 +1,11 @@
+.statsStageDisplay {
+    display: 'flex';
+    margin: 0px 4px 0px 4px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+}
+
+.statsStageDisplay.selected {
+    border-color: aqua;
+}

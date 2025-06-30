@@ -1,4 +1,4 @@
-import React, { useState, type ReactElement } from 'react';
+import { useState, type ReactElement } from 'react';
 import fakemonData from '../assets/fakemondata.json';
 
 function DataManager() {
@@ -44,11 +44,11 @@ function DataManager() {
         <>
             <div>
                 <button onClick={randomizeData}>
-                    Randomize All Data
+                    Randomize Data
                 </button>
             </div>
             <div>
-                Data:{writeAllData()}
+                {writeAllData()}
             </div>
         </>
     );
