@@ -1,4 +1,4 @@
-.statCard {
+.statsStageDisplay {
     display: 'flex';
     margin: 0px 4px 0px 4px;
     border-style: solid;
@@ -6,8 +6,6 @@
     border-width: 2px;
 }
 
-.statSpread {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
+.statsStageDisplay.selected {
+    border-color: aqua;
 }

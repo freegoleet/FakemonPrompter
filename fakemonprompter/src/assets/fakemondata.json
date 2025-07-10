@@ -3,7 +3,7 @@
     "Size": [ "Tiny", "Small", "Medium", "Large", "Huge" ],
     "Diet": [ "Herbivore", "Carnivore", "Omnivore" ],
     "Climate": [ "Tropical", "Dry", "Temperate", "Continental", "Polar" ],
-    "Habitat": [ "Forest", "Field", "Desert", "River", "Coast", "Mountain", "Hills" ],
+    "Habitat": [ "Forest", "Field", "Desert", "River", "Coast", "Mountain", "Hills", "Cave" ],
     "Types": [
       "Water",
       "Grass",
@@ -23,41 +23,99 @@
     ]
   },
   "Stats": {
-    "Stage1": {
-      "Hp": [ 10, 75 ],
-      "Attack": [ 10, 75 ],
-      "Defence": [ 10, 75 ],
-      "SpAttack": [ 10, 75 ],
-      "SpDefence": [ 10, 75 ],
-      "Speed": [ 10, 75 ],
-      "Total": [ 275, 350 ]
-    },
-    "Stage2": {
-      "Hp": [ 10, 90 ],
-      "Attack": [ 10, 90 ],
-      "Defence": [ 10, 90 ],
-      "SpAttack": [ 10, 90 ],
-      "SpDefence": [ 10, 90 ],
-      "Speed": [ 10, 90 ],
-      "Total": [ 350, 425 ]
-    },
-    "Stage3": {
-      "Hp": [ 10, 120 ],
-      "Attack": [ 10, 120 ],
-      "Defence": [ 10, 120 ],
-      "SpAttack": [ 10, 120 ],
-      "SpDefence": [ 10, 120 ],
-      "Speed": [ 10, 120 ],
-      "Total": [ 425, 500 ]
-    },
-    "Stage4": {
-      "Hp": [ 10, 150 ],
-      "Attack": [ 10, 150 ],
-      "Defence": [ 10, 150 ],
-      "SpAttack": [ 10, 150 ],
-      "SpDefence": [ 10, 150 ],
-      "Speed": [ 10, 150 ],
-      "Total": [ 525, 600 ]
+    "Presets": {
+      "Starter": {
+        "Stage1": {
+          "Hp": [ 10, 75 ],
+          "Attack": [ 10, 75 ],
+          "Defense": [ 10, 75 ],
+          "Speed": [ 10, 75 ],
+          "Sp.Def.": [ 10, 75 ],
+          "Sp.Atk.": [ 10, 75 ],
+          "Total": [ 309, 318 ]
+        },
+        "Stage2": {
+          "Hp": [ 10, 100 ],
+          "Attack": [ 10, 100 ],
+          "Defense": [ 10, 100 ],
+          "Speed": [ 10, 100 ],
+          "Sp.Def.": [ 10, 100 ],
+          "Sp.Atk.": [ 10, 100 ],
+          "Total": [ 413, 420 ]
+        },
+        "Stage3": {
+          "Hp": [ 10, 130 ],
+          "Attack": [ 10, 130 ],
+          "Defense": [ 10, 130 ],
+          "Speed": [ 10, 130 ],
+          "Sp.Def.": [ 10, 130 ],
+          "Sp.Atk.": [ 10, 130 ],
+          "Total": [ 520, 535 ]
+        }
+      },
+      "Pseudo-Legendary": {
+        "Stage1": {
+          "Hp": [ 10, 75 ],
+          "Attack": [ 10, 75 ],
+          "Defense": [ 10, 75 ],
+          "Speed": [ 10, 75 ],
+          "Sp.Def.": [ 10, 75 ],
+          "Sp.Atk.": [ 10, 75 ],
+          "Total": [ 300, 300 ]
+        },
+        "Stage2": {
+          "Hp": [ 10, 120 ],
+          "Attack": [ 10, 120 ],
+          "Defense": [ 10, 120 ],
+          "Speed": [ 10, 120 ],
+          "Sp.Def.": [ 10, 120 ],
+          "Sp.Atk.": [ 10, 120 ],
+          "Total": [ 410, 452 ]
+        },
+        "Stage3": {
+          "Hp": [ 10, 150 ],
+          "Attack": [ 10, 150 ],
+          "Defense": [ 10, 150 ],
+          "Speed": [ 10, 150 ],
+          "Sp.Def.": [ 10, 150 ],
+          "Sp.Atk.": [ 10, 150 ],
+          "Total": [ 600, 600 ]
+        }
+
+      },
+      "Legendary580": {
+        "Stage1": {
+          "Hp": [ 10, 150 ],
+          "Attack": [ 10, 150 ],
+          "Defense": [ 10, 150 ],
+          "Speed": [ 10, 150 ],
+          "Sp.Def.": [ 10, 150 ],
+          "Sp.Atk.": [ 10, 150 ],
+          "Total": [ 580, 580 ]
+        }
+      },
+      "Legendary600": {
+        "Stage1": {
+          "Hp": [ 10, 180 ],
+          "Attack": [ 10, 180 ],
+          "Defense": [ 10, 180 ],
+          "Speed": [ 10, 180 ],
+          "Sp.Def.": [ 10, 180 ],
+          "Sp.Atk.": [ 10, 180 ],
+          "Total": [ 600, 600 ]
+        }
+      },
+      "Legendary680": {
+        "Stage1": {
+          "Hp": [ 10, 200 ],
+          "Attack": [ 10, 200 ],
+          "Defense": [ 10, 200 ],
+          "Speed": [ 10, 200 ],
+          "Sp.Def.": [ 10, 200 ],
+          "Sp.Atk.": [ 10, 200 ],
+          "Total": [ 680, 680 ]
+        }
+      }
     }
   }
 }
