@@ -10,28 +10,31 @@ const centerY: number = 100;
 const textOffset: number = 24;
 const degrees = -90;
 const rotationOffset = degrees * (Math.PI / 180)
+const fontSize: number = 12;
+const valueOffset: number = 2;
+type CustomOrder = {
+    [key: number]: string;
+}
+const customOrder: CustomOrder = { [0]: "Hp", [1]: "Attack", [2]: "Defense", [3]: "Speed", [4]: "Sp. Def.", [5]: "Sp. Atk." }
 
-/**
- * Draws the background hexagon for the stats radar chart.
- * @param ctx CanvasRenderingContext2D
- * @param stats Stats
- */
 function drawBackgroundHexagon(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.beginPath();
-    let index: number = 0;
-    
-    for (const [key] of Object.entries(stats.value)) {
-        if (key === 'Total') continue;
-        const angle = (Math.PI / 3) * index + rotationOffset;
+
+    for(let i = 0; i < Object.entries(customOrder).length; i++) {
+        const key: string = customOrder[i];
+        if (stats.value[key] === undefined) {
+            console.warn(`Key "${key}" not found in stats.value. Make sure the customOrder values match those in the json.`);
+        }
+        const angle = (Math.PI / 3) * i + rotationOffset;
         const x = centerX + maxRadius * Math.cos(angle);
         const y = centerY + maxRadius * Math.sin(angle);
-        if (index === 0) {
+        if (i === 0) {
             ctx.moveTo(x, y);
         } else {
             ctx.lineTo(x, y);
         }
-        index++;
     }
+
     ctx.closePath();
     ctx.globalAlpha = 1.0;
     ctx.strokeStyle = 'white';
@@ -45,45 +48,59 @@ function drawBackgroundHexagon(ctx: CanvasRenderingContext2D, stats: Stats) {
 
 function drawPolygon(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.beginPath();
-    let index = 0;
-    for (const [key, value] of Object.entries(stats.value)) {
-        if (key === 'Total') continue;
-        const normalized = Math.max(0, Math.min(1, value / 200));
+
+    for(let i = 0; i < Object.entries(customOrder).length; i++) {
+        const key: string = customOrder[i];
+        if (stats.value[key] === undefined) {
+            console.warn(`Key "${key}" not found in stats.value. Make sure the customOrder values match those in the json.`);
+        }
+        const normalized = Math.max(0, Math.min(1, stats.value[key] / 200));
         const radius = minRadius + (maxRadius - minRadius) * normalized;
-        const angle = (Math.PI / 3) * index + rotationOffset;
+        const angle = (Math.PI / 3) * i + rotationOffset;
         const x = centerX + radius * Math.cos(angle);
         const y = centerY + radius * Math.sin(angle);
         ctx.lineTo(x, y);
-        index++;
     }
+
     ctx.closePath();
     ctx.fillStyle = '#80dfff';
     ctx.globalAlpha = 0.8;
     ctx.fill();
 }
 
-function drawLines(ctx: CanvasRenderingContext2D, stats: Stats) {
+function drawLinesAndText(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.beginPath();
-    ctx.font = "12px Arial";
+    ctx.font = `${fontSize}px Arial`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = '#ffdb4d';
-    let index = 0;
     const degrees = -90;
     const rotationOffset = degrees * (Math.PI / 180)
-    for (const [key] of Object.entries(stats.value)) {
-        if (key === 'Total') continue;
-        const angle = (Math.PI / 3) * index + rotationOffset;
+
+    for (let i = 0; i < Object.entries(customOrder).length; i++) {
+        const key: string = customOrder[i];
+        if (stats.value[key] === undefined) {
+            console.warn(`Key "${key}" not found in stats.value. Make sure the customOrder values match those in the json.`);
+        }
+
+        const angle = (Math.PI / 3) * i + rotationOffset;
         const x = centerX + maxRadius * Math.cos(angle);
         const y = centerY + maxRadius * Math.sin(angle);
         const textX = centerX + (maxRadius + textOffset) * Math.cos(angle);
-        const textY = centerY + (maxRadius + textOffset) * Math.sin(angle);
+        let textY = centerY + (maxRadius + textOffset) * Math.sin(angle);
+
+        if (key === 'Speed') {
+            textY -= fontSize;
+        }
 
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(x, y);
+        ctx.fillStyle = '#ffdb4d';
         ctx.fillText(key, textX, textY);
-        index++;
+        ctx.fillStyle = 'white';
+        ctx.fillText(stats.value[key].toString(), textX, textY + fontSize + valueOffset);
     }
+
     ctx.closePath();
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 2;
@@ -94,7 +111,7 @@ function drawLines(ctx: CanvasRenderingContext2D, stats: Stats) {
 
 export function DrawStats({ stats }: { stats: Stats }) {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    
+
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) {
@@ -110,7 +127,7 @@ export function DrawStats({ stats }: { stats: Stats }) {
 
         drawBackgroundHexagon(ctx, stats);
 
-        drawLines(ctx, stats);
+        drawLinesAndText(ctx, stats);
 
         drawPolygon(ctx, stats);
     }, [stats]);
