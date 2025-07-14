@@ -32,6 +32,10 @@ function DataManager() {
 
     function writeAllData() {
         const result: ReactElement[] = [];
+
+        if (Object.entries(currentData).length === 0) {
+            randomizeData();
+        }
         for (const key in currentData) {
             const value = currentData[key];
             const displayValue = Array.isArray(value) ? value.join(', ') : value;
