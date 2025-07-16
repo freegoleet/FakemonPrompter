@@ -3,6 +3,7 @@ import DataManager from '../components/DataManager.tsx';
 import StatManager from '../components/StatManager.tsx';
 import fakemonData from '../assets/fakemondata.json';
 import type { Stages, StatRange } from '../components/StatManager.tsx';
+import styles from '../styles/EvolutionManager.module.css';
 
 function EvolutionManager() {
     const [numStages, setNumStages] = useState<number>(1);
@@ -33,6 +34,7 @@ function EvolutionManager() {
     function SetupPresetButtons() {
         return Object.keys(fakemonData.Stats.Presets).map((key) => (
             <button
+                className={styles.presetButton}
                 key={key}
                 onClick={() => { PickPreset(key as keyof typeof fakemonData.Stats.Presets); }}
             >
@@ -43,45 +45,67 @@ function EvolutionManager() {
 
     return (
         <>
-            <div>
-                Preset:
-            </div>
-            <div>
-                {SetupPresetButtons()}
-            </div>
-            <div>
-                <div>
-                    Stages:
-                </div>
-                <button onClick={() => { if (numStages > 1) setNumStages(numStages - 1); }}>
-                    -
-                </button>
-                <label style={{ width: `1ch` }}>
-                    {numStages}
+            <div className={styles.evolutionComponent}>
+                <label className={styles.title}>
+                    Fakemon Prompter
                 </label>
-                <button onClick={() => { if (numStages < 5) setNumStages(numStages + 1); }}>
-                    +
-                </button>
-            </div>
 
-            <div>
-                <div>
-                    Stat Increment:
+                <div className={styles.presetCard}>
+                    <div>
+                        Preset:
+                    </div>
+                    <div className={styles.presets}>
+                        {SetupPresetButtons()}
+                    </div>
                 </div>
-                <button onClick={() => { if (statIncrement > 1) setStatIncrement(statIncrement - 1); }}>
-                    -
-                </button>
-                <label style={{ width: `1ch` }}>
-                    {statIncrement}
-                </label>
-                <button onClick={() => { if (statIncrement < 20) setStatIncrement(statIncrement + 1); }}>
-                    +
-                </button>
+
+                <div className={styles.incrementCard}>
+                    <div>
+                        Stages:
+                    </div>
+                    <div className={styles.incrementSpread}>
+                        <button
+                            className={styles.incrementButton}
+                            onClick={() => { if (numStages > 1) setNumStages(numStages - 1); }}>
+                            -
+                        </button>
+                        <label className={styles.value}>
+                            {numStages}
+                        </label>
+                        <button
+                            className={styles.incrementButton}
+                            onClick={() => { if (numStages < 5) setNumStages(numStages + 1); }}>
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <div className={styles.incrementCard}>
+                    <div>
+                        Stat Increment:
+                    </div>
+                    <div className={styles.incrementSpread}>
+                        <button
+                            className={styles.incrementButton}
+                            onClick={() => { if (statIncrement > 1) setStatIncrement(statIncrement - 1); }}>
+                            -
+                        </button>
+                        <label className={styles.value}>
+                            {statIncrement}
+                        </label>
+                        <button
+                            className={styles.incrementButton}
+                            onClick={() => { if (statIncrement < 20) setStatIncrement(statIncrement + 1); }}>
+                            +
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <>
                 {DataManager()}
             </>
+
             <>
                 <StatManager stages={stages} numStages={numStages} statIncrement={statIncrement} />
             </>

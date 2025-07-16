@@ -1,0 +1,66 @@
+.presets {
+    margin: 4px;
+}
+
+.presetButton {
+    margin: 4px;
+}
+
+.evolutionComponent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.presetCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 4px 4px 4px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.incrementCard {
+    align-items: center;
+    justify-content: center;
+    margin: 4px 4px 4px 4px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 35%;
+}
+
+.incrementSpread {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+
+.value {
+    font-size: 1.8rem;
+    width: 1ch;
+    margin: 4px 8px 4px 8px;
+}
+
+.incrementButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-style: oblique;
+    font-size: 1.4rem;
+    margin: 4px;
+}

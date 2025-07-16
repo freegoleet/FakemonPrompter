@@ -1,32 +1,53 @@
-import { useState, type ReactElement } from 'react';
+import { useState, useEffect, type ReactElement } from 'react';
 import fakemonData from '../assets/fakemondata.json';
+import styles from '../styles/DataManager.module.css';
+
+const defaultColor: string = "#000000"
 
 function DataManager() {
     const [datamap] = useState<Record<string, string[]>>(
-        Object.keys(fakemonData.Data).reduce((acc, key) => {
-            acc[key] = fakemonData.Data[key as keyof typeof fakemonData.Data];
-            return acc;
-        }, {} as Record<string, string[]>)
+        fakemonData.Data
     );
 
-    const [currentData, setCurrentData] = useState<Record<string, string[]>>({});
+    const [types] = useState<Record<string, string>>(fakemonData.Types);
+    const [currentData, setCurrentData] = useState<Record<string, string>>({});
+    const [colors, setColors] = useState<string[]>([defaultColor, defaultColor]);
+
+    useEffect(() => {
+        if (colors[1] === defaultColor) {
+            document.body.style.background = `linear-gradient(${colors[0]}, ${colors[1]})`;
+            return;
+        }
+        document.body.style.background = `linear-gradient(to right, ${colors[0]}, ${colors[1]})`;
+    }, [colors]);
 
     function randomizeData() {
-        function getRandomElement(arr: string[]): string {
-            return arr[Math.floor(Math.random() * arr.length)];
-        }
-
-        const tempData: Record<string, string[]> = Object.keys(datamap).reduce((acc, key) => {
-            acc[key] = [];
+        const tempData: Record<string, string> = Object.keys(datamap).reduce((acc, key) => {
+            acc[key] = "";
             return acc;
-        }, {} as Record<string, string[]>);
+        }, {} as Record<string, string>);
 
-        for (const key in datamap) {
-            tempData[key].push(getRandomElement(datamap[key]));
-            if (key === "Types") {
-                tempData[key].push(getRandomElement(datamap[key]));
+        for(const key in datamap) {
+            const values = datamap[key];
+            if (values.length > 0) {
+                const randomValue = values[Math.floor(Math.random() * values.length)];
+                tempData[key] = randomValue;
             }
+        };
+
+        const tempColors = [defaultColor, defaultColor];
+        const typeKeys = Object.keys(types);
+        const randomTypeKey = typeKeys[Math.floor(Math.random() * typeKeys.length)];
+        const firstType: string = randomTypeKey;
+        tempData["Primary Type"] = firstType;
+        const secondType: string = typeKeys[Math.floor(Math.random() * typeKeys.length)];
+        tempColors[0] = types[firstType];
+        if (secondType !== firstType) {
+            tempData["Secondary Type"] = secondType;
+            tempColors[1] = types[secondType];
         }
+
+        setColors(tempColors);
         setCurrentData(tempData);
     }
 
@@ -39,22 +60,21 @@ function DataManager() {
         for (const key in currentData) {
             const value = currentData[key];
             const displayValue = Array.isArray(value) ? value.join(', ') : value;
-            result.push(<div key={key}>{key}: {displayValue}</div>);
+            result.push(<div className={styles.dataElement} key={key}>{key}: {displayValue}</div>);
         }
         return result;
     }
 
     return (
-        <>
-            <div>
-                <button onClick={randomizeData}>
+        <div className={styles.data}>
+            <div className={styles.dataCard}>
+                <div className={styles.dataTitle}> Data </div>
+                {writeAllData()}
+                <button onClick={randomizeData} className={styles.button}>
                     Randomize Data
                 </button>
             </div>
-            <div>
-                {writeAllData()}
-            </div>
-        </>
+        </div>
     );
 }
 
