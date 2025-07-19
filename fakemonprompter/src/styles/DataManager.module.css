@@ -1,10 +1,22 @@
+.title {
+    font-style: oblique;
+    font-size: 1.2rem;
+}
+
 .data {
     -webkit-justify-content: center;
     justify-content: center;
     display: flex;
 }
 
-.dataCard {
+
+.button {
+    cursor: pointer;
+    margin: 8px;
+}
+
+
+.card {
     margin: 0px 4px 0px 4px;
     border-style: solid;
     border-color: white;
@@ -14,18 +26,27 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.dataElement {
+.element {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 1.4rem;
     margin: 4px;
-    display: block;
-}
-
-.button {
-    cursor: pointer;
-    margin: 8px;
+    font-size: 1rem;
     
 }
 
-.dataTitle {
-    font-style: oblique;
-    font-size: 1.2rem;
+.elementText {
+    padding-bottom: 3px;
+}
+
+.typeIcon {
+    width: 1.4rem;
+    height: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
 }

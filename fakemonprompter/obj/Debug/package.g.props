@@ -11,6 +11,7 @@
     <PackageJsonDependenciesReact Condition="$(PackageJsonDependenciesReact) == ''">^19.1.0</PackageJsonDependenciesReact>
     <PackageJsonDependenciesReactDom Condition="$(PackageJsonDependenciesReactDom) == ''">^19.1.0</PackageJsonDependenciesReactDom>
     <PackageJsonDependenciesUseGoogleSheets Condition="$(PackageJsonDependenciesUseGoogleSheets) == ''">^1.0.0</PackageJsonDependenciesUseGoogleSheets>
+    <PackageJsonDependenciesVitePluginDts Condition="$(PackageJsonDependenciesVitePluginDts) == ''">^4.5.4</PackageJsonDependenciesVitePluginDts>
     <PackageJsonRepositoryType Condition="$(PackageJsonRepositoryType) == ''">git</PackageJsonRepositoryType>
     <PackageJsonRepositoryUrl Condition="$(PackageJsonRepositoryUrl) == ''">git+https://github.com/freegoleet/FakemonPrompter.git</PackageJsonRepositoryUrl>
     <PackageJsonDevdependenciesEslintJs Condition="$(PackageJsonDevdependenciesEslintJs) == ''">^9.25.0</PackageJsonDevdependenciesEslintJs>
@@ -24,6 +25,7 @@
     <PackageJsonDevdependenciesTypescript Condition="$(PackageJsonDevdependenciesTypescript) == ''">~5.8.3</PackageJsonDevdependenciesTypescript>
     <PackageJsonDevdependenciesTypescriptEslint Condition="$(PackageJsonDevdependenciesTypescriptEslint) == ''">^8.30.1</PackageJsonDevdependenciesTypescriptEslint>
     <PackageJsonDevdependenciesVite Condition="$(PackageJsonDevdependenciesVite) == ''">^6.3.5</PackageJsonDevdependenciesVite>
+    <PackageJsonDevdependenciesVitePluginSvgr Condition="$(PackageJsonDevdependenciesVitePluginSvgr) == ''">^4.3.0</PackageJsonDevdependenciesVitePluginSvgr>
     <PackageJsonAuthor Condition="$(PackageJsonAuthor) == ''">Roy Ahlgren Löfvendahl</PackageJsonAuthor>
     <PackageJsonLicense Condition="$(PackageJsonLicense) == ''">ISC</PackageJsonLicense>
     <PackageJsonBugsUrl Condition="$(PackageJsonBugsUrl) == ''">https://github.com/freegoleet/FakemonPrompter/issues</PackageJsonBugsUrl>

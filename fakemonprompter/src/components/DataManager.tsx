@@ -1,14 +1,13 @@
 import { useState, useEffect, type ReactElement } from 'react';
 import fakemonData from '../assets/fakemondata.json';
 import styles from '../styles/DataManager.module.css';
+import { typeSvgComponentMap } from '../assets/types.ts';
 
 const defaultColor: string = "#000000"
-
 function DataManager() {
     const [datamap] = useState<Record<string, string[]>>(
         fakemonData.Data
     );
-
     const [types] = useState<Record<string, string>>(fakemonData.Types);
     const [currentData, setCurrentData] = useState<Record<string, string>>({});
     const [colors, setColors] = useState<string[]>([defaultColor, defaultColor]);
@@ -27,7 +26,7 @@ function DataManager() {
             return acc;
         }, {} as Record<string, string>);
 
-        for(const key in datamap) {
+        for (const key in datamap) {
             const values = datamap[key];
             if (values.length > 0) {
                 const randomValue = values[Math.floor(Math.random() * values.length)];
@@ -58,17 +57,35 @@ function DataManager() {
             randomizeData();
         }
         for (const key in currentData) {
-            const value = currentData[key];
-            const displayValue = Array.isArray(value) ? value.join(', ') : value;
-            result.push(<div className={styles.dataElement} key={key}>{key}: {displayValue}</div>);
+            const title = <div className={styles.elementText} key={key + "_title"}>{key + ": "}</div>;
+            const value = <div className={styles.elementText} key={key + "_value"}>{currentData[key]}</div>;
+            if (key === "Primary Type" || key === "Secondary Type") {
+                const typeValue: string = currentData[key];
+                const TypeSvg = typeSvgComponentMap[typeValue];
+                const image = <TypeSvg className={styles.typeIcon} fill={types[typeValue]} key={key + "_image"} />;
+                result.push(
+                    <div className={styles.element} key={key + "_element"}>
+                        {title}
+                        {image}
+                        {value}
+                    </div>
+                );
+                continue;
+            }
+            result.push(
+                <div className={styles.element} key={key + "_element"}>
+                    {title}
+                    {value}
+                </div>
+            );
         }
         return result;
     }
 
     return (
         <div className={styles.data}>
-            <div className={styles.dataCard}>
-                <div className={styles.dataTitle}> Data </div>
+            <div className={styles.card}>
+                <div className={styles.title}> Data </div>
                 {writeAllData()}
                 <button onClick={randomizeData} className={styles.button}>
                     Randomize Data
