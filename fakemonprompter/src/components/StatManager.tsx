@@ -48,6 +48,7 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
         let range: StatRange = {
             value: {}
         };
+        // TODO: 3 Stages, add 1 new, new stage ignores stage 3's stats
 
         // Stats Setup
         if (stats.value === undefined) {
@@ -169,7 +170,6 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
     }, [currentStats, stages, props.stages, props.numStages, props.statIncrement, getRandomStatKey, randomizeStat]);
 
     useEffect(() => {
-        // Deep comparison (checks values)
         if (JSON.stringify(prevStages.current) === JSON.stringify(props.stages)) {
             return;
         }
@@ -203,7 +203,7 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
         }));
 
         setCurrentStages(newstage);
-        RandomizeAllStatsOfStage(newstage);
+        RandomizeAllStatsOfStage(newstage, minStats);
 
         return newStatRange;
     }, [currentStats, stages, RandomizeAllStatsOfStage]);

@@ -1,7 +1,7 @@
 import { useState, useEffect, type ReactElement } from 'react';
 import fakemonData from '../assets/fakemondata.json';
 import styles from '../styles/DataManager.module.css';
-import { typeSvgComponentMap } from '../assets/types.ts';
+import { climateSvgComponentMap, dietSvgComponentMap, habitatSvgComponentMap, sizeSvgComponentMap, typeSvgComponentMap } from '../assets/DataSvgManager.ts';
 
 const defaultColor: string = "#000000"
 function DataManager() {
@@ -59,22 +59,40 @@ function DataManager() {
         for (const key in currentData) {
             const title = <div className={styles.elementText} key={key + "_title"}>{key + ": "}</div>;
             const value = <div className={styles.elementText} key={key + "_value"}>{currentData[key]}</div>;
-            if (key === "Primary Type" || key === "Secondary Type") {
-                const typeValue: string = currentData[key];
-                const TypeSvg = typeSvgComponentMap[typeValue];
-                const image = <TypeSvg className={styles.typeIcon} fill={types[typeValue]} key={key + "_image"} />;
-                result.push(
-                    <div className={styles.element} key={key + "_element"}>
-                        {title}
-                        {image}
-                        {value}
-                    </div>
-                );
-                continue;
+
+            const icon: string = currentData[key];
+            let IconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>> = typeSvgComponentMap[icon];
+            let fillColor: string | undefined = types[icon];
+            switch (key) {
+                case "Primary Type":
+                    IconSvg = typeSvgComponentMap[icon];
+                    break;
+                case "Secondary Type":
+                    IconSvg = typeSvgComponentMap[icon];
+                    break;
+                case "Size":
+                    IconSvg = sizeSvgComponentMap[icon];
+                    fillColor = "#FFFFFF";
+                    break;
+                case "Climate":
+                    IconSvg = climateSvgComponentMap[icon];
+                    fillColor = "#FFFFFF";
+                    break;
+                case "Habitat":
+                    IconSvg = habitatSvgComponentMap[icon];
+                    fillColor = "#FFFFFF";
+                    break;
+                case "Diet":
+                    IconSvg = dietSvgComponentMap[icon];
+                    fillColor = "#FFFFFF";
+                    break;
             }
+
+            const image = <IconSvg className={styles.typeIcon} fill={fillColor} key={key + "_image"} />;
             result.push(
                 <div className={styles.element} key={key + "_element"}>
                     {title}
+                    {image}
                     {value}
                 </div>
             );

@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Repositories\\FakemonPrompter\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\assets\\datasvgmanager.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\assets\\datasvgmanager.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\datamanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\datamanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
@@ -11,8 +19,16 @@
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\assets\\fakemondata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\styles\\datamanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\datamanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\evolutionmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -35,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\statmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\styles\\datamanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\datamanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\drawstats.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\drawstats.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
@@ -49,6 +61,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\svg.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\svg.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -57,18 +73,18 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 395,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 282,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DataManager.tsx",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\DataManager.tsx",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DataManager.tsx",
               "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\DataManager.tsx",
               "RelativeToolTip": "fakemonprompter\\src\\components\\DataManager.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAuwEkAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-05-27T14:50:41.843Z",
               "IsPinned": true,
@@ -76,7 +92,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "DataSvgManager.ts",
+              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\assets\\DataSvgManager.ts",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\assets\\DataSvgManager.ts",
+              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\assets\\DataSvgManager.ts",
+              "RelativeToolTip": "fakemonprompter\\src\\assets\\DataSvgManager.ts",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-07-18T17:49:01.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "tsconfig.json",
+              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\tsconfig.json",
+              "RelativeDocumentMoniker": "fakemonprompter\\tsconfig.json",
+              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\tsconfig.json",
+              "RelativeToolTip": "fakemonprompter\\tsconfig.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-18T17:38:09.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "svg.d.ts",
+              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\svg.d.ts",
+              "RelativeDocumentMoniker": "fakemonprompter\\svg.d.ts",
+              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\svg.d.ts",
+              "RelativeToolTip": "fakemonprompter\\svg.d.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-07-18T17:36:36.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "vite.config.ts",
+              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\vite.config.ts",
+              "RelativeDocumentMoniker": "fakemonprompter\\vite.config.ts",
+              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\vite.config.ts",
+              "RelativeToolTip": "fakemonprompter\\vite.config.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-07-18T17:35:12.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "App.css",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\App.css",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\App.css",
@@ -88,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "index.css",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\index.css",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\index.css",
@@ -100,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "DrawStats.tsx",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\DrawStats.tsx",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DrawStats.tsx",
@@ -112,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "EvolutionManager.tsx",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\EvolutionManager.tsx",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\EvolutionManager.tsx",
@@ -124,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "App.tsx",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\App.tsx",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\App.tsx",
@@ -136,7 +201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "DrawStats.module.css",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DrawStats.module.css",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DrawStats.module.css",
@@ -149,25 +214,38 @@
           ]
         },
         {
-          "DockedWidth": 239,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 352,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "fakemondata.json",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\assets\\fakemondata.json",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\assets\\fakemondata.json",
               "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\assets\\fakemondata.json",
               "RelativeToolTip": "fakemonprompter\\src\\assets\\fakemondata.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-06-25T11:06:43.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
+              "Title": "DataManager.module.css",
+              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DataManager.module.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DataManager.module.css",
+              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DataManager.module.css",
+              "RelativeToolTip": "fakemonprompter\\src\\styles\\DataManager.module.css",
+              "ViewState": "AgIAABUAAAAAAAAAAAAUwCMAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-15T08:31:18.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "EvolutionManager.module.css",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\EvolutionManager.module.css",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\EvolutionManager.module.css",
@@ -179,32 +257,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "StatManager.tsx",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\StatManager.tsx",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\StatManager.tsx",
               "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\StatManager.tsx",
               "RelativeToolTip": "fakemonprompter\\src\\components\\StatManager.tsx",
-              "ViewState": "AgIAALAAAAAAAAAAAAAAwMMAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAALMAAAAAAAAAAAAQwMgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-07-06T13:42:14.398Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DataManager.module.css",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DataManager.module.css",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DataManager.module.css",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DataManager.module.css",
-              "RelativeToolTip": "fakemonprompter\\src\\styles\\DataManager.module.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-15T08:31:18.656Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "StatManager.module.css",
               "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\StatManager.module.css",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\StatManager.module.css",
