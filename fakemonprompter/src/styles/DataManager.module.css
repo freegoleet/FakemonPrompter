@@ -3,52 +3,59 @@
     font-size: 1.2rem;
 }
 
-.data {
+.dataComponent {
     -webkit-justify-content: center;
     justify-content: center;
     display: flex;
-}
-
-
-.button {
-    cursor: pointer;
-    margin: 8px;
-}
-
-
-.card {
-    margin: 0px 4px 0px 4px;
-    border-style: solid;
-    border-color: white;
-    border-width: 2px;
-    margin: 4px;
-    width: 35%;
-    background-color: rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .element {
     display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
     height: 1.4rem;
-    margin: 4px;
-    font-size: 1rem;
-    
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    width: 100%;
 }
-
-.elementText {
+.elementColumn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;      /* Vertically centered */
+    justify-content: flex-end; /* Horizontally to the left */
     padding-bottom: 2px;
     padding-right: 2px;
     padding-left: 2px;
+    font-size: 1rem;
+    width: 50%;
+}
+
+.typeIconColumn {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    height: auto;
+    margin-left: 1rem;
+    width: 50%;
 }
 
 .typeIcon {
-    width: 1.4rem;
-    height: 1.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 2rem;
+    height: auto;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.dataTypeText {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.valueText {
+    font-weight: bold;
+    align-self: center;
 }

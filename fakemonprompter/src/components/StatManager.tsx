@@ -30,9 +30,14 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
         if (props.statIncrement === 0) {
             throw new Error("statIncrement must not be zero.");
         }
-        const maxValue = Math.ceil(max / props.statIncrement);
-        const minValue = Math.floor(min / props.statIncrement);
-        return randomRange(minValue, maxValue) * props.statIncrement;
+        // Make ceiling inclusive, floor exclusive
+        const minValue = Math.floor(min / props.statIncrement) + 1;
+        let maxValue = Math.ceil(max / props.statIncrement);
+        // Ensure ceiling is never higher than max
+        if (maxValue * props.statIncrement > max) {
+            maxValue = Math.floor(max / props.statIncrement);
+        }
+        return randomRange(minValue, maxValue + 1) * props.statIncrement;
     }, [props.statIncrement, randomRange]);
 
     const getRandomStatKey = useCallback((): string => {
@@ -44,11 +49,10 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
     }, [props.stages]);
 
     const RandomizeAllStatsOfStage = useCallback((stage: number, prevStats: Stats = { value: {} }, reset: boolean = false): Stats => {
-        let stats: Stats = JSON.parse(JSON.stringify(prevStats)); // Deep copy to avoid mutation
+        let stats: Stats = JSON.parse(JSON.stringify(prevStats));
         let range: StatRange = {
             value: {}
         };
-        // TODO: 3 Stages, add 1 new, new stage ignores stage 3's stats
 
         // Stats Setup
         if (stats.value === undefined) {
@@ -114,7 +118,7 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
             };
         }
         else if (Object.keys(stats.value).length === 0) {
-            if (currentStats[stage - 1] !== undefined) {
+            if (currentStats[stage - 1] !== undefined && reset == false) {
                 stats = JSON.parse(JSON.stringify(currentStats[stage - 1]));
             }
             else {
@@ -175,6 +179,7 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
         }
         prevStages.current = props.stages;
         setStages(props.stages);
+        setCurrentStats({});
         RandomizeAllStatsOfStage(1, undefined, true);
     }, [props.stages, RandomizeAllStatsOfStage, stages, prevStages]);
 
@@ -183,36 +188,33 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const addNewStage = useCallback((newstage: number): StatRange => {
-        const minStats: Stats = {
-            value: Object.fromEntries(
-                Object.entries(currentStats[newstage - 1].value)
-                    .map(([key, value]) => [key, value])
-            )
-        };
-        const newStatRange: StatRange = {
-            value: Object.fromEntries(
-                Object.entries(stages[newstage - 1].value)
-                    .map(([key, value]) => [key, [minStats.value[key], value[1]]])
-            )
+    const addNewStages = useCallback((stagesToAdd: number) => {
+        let minStats: Stats = {
+            value: {}
         };
 
-        setStages(prevStatRange => ({
-            ...prevStatRange,
-            [newstage]: newStatRange
-        }));
+        for (let i = 1; i <= stagesToAdd; i++) {
+            const newStage: number = currentStages + i;
 
-        setCurrentStages(newstage);
-        RandomizeAllStatsOfStage(newstage, minStats);
+            minStats = {
+                value: Object.fromEntries(
+                    Object.entries(currentStats[newStage - 1].value)
+                        .map(([key, value]) => [key, value])
+                )
+            };
 
-        return newStatRange;
-    }, [currentStats, stages, RandomizeAllStatsOfStage]);
+            minStats = RandomizeAllStatsOfStage(newStage, minStats);
+        }
+    }, [currentStages, currentStats, RandomizeAllStatsOfStage]);
 
     useEffect(() => {
-        if (props.numStages > currentStages) {
-            addNewStage(props.numStages);
+        setCurrentStages(props.numStages);
+        console.log(`Modifying number of stages to ${props.numStages}`);
+        if (props.numStages > currentStages && props.numStages > Object.keys(props.stages).length) {
+            addNewStages(props.numStages - currentStages);
+            return;
         }
-    }, [props.numStages, currentStages, addNewStage]);
+    }, [props.numStages, props.stages, currentStages, addNewStages]);
 
     function WriteAllStats() {
         const result: ReactElement[] = [];
@@ -248,21 +250,19 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
             result.push(
                 <div
                     key={`Stage${i}`}
-                    className={styles.statCard}>
-                    <div style={{ margin: '8px' }}>
-                        <>
-                            Stage {i}
-                        </>
-                        <>
-                            {currentStats[i] !== undefined && WriteStatSpread(i)}
-                        </>
-                        <>
-                            {currentStats[i] !== undefined && <DrawStats stats={currentStats[i]} />}
-                        </>
-                        <button onClick={() => RandomizeAllStatsOfStage(i)}>
-                            Randomize Stats
-                        </button>
-                    </div>
+                    className="card">
+                    <>
+                        Stage {i}
+                    </>
+                    <>
+                        {currentStats[i] !== undefined && WriteStatSpread(i)}
+                    </>
+                    <>
+                        {currentStats[i] !== undefined && <DrawStats stats={currentStats[i]} />}
+                    </>
+                    <button onClick={() => RandomizeAllStatsOfStage(i)} >
+                        Randomize Stats
+                    </button>
                 </div>
             );
         }
@@ -304,14 +304,14 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
                 <input
                     name="min"
                     value={values[0]}
-                    style={{ width: `${String(values[0]).length + 1}ch` }}
+                    style={{ width: `3ch` }}
                     onChange={(e) => ModifyStatRange(stage, stat, Number(e.target.value), values[1])}
                 />
                 -
                 <input
                     name="max"
                     value={values[1]}
-                    style={{ width: `${String(values[1]).length + 1}ch` }}
+                    style={{ width: `3ch` }}
                     onChange={(e) => ModifyStatRange(stage, stat, values[0], Number(e.target.value))}
                 />
             </label>
@@ -320,10 +320,8 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
 
     return (
         <>
-            <div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    {WriteAllStats()}
-                </div>
+            <div className={styles.statComponent}>
+                {WriteAllStats()}
             </div>
         </>
     );

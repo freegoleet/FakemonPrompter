@@ -1,0 +1,28 @@
+.button {
+    min-width: 24ch;
+}
+
+.dropDown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 1000;
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.option {
+    padding: 8px;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.5);
+}
+    .option:hover {
+        background-color: rgba(0,0,0,0.1);
+    }

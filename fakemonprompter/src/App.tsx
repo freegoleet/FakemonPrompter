@@ -1,12 +1,12 @@
 import './App.css'
 import EvolutionManager from './components/EvolutionManager'
+import Footer from './components/Footer'
 
 function App() {
     return (
         <>
-            <>
-                {EvolutionManager()}
-            </>
+            <EvolutionManager />
+            <Footer/>
         </>
     )
 }

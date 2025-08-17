@@ -1,29 +1,71 @@
 {
   "Data": {
-    "Size": [ "Tiny", "Small", "Medium", "Large", "Huge" ],
-    "Diet": [ "Herbivore", "Carnivore", "Omnivore" ],
-    "Climate": [ "Tropical", "Dry", "Temperate", "Continental", "Polar" ],
-    "Habitat": [ "Forest", "Field", "Desert", "River", "Coast", "Mountain", "Hills", "Cave" ]
+    "Size": {
+      "Description": "The general size category of the Fakemon. Currently sizes include: ",
+      "Values": {
+        "Tiny": "#3d85c6",
+        "Small": "#259724",
+        "Medium": "#ffd966",
+        "Large": "#cc0000",
+        "Huge": "#e100e6"
+      }
+    },
+    "Diet": {
+      "Description": "Dietary preference of the Fakemon. Currently diets include: ",
+      "Values": {
+        "Herbivore": "#8fd175",
+        "Carnivore": "#e57373",
+        "Omnivore": "#ffd54f"
+      }
+    },
+    "Climate": {
+      "Description": "Preferred climate for the Fakemon. Climate options are derived from the Köppen climate classification and currently include: ",
+      "Values": {
+        "Tropical": "#018a7e",
+        "Dry": "#e0c97f",
+        "Temperate": "#efbbcc",
+        "Continental": "#28df78",
+        "Polar": "#b2ebf2"
+      }
+    },
+    "Habitat": {
+      "Description": "Typical habitat where the Fakemon is found. Currently habitats include: ",
+      "Values": {
+        "Forest": "#388e3c",
+        "Field": "#fbc02d",
+        "Desert": "#f4a460",
+        "River": "#42a5f5",
+        "Coast": "#f5eab8",
+        "Mountain": "#bcbcbc",
+        "Hills": "#aed581"
+      }
+    }
   },
   "Types": {
-    "Normal": "#A8A77A",
-    "Fire": "#e04343",
-    "Water": "#6390F0",
-    "Electric": "#f2cc35",
-    "Grass": "#7AC74C",
-    "Ice": "#96D9D6",
-    "Fighting": "#f28b41",
-    "Poison": "#A33EA1",
-    "Ground": "#875f2f",
-    "Flying": "#A98FF3",
-    "Psychic": "#e0557f",
-    "Bug": "#A6B91A",
-    "Rock": "#bfb16b",
-    "Ghost": "#735797",
-    "Dragon": "#602de2",
-    "Dark": "#493a30",
-    "Steel": "#B7B7CE",
-    "Fairy": "#D685AD"
+    "Description": {
+      "Primary Type": "The Fakemon's primary type.",
+      "Secondary Type": "The Fakemon's secondary type."
+    },
+    "Values": {
+      "Normal": "#A8A77A",
+      "Fire": "#e04343",
+      "Water": "#6390F0",
+      "Electric": "#f2cc35",
+      "Grass": "#7AC74C",
+      "Ice": "#96D9D6",
+      "Fighting": "#f28b41",
+      "Poison": "#A33EA1",
+      "Ground": "#875f2f",
+      "Flying": "#A98FF3",
+      "Psychic": "#e0557f",
+      "Bug": "#A6B91A",
+      "Rock": "#bfb16b",
+      "Ghost": "#735797",
+      "Dragon": "#602de2",
+      "Dark": "#493a30",
+      "Steel": "#B7B7CE",
+      "Fairy": "#D685AD"
+    }
   },
   "Stats": {
     "Presets": {

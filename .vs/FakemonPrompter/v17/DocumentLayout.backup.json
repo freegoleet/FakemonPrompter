@@ -1,70 +1,118 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Repositories\\FakemonPrompter\\",
+  "WorkspaceRootPath": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\assets\\datasvgmanager.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\assets\\datasvgmanager.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\datamanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\datamanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\datamanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\styles\\datamanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\datamanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\dropdownmenu.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\dropdownmenu.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\descriptionpopup.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\descriptionpopup.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\styles\\descriptionpopup.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\descriptionpopup.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\assets\\fakemondata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\assets\\fakemondata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\styles\\dropdownmenu.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\dropdownmenu.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\styles\\footer.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\footer.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\evolutionmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\evolutionmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\footer.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\footer.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\styles\\evolutionmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\evolutionmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\styles\\statmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\statmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\components\\drawstats.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\drawstats.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\styles\\drawstats.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\drawstats.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\fakemonprompter\\fakemonprompter\\svg.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\vite-env.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\vite-env.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\main.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\main.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\svg.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\svg.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\eslint.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\eslint.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\cssmodule.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\cssmodule.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\drawstats.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\drawstats.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\evolutionmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\evolutionmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\components\\statmanager.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\assets\\datasvgmanager.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\assets\\datasvgmanager.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\styles\\statmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\statmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\styles\\datamanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\datamanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\assets\\fakemondata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\assets\\fakemondata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\styles\\evolutionmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\evolutionmanager.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|c:\\repositories\\web-programming\\react\u002Bts\\fakemonprompter\\fakemonprompter\\src\\styles\\drawstats.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{390F1751-7E91-7764-37E1-D8DB630665A1}|FakemonPrompter\\fakemonprompter.esproj|solutionrelative:fakemonprompter\\src\\styles\\drawstats.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -73,210 +121,362 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 407,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 347,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DataManager.tsx",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\DataManager.tsx",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DataManager.tsx",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\DataManager.tsx",
-              "RelativeToolTip": "fakemonprompter\\src\\components\\DataManager.tsx",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAD4AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-05-27T14:50:41.843Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "DocumentIndex": 11,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\package.json",
+              "RelativeDocumentMoniker": "fakemonprompter\\package.json",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\package.json",
+              "RelativeToolTip": "fakemonprompter\\package.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-08T04:24:49.53Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DataSvgManager.ts",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\assets\\DataSvgManager.ts",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\assets\\DataSvgManager.ts",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\assets\\DataSvgManager.ts",
-              "RelativeToolTip": "fakemonprompter\\src\\assets\\DataSvgManager.ts",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEsAAAAVAAAAAAAAAA==",
+              "Title": "DataManager.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DataManager.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DataManager.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DataManager.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\DataManager.tsx",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-07-18T17:49:01.604Z",
+              "WhenOpened": "2025-05-27T14:50:41.843Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "tsconfig.json",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\tsconfig.json",
-              "RelativeDocumentMoniker": "fakemonprompter\\tsconfig.json",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\tsconfig.json",
-              "RelativeToolTip": "fakemonprompter\\tsconfig.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-18T17:38:09.978Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "svg.d.ts",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\svg.d.ts",
-              "RelativeDocumentMoniker": "fakemonprompter\\svg.d.ts",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\svg.d.ts",
-              "RelativeToolTip": "fakemonprompter\\svg.d.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Footer.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\Footer.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\Footer.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\Footer.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\Footer.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-07-18T17:36:36.271Z"
+              "WhenOpened": "2025-08-08T03:04:02.452Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "vite.config.ts",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\vite.config.ts",
-              "RelativeDocumentMoniker": "fakemonprompter\\vite.config.ts",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\vite.config.ts",
-              "RelativeToolTip": "fakemonprompter\\vite.config.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAkAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "DescriptionPopup.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DescriptionPopup.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DescriptionPopup.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DescriptionPopup.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\DescriptionPopup.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-07-18T17:35:12.09Z"
+              "WhenOpened": "2025-08-06T05:01:05.851Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "App.css",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\App.css",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\App.css",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\App.css",
-              "RelativeToolTip": "fakemonprompter\\src\\App.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-16T13:55:45.302Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "index.css",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\index.css",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\index.css",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\index.css",
-              "RelativeToolTip": "fakemonprompter\\src\\index.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-16T13:55:43.194Z"
+              "DocumentIndex": 1,
+              "Title": "DropdownMenu.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DropdownMenu.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DropdownMenu.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DropdownMenu.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\DropdownMenu.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-08-01T07:11:13.882Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "DrawStats.tsx",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\DrawStats.tsx",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DrawStats.tsx",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\DrawStats.tsx",
-              "RelativeToolTip": "fakemonprompter\\src\\components\\DrawStats.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-07-02T16:46:49.159Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EvolutionManager.tsx",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\EvolutionManager.tsx",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\EvolutionManager.tsx",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\EvolutionManager.tsx",
-              "RelativeToolTip": "fakemonprompter\\src\\components\\EvolutionManager.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-06-29T08:35:45.054Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
               "Title": "App.tsx",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\App.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\App.tsx",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\App.tsx",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\App.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\App.tsx",
               "RelativeToolTip": "fakemonprompter\\src\\App.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-06-25T11:05:24.929Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DrawStats.module.css",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DrawStats.module.css",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DrawStats.module.css",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DrawStats.module.css",
-              "RelativeToolTip": "fakemonprompter\\src\\styles\\DrawStats.module.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-06T10:20:36.997Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 227,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DataManager.module.css",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DataManager.module.css",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DataManager.module.css",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\DataManager.module.css",
-              "RelativeToolTip": "fakemonprompter\\src\\styles\\DataManager.module.css",
-              "ViewState": "AgIAABUAAAAAAAAAAAAUwCMAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-15T08:31:18.656Z",
-              "EditorCaption": ""
+              "DocumentIndex": 22,
+              "Title": "DataSvgManager.ts",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\assets\\DataSvgManager.ts",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\assets\\DataSvgManager.ts",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\assets\\DataSvgManager.ts",
+              "RelativeToolTip": "fakemonprompter\\src\\assets\\DataSvgManager.ts",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAA0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-07-18T17:49:01.604Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "fakemondata.json",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\assets\\fakemondata.json",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\assets\\fakemondata.json",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\assets\\fakemondata.json",
-              "RelativeToolTip": "fakemonprompter\\src\\assets\\fakemondata.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-25T11:06:43.705Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EvolutionManager.module.css",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\EvolutionManager.module.css",
-              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\EvolutionManager.module.css",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\EvolutionManager.module.css",
-              "RelativeToolTip": "fakemonprompter\\src\\styles\\EvolutionManager.module.css",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA8AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-16T13:29:28.2Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 21,
               "Title": "StatManager.tsx",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\StatManager.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\StatManager.tsx",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\StatManager.tsx",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\components\\StatManager.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\StatManager.tsx",
               "RelativeToolTip": "fakemonprompter\\src\\components\\StatManager.tsx",
-              "ViewState": "AgIAALAAAAAAAAAAAAAAwMMAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-07-06T13:42:14.398Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 20,
+              "Title": "EvolutionManager.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\EvolutionManager.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\EvolutionManager.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\EvolutionManager.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\EvolutionManager.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-29T08:35:45.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DrawStats.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DrawStats.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\components\\DrawStats.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\components\\DrawStats.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\components\\DrawStats.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-07-02T16:46:49.159Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 287,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Footer.module.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\Footer.module.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\Footer.module.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\Footer.module.css",
+              "RelativeToolTip": "fakemonprompter\\src\\styles\\Footer.module.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-09T06:21:16.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "tsconfig.json",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\tsconfig.json",
+              "RelativeDocumentMoniker": "fakemonprompter\\tsconfig.json",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\tsconfig.json",
+              "RelativeToolTip": "fakemonprompter\\tsconfig.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-08T04:05:42.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "vite.config.ts",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\vite.config.ts",
+              "RelativeDocumentMoniker": "fakemonprompter\\vite.config.ts",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\vite.config.ts",
+              "RelativeToolTip": "fakemonprompter\\vite.config.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-08-08T04:05:05.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\index.html",
+              "RelativeDocumentMoniker": "fakemonprompter\\index.html",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\index.html",
+              "RelativeToolTip": "fakemonprompter\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-08-08T03:37:20.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\App.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\App.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\App.css",
+              "RelativeToolTip": "fakemonprompter\\src\\App.css",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-31T12:52:38.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DropdownMenu.module.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\DropdownMenu.module.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DropdownMenu.module.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\DropdownMenu.module.css",
+              "RelativeToolTip": "fakemonprompter\\src\\styles\\DropdownMenu.module.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-01T07:40:21.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DescriptionPopup.module.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\DescriptionPopup.module.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DescriptionPopup.module.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\DescriptionPopup.module.css",
+              "RelativeToolTip": "fakemonprompter\\src\\styles\\DescriptionPopup.module.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-06T05:03:03.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "StatManager.module.css",
-              "DocumentMoniker": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\StatManager.module.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\StatManager.module.css",
               "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\StatManager.module.css",
-              "ToolTip": "C:\\Repositories\\FakemonPrompter\\fakemonprompter\\src\\styles\\StatManager.module.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\StatManager.module.css",
               "RelativeToolTip": "fakemonprompter\\src\\styles\\StatManager.module.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-07-09T10:02:52.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "main.tsx",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\main.tsx",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\main.tsx",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\main.tsx",
+              "RelativeToolTip": "fakemonprompter\\src\\main.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-08-08T03:53:46.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "svg.d.ts",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\svg.d.ts",
+              "RelativeDocumentMoniker": "fakemonprompter\\svg.d.ts",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\svg.d.ts",
+              "RelativeToolTip": "fakemonprompter\\svg.d.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-08-08T04:04:45.867Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "index.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\index.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\index.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\index.css",
+              "RelativeToolTip": "fakemonprompter\\src\\index.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-08T03:54:54.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "eslint.config.js",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\eslint.config.js",
+              "RelativeDocumentMoniker": "fakemonprompter\\eslint.config.js",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\eslint.config.js",
+              "RelativeToolTip": "fakemonprompter\\eslint.config.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-08T04:13:21.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "vite-env.d.ts",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\vite-env.d.ts",
+              "RelativeDocumentMoniker": "fakemonprompter\\vite-env.d.ts",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\vite-env.d.ts",
+              "RelativeToolTip": "fakemonprompter\\vite-env.d.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-08-08T04:07:55.223Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "cssmodule.d.ts",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\cssmodule.d.ts",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\cssmodule.d.ts",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\cssmodule.d.ts",
+              "RelativeToolTip": "fakemonprompter\\src\\cssmodule.d.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-08-08T04:07:51.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "fakemondata.json",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\assets\\fakemondata.json",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\assets\\fakemondata.json",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\assets\\fakemondata.json",
+              "RelativeToolTip": "fakemonprompter\\src\\assets\\fakemondata.json",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAABMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-25T11:06:43.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DataManager.module.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\DataManager.module.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DataManager.module.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\DataManager.module.css",
+              "RelativeToolTip": "fakemonprompter\\src\\styles\\DataManager.module.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-15T08:31:18.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "EvolutionManager.module.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\EvolutionManager.module.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\EvolutionManager.module.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\EvolutionManager.module.css",
+              "RelativeToolTip": "fakemonprompter\\src\\styles\\EvolutionManager.module.css",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAtwBcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-16T13:29:28.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "DrawStats.module.css",
+              "DocumentMoniker": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\DrawStats.module.css",
+              "RelativeDocumentMoniker": "fakemonprompter\\src\\styles\\DrawStats.module.css",
+              "ToolTip": "C:\\Repositories\\Web-Programming\\React\u002BTS\\FakemonPrompter\\fakemonprompter\\src\\styles\\DrawStats.module.css",
+              "RelativeToolTip": "fakemonprompter\\src\\styles\\DrawStats.module.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-06T10:20:36.997Z"
             }
           ]
         }

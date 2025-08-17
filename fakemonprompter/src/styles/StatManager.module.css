@@ -5,10 +5,26 @@
     border-color: white;
     border-width: 2px;
     background-color: rgba(0, 0, 0, 0.3);
+    -moz-border-radius: inherit;
+    -webkit-border-radius: inherit;
+    border-radius: 4px;
 }
 
 .statSpread {
     display: flex;
     gap: 1rem;
     width: 100%;
+}
+.statComponent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .statComponent {
+        flex-direction: column;
+    }
 }

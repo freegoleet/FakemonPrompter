@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react';
+import styles from '../styles/DrawStats.module.css';
 import type { Stats } from './StatManager.tsx';
 
-const canvasWidth: number = 200;
-const canvasHeight: number = 200;
+const canvasSize = 200;
 const minRadius: number = 1;
 const maxRadius: number = 60;
 const centerX: number = 100;
@@ -20,7 +20,7 @@ const customOrder: CustomOrder = { [0]: "Hp", [1]: "Attack", [2]: "Defense", [3]
 function drawBackgroundHexagon(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.beginPath();
 
-    for(let i = 0; i < Object.entries(customOrder).length; i++) {
+    for (let i = 0; i < Object.entries(customOrder).length; i++) {
         const key: string = customOrder[i];
         if (stats.value[key] === undefined) {
             console.warn(`Key "${key}" not found in stats.value. Make sure the customOrder values match those in the json.`);
@@ -49,7 +49,7 @@ function drawBackgroundHexagon(ctx: CanvasRenderingContext2D, stats: Stats) {
 function drawPolygon(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.beginPath();
 
-    for(let i = 0; i < Object.entries(customOrder).length; i++) {
+    for (let i = 0; i < Object.entries(customOrder).length; i++) {
         const key: string = customOrder[i];
         if (stats.value[key] === undefined) {
             console.warn(`Key "${key}" not found in stats.value. Make sure the customOrder values match those in the json.`);
@@ -118,6 +118,12 @@ export function DrawStats({ stats }: { stats: Stats }) {
             console.log("canvasRef was null.");
             return;
         }
+        // Set canvas size and style size to avoid stretching
+        canvas.width = canvasSize;
+        canvas.height = canvasSize;
+        canvas.style.width = `${canvasSize}px`;
+        canvas.style.height = `${canvasSize}px`;
+
         const ctx = canvas.getContext('2d');
         if (!ctx) {
             return;
@@ -133,8 +139,6 @@ export function DrawStats({ stats }: { stats: Stats }) {
     }, [stats]);
 
     return (
-        <div>
-            <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '1px solid #000' }} />
-        </div>
+        <canvas ref={canvasRef} className={styles.statsCanvas} />
     );
 }

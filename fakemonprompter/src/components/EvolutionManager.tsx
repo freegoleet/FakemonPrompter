@@ -2,8 +2,12 @@ import { useState } from 'react';
 import DataManager from '../components/DataManager.tsx';
 import StatManager from '../components/StatManager.tsx';
 import fakemonData from '../assets/fakemondata.json';
+import DropdownMenu from '../components/DropdownMenu.tsx';
 import type { Stages, StatRange } from '../components/StatManager.tsx';
 import styles from '../styles/EvolutionManager.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
 
 function EvolutionManager() {
     const [numStages, setNumStages] = useState<number>(1);
@@ -11,10 +15,10 @@ function EvolutionManager() {
     const [statIncrement, setStatIncrement] = useState<number>(5);
 
     if (stages[1] === undefined) {
-        PickPreset("Starter");
+        pickPreset("Starter");
     }
 
-    function PickPreset(presetName: keyof typeof fakemonData.Stats.Presets) {
+    function pickPreset(presetName: keyof typeof fakemonData.Stats.Presets) {
         const preset = Object.values(fakemonData.Stats.Presets[presetName]);
 
         if (!Array.isArray(preset)) {
@@ -31,79 +35,89 @@ function EvolutionManager() {
         setStages(tempStages);
     }
 
-    function SetupPresetButtons() {
-        return Object.keys(fakemonData.Stats.Presets).map((key) => (
-            <button
-                className={styles.presetButton}
-                key={key}
-                onClick={() => { PickPreset(key as keyof typeof fakemonData.Stats.Presets); }}
-            >
-                {key}
-            </button>
-        ));
+    function setupPresetButtons() {
+        return (
+            <DropdownMenu
+                options={Object.keys(fakemonData.Stats.Presets)}
+                onSelect={(selectedKey: string) => pickPreset(selectedKey as keyof typeof fakemonData.Stats.Presets)}
+            />
+        );
     }
 
     return (
         <>
             <div className={styles.evolutionComponent}>
-                <label className={styles.title}>
+                <label className="title">
                     Fakemon Prompter
                 </label>
 
-                <div className={styles.presetCard}>
+                <div className="card">
                     <div>
                         Preset:
                     </div>
+
                     <div className={styles.presets}>
-                        {SetupPresetButtons()}
+                        {setupPresetButtons()}
                     </div>
                 </div>
 
-                <div className={styles.incrementCard}>
+                <div className="card">
                     <div>
                         Stages:
                     </div>
                     <div className={styles.incrementSpread}>
                         <button
-                            className={styles.incrementButton}
-                            onClick={() => { if (numStages > 1) setNumStages(numStages - 1); }}>
-                            -
+                            type="button"
+                            className={styles.plusminus}
+                            onClick={() => { if (numStages > 1) setNumStages(numStages - 1); }}
+                            aria-label="Decrease stages"
+                        >
+                            <FontAwesomeIcon icon={faCircleMinus} />
                         </button>
                         <label className={styles.value}>
                             {numStages}
                         </label>
                         <button
-                            className={styles.incrementButton}
-                            onClick={() => { if (numStages < 5) setNumStages(numStages + 1); }}>
-                            +
+                            type="button"
+                            className={styles.plusminus}
+                            onClick={() => { if (numStages < 5) setNumStages(numStages + 1); }}
+                            aria-label="Increase stages"
+                        >
+                            <FontAwesomeIcon icon={faCirclePlus} />
                         </button>
                     </div>
                 </div>
 
-                <div className={styles.incrementCard}>
+                <div className="card">
                     <div>
                         Stat Increment:
                     </div>
                     <div className={styles.incrementSpread}>
                         <button
-                            className={styles.incrementButton}
-                            onClick={() => { if (statIncrement > 1) setStatIncrement(statIncrement - 1); }}>
-                            -
+                            type="button"
+                            className={styles.plusminus}
+                            onClick={() => { if (statIncrement > 1) setStatIncrement(statIncrement - 1); }}
+                            aria-label="Decrease increment"
+                        >
+                            <FontAwesomeIcon icon={faCircleMinus} />
                         </button>
                         <label className={styles.value}>
                             {statIncrement}
                         </label>
                         <button
-                            className={styles.incrementButton}
-                            onClick={() => { if (statIncrement < 20) setStatIncrement(statIncrement + 1); }}>
-                            +
+                            type="button"
+                            className={styles.plusminus}
+                            onClick={() => { if (statIncrement < 20) setStatIncrement(statIncrement + 1); }}
+                            aria-label="Increase increment"
+                        >
+                            <FontAwesomeIcon icon={faCirclePlus} />
                         </button>
                     </div>
                 </div>
             </div>
 
             <>
-                {DataManager()}
+                <DataManager />
             </>
 
             <>
