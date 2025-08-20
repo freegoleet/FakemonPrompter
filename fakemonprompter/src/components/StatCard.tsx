@@ -1,9 +1,7 @@
-import React, {
-    type ReactElement
-} from 'react';
+import { type ReactElement } from 'react';
 import { type Stats, type StatRange } from '../components/StatManager';
-import styles from '../styles/StatCard.module.css';
 import { DrawStats } from '../components/DrawStats';
+import styles from '../styles/StatCard.module.css';
 
 interface StatCardProps {
     stage: number;
@@ -28,10 +26,6 @@ const StatCard: React.FC<StatCardProps> = ({ stage, stats, statRange, randomizeC
                 break;
             }
             const statValue = stats.value[key];
-            //if (props.stages[stage] === undefined) {
-            //    RandomizeAllStatsOfStage(stage);
-            //    break;
-            //}
             spread.push(
                 <div key={key} className={styles.statSpread}>
                     <div className={styles.statName}>{key}:</div>

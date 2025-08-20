@@ -12,6 +12,7 @@ const degrees = -90;
 const rotationOffset = degrees * (Math.PI / 180)
 const fontSize: number = 12;
 const valueOffset: number = 2;
+
 type CustomOrder = {
     [key: number]: string;
 }

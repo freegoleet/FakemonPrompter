@@ -93,6 +93,7 @@ function getValidStats(
     }
     return stats;
 }
+
 function randomizeStat(min: number, max: number, statIncrement: number): number {
     if (statIncrement === 0) {
         throw new Error("statIncrement must not be zero.");

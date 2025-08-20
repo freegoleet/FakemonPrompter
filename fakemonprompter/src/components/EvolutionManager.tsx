@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import DataManager from '../components/DataManager';
-import StatManager from '../components/StatManager';
-import fakemonData from '../assets/fakemondata.json';
+import StatManager, { type Stages, type StatRange } from '../components/StatManager';
 import DropdownMenu from '../components/DropdownMenu';
-import type { Stages, StatRange } from '../components/StatManager';
 import styles from '../styles/EvolutionManager.module.css';
+import fakemonData from '../assets/fakemondata.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
