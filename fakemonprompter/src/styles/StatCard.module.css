@@ -1,0 +1,20 @@
+.statSpread {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.statName {
+    flex: 2 1 0;
+    text-align: right;
+}
+
+.statValue {
+    flex: 1 1 0;
+    text-align: center;
+}
+
+.statRange {
+    flex: 2 1 0;
+    text-align:  left;
+}

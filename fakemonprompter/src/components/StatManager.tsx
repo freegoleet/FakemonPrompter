@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef, type ReactElement } from 'react';
 import styles from '../styles/StatManager.module.css';
-import { DrawStats } from './DrawStats.tsx';
+import StatCard from './StatCard';
 
 export type Stats = {
     value: Record<string, number>;
@@ -14,39 +14,121 @@ export type Stages = {
     [key: number]: StatRange;
 }
 
+function getStatRange(
+    stage: number,
+    stats: Stats,
+    stages: Stages,
+    propsStages: Stages,
+    reset: boolean
+): StatRange {
+    let range: StatRange = { value: {} };
+    let skipStatRanges: boolean = false;
+
+    if (stages[stage] !== undefined) {
+        for (const key in stages[stage].value) {
+            if (stats.value[key] < stages[stage].value[key][0]) {
+                skipStatRanges = true;
+                break;
+            }
+        }
+        if (skipStatRanges == false) {
+            range = JSON.parse(JSON.stringify(stages[stage]));
+        }
+    }
+
+    if (propsStages[stage] !== undefined) {
+        if (skipStatRanges == true || Object.keys(range.value).length === 0 || reset == true) {
+            range = JSON.parse(JSON.stringify(propsStages[stage]));
+        }
+    }
+
+    if (Object.keys(range.value).length === 0) {
+        range = JSON.parse(JSON.stringify(stages[stage - 1]));
+        for (const key in range.value) {
+            if (key === 'Total') {
+                range.value[key][0] += 50;
+                range.value[key][1] += 50;
+                continue;
+            }
+            range.value[key][1] += 20;
+        }
+    }
+
+    for (const key in range.value) {
+        if (stats.value[key] > range.value[key][0]) {
+            range.value[key][0] = stats.value[key];
+        }
+    }
+
+    return range;
+}
+
+function getValidStats(
+    stats: Stats,
+    range: StatRange,
+    currentStats: Record<number, Stats>,
+    stage: number,
+    reset: boolean
+): Stats {
+    const sum: number = Object.entries(stats.value)
+        .filter(([key]) => key !== 'Total')
+        .reduce((acc, [, val]) => acc + val, 0);
+
+    if (sum > stats.value['Total']) {
+        return {
+            value: Object.fromEntries(
+                Object.keys(range.value).map(key => [key, 0])
+            )
+        };
+    } else if (Object.keys(stats.value).length === 0) {
+        if (currentStats[stage - 1] !== undefined && reset == false) {
+            return JSON.parse(JSON.stringify(currentStats[stage - 1]));
+        } else {
+            return {
+                value: Object.fromEntries(
+                    Object.keys(range.value).map(key => [key, 0])
+                )
+            };
+        }
+    }
+    return stats;
+}
+function randomizeStat(min: number, max: number, statIncrement: number): number {
+    if (statIncrement === 0) {
+        throw new Error("statIncrement must not be zero.");
+    }
+    // Ceiling inclusive, floor exclusive
+    let minValue = Math.floor(min / statIncrement);
+    if (min !== max) {
+        minValue++;
+    }
+    let maxValue = Math.ceil(max / statIncrement);
+    // Ceiling is never higher than max
+    if (maxValue * statIncrement > max) {
+        maxValue = Math.floor(max / statIncrement);
+    }
+    return randomRange(minValue, maxValue + 1) * statIncrement;
+}
+
+function randomRange(min: number, max: number) {
+    const maxRange = Math.ceil(max);
+    const minRange = Math.floor(min);
+    return Math.floor(Math.random() * (maxRange - minRange) + minRange);
+}
+
+function getRandomStatKey(stages: Stages): string {
+    const keys: string[] = Object.keys(stages[1].value).filter(key => key !== 'Total');
+    if (keys.length === 0) {
+        throw new Error("No valid stat keys available to randomize.");
+    }
+    return keys[Math.floor(Math.random() * keys.length)];
+}
+
 export function StatManager(props: { stages: Stages; numStages: number; statIncrement: number }) {
     const [currentStats, setCurrentStats] = useState<Record<number, Stats>>({});
     const [stages, setStages] = useState<Stages>(props.stages);
     const [currentStages, setCurrentStages] = useState<number>(props.numStages);
     const prevStages = useRef<Stages>(props.stages);
-
-    const randomRange = useCallback((min: number, max: number) => {
-        const maxRange = Math.ceil(max);
-        const minRange = Math.floor(min);
-        return Math.floor(Math.random() * (maxRange - minRange) + minRange);
-    }, []);
-
-    const randomizeStat = useCallback((min: number, max: number): number => {
-        if (props.statIncrement === 0) {
-            throw new Error("statIncrement must not be zero.");
-        }
-        // Make ceiling inclusive, floor exclusive
-        const minValue = Math.floor(min / props.statIncrement) + 1;
-        let maxValue = Math.ceil(max / props.statIncrement);
-        // Ensure ceiling is never higher than max
-        if (maxValue * props.statIncrement > max) {
-            maxValue = Math.floor(max / props.statIncrement);
-        }
-        return randomRange(minValue, maxValue + 1) * props.statIncrement;
-    }, [props.statIncrement, randomRange]);
-
-    const getRandomStatKey = useCallback((): string => {
-        const keys: string[] = Object.keys(props.stages[1].value).filter(key => key !== 'Total');
-        if (keys.length === 0) {
-            throw new Error("No valid stat keys available to randomize.");
-        }
-        return keys[Math.floor(Math.random() * keys.length)];
-    }, [props.stages]);
 
     const RandomizeAllStatsOfStage = useCallback((stage: number, prevStats: Stats = { value: {} }, reset: boolean = false): Stats => {
         let stats: Stats = JSON.parse(JSON.stringify(prevStats));
@@ -61,43 +143,7 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
             }
         }
 
-        // Range
-        let skipStatRanges: boolean = false;
-        if (stages[stage] !== undefined) {
-            for (const key in stages[stage].value) {
-                if (stats.value[key] < stages[stage].value[key][0]) {
-                    skipStatRanges = true;
-                    break;
-                }
-            }
-            if (skipStatRanges == false) {
-                range = JSON.parse(JSON.stringify(stages[stage]));
-            }
-        }
-
-        if (props.stages[stage] !== undefined) {
-            if (skipStatRanges == true || Object.keys(range.value).length === 0 || reset == true) {
-                range = JSON.parse(JSON.stringify(props.stages[stage]));
-            }
-        }
-
-        if (Object.keys(range.value).length === 0) {
-            range = JSON.parse(JSON.stringify(stages[stage - 1]));
-            for (const key in range.value) {
-                if (key === 'Total') {
-                    range.value[key][0] += 50;
-                    range.value[key][1] += 50;
-                    continue;
-                }
-                range.value[key][1] += 20;
-            }
-        }
-
-        for (const key in range.value) {
-            if (stats.value[key] > range.value[key][0]) {
-                range.value[key][0] = stats.value[key];
-            }
-        }
+        range = getStatRange(stage, stats, stages, props.stages, reset);
 
         setStages(prevStatRange => ({
             ...prevStatRange,
@@ -106,45 +152,24 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
             }
         }));
 
-        // Stats
-        const sum: number = Object.entries(stats.value)
-            .filter(([key]) => key !== 'Total')
-            .reduce((acc, [, val]) => acc + val, 0);
-        if (sum > stats.value['Total']) {
-            stats = {
-                value: Object.fromEntries(
-                    Object.keys(range.value).map(key => [key, 0])
-                )
-            };
-        }
-        else if (Object.keys(stats.value).length === 0) {
-            if (currentStats[stage - 1] !== undefined && reset == false) {
-                stats = JSON.parse(JSON.stringify(currentStats[stage - 1]));
-            }
-            else {
-                stats = {
-                    value: Object.fromEntries(
-                        Object.keys(range.value).map(key => [key, 0])
-                    )
-                };
-            }
-        }
+        stats = getValidStats(stats, range, currentStats, stage, reset);
 
         // Randomize Stats
-        const goalSum = randomizeStat(range.value.Total[0], range.value.Total[1]);
+        const goalSum = randomizeStat(range.value.Total[0], range.value.Total[1], props.statIncrement);
         stats.value['Total'] = goalSum;
 
         let currentSum = 0;
         for (const key in range.value) {
             if (key === 'Total') continue;
-            const value = randomizeStat(range.value[key][0], range.value[key][1]);
+            const value = randomizeStat(range.value[key][0], range.value[key][1], props.statIncrement);
             stats.value[key] = value;
             currentSum += value;
         }
 
         let difference: number = goalSum - currentSum;
         while (difference !== 0) {
-            const statToModify: string = getRandomStatKey();
+            const statToModify: string = getRandomStatKey(props.stages);
+
             if (difference > 0) {
                 if (stats.value[statToModify] >= range.value[statToModify][1]) {
                     continue;
@@ -171,7 +196,7 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
             RandomizeAllStatsOfStage(stage + 1, stats);
         }
         return stats;
-    }, [currentStats, stages, props.stages, props.numStages, props.statIncrement, getRandomStatKey, randomizeStat]);
+    }, [currentStats, stages, props.stages, props.numStages, props.statIncrement, getRandomStatKey]);
 
     useEffect(() => {
         if (JSON.stringify(prevStages.current) === JSON.stringify(props.stages)) {
@@ -209,68 +234,25 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
 
     useEffect(() => {
         setCurrentStages(props.numStages);
-        console.log(`Modifying number of stages to ${props.numStages}`);
         if (props.numStages > currentStages && props.numStages > Object.keys(props.stages).length) {
             addNewStages(props.numStages - currentStages);
             return;
         }
     }, [props.numStages, props.stages, currentStages, addNewStages]);
 
-    function WriteAllStats() {
+    function createStatCards() {
         const result: ReactElement[] = [];
-
-        function WriteStatSpread(stage: number) {
-            const spread: ReactElement[] = [];
-
-            if (currentStats[stage] === undefined) {
-                return;
-            }
-            for (const key in currentStats[stage].value) {
-                if (currentStats[stage].value[key] === undefined) {
-                    break;
-                }
-                const statValue = currentStats[stage].value[key];
-                if (props.stages[stage] === undefined && stages[stage] === undefined) {
-                    RandomizeAllStatsOfStage(stage);
-                    break;
-                }
-                const statRangeValue = stages[stage] === undefined ? props.stages[stage].value[key] : stages[stage].value[key];
-                spread.push(
-                    <div key={key} className={styles.statSpread}>
-                        <div style={{ flex: '2 1 0', textAlign: 'right' }}>{key}:</div>
-                        <div style={{ flex: '1 1 0', textAlign: 'center' }}>{statValue}</div>
-                        <div style={{ flex: '2 1 0', textAlign: 'left' }}>{WriteStatRange(stage, key, statRangeValue)}</div>
-                    </div>
-                );
-            }
-            return spread;
-        }
 
         for (let i = 1; i < props.numStages + 1; i++) {
             result.push(
-                <div
-                    key={`Stage${i}`}
-                    className="card">
-                    <>
-                        Stage {i}
-                    </>
-                    <>
-                        {currentStats[i] !== undefined && WriteStatSpread(i)}
-                    </>
-                    <>
-                        {currentStats[i] !== undefined && <DrawStats stats={currentStats[i]} />}
-                    </>
-                    <button onClick={() => RandomizeAllStatsOfStage(i)} >
-                        Randomize Stats
-                    </button>
-                </div>
+                <StatCard key={`Stage${i}`} stage={i} stats={currentStats[i]} statRange={stages[i]} randomizeCallback={RandomizeAllStatsOfStage} setRangeCallback={modifyStatRange} />
             );
         }
 
         return result;
     }
 
-    function ModifyStatRange(stage: number, stat: string, min: number, max: number) {
+    function modifyStatRange(stage: number, stat: string, min: number, max: number) {
         setStages(prevStatRange => ({
             ...prevStatRange,
             [stage]: {
@@ -298,30 +280,10 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
         }
     }
 
-    function WriteStatRange(stage: number, stat: string, values: number[]) {
-        return (
-            <label style={{ whiteSpace: 'nowrap' }}>
-                <input
-                    name="min"
-                    value={values[0]}
-                    style={{ width: `3ch` }}
-                    onChange={(e) => ModifyStatRange(stage, stat, Number(e.target.value), values[1])}
-                />
-                -
-                <input
-                    name="max"
-                    value={values[1]}
-                    style={{ width: `3ch` }}
-                    onChange={(e) => ModifyStatRange(stage, stat, values[0], Number(e.target.value))}
-                />
-            </label>
-        )
-    }
-
     return (
         <>
             <div className={styles.statComponent}>
-                {WriteAllStats()}
+                {createStatCards()}
             </div>
         </>
     );

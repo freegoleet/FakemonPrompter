@@ -1,8 +1,8 @@
 import { useState, useEffect, type ReactElement } from 'react';
 import fakemonData from '../assets/fakemondata.json';
 import styles from '../styles/DataManager.module.css';
-import { climateSvgComponentMap, dietSvgComponentMap, habitatSvgComponentMap, sizeSvgComponentMap, typeSvgComponentMap } from '../assets/DataSvgManager.ts';
-import { QuestionMark } from '../components/DescriptionPopup.tsx';
+import { climateSvgComponentMap, dietSvgComponentMap, habitatSvgComponentMap, sizeSvgComponentMap, typeSvgComponentMap } from '../assets/DataSvgManager';
+import { QuestionMark } from '../components/DescriptionPopup';
 
 const defaultColor: string = "#000000";
 

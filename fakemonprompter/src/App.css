@@ -74,6 +74,7 @@
 
 
 button {
+    border: none;
     cursor: pointer;
     margin: 8px;
     color: black;
@@ -83,20 +84,17 @@ button {
     justify-self: center;
 }
 
-    button:hover {
-        background-color: rgba(255, 255, 255, 0.7);
-        border-color: #888;
-    }
     button:active,
     button:focus {
         outline: none;
         box-sizing: border-box;
     }
 
-
-.button:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-style: none;
+@media (hover: hover) and (pointer: fine) {
+    .button:hover {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-color: #888;
+    }
 }
 
 .buttonText {
@@ -112,4 +110,23 @@ button {
         width: 100%;
     }
 
+    button {
+        outline: none !important;
+        box-shadow: none !important;
+        transition: none !important;
+    }
+
+        button:focus {
+            border: none;
+            transition: none;
+            outline: none;
+            box-shadow: none;
+        }
+
+        button:active {
+            border: none;
+            transition: none;
+            outline: none;
+            box-shadow: none;
+        }
 }

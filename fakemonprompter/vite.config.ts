@@ -9,4 +9,5 @@ export default defineConfig({
     server: {
         port: 49630,
     },
+    base: '/fakemonprompter/',
 })

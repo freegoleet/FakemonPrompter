@@ -1,71 +1,49 @@
 .descriptionPopupCard {
-    display: inline-block;
+    display: block;
+    position: absolute;
     background-color: rgba(0,0,0, 0.5);
     border-radius: 4px;
     border-color: white;
     border: 2px solid white;
     padding: 1ch;
-
     font-size: 1rem;
     text-align: left;
-
-    position: absolute; /* Changed from fixed to absolute */
     cursor: default;
-    width: 100%;
-    max-width: 30ch;
+    width: min(40ch, 90vw);
     height: auto;
     box-sizing: border-box;
     white-space: normal;
     pointer-events: auto;
-
     z-index: 1000;
-    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    transform: translate(50%, -50%);
+    backdrop-filter: blur(8px);
+    color: white;
 }
 
 .questionMark {
-    border-radius: 50%;
-    background-color: rgba(0,0,0, 0.5);
-    text-align: center;
-    width: 2ch;
-    height: 2ch;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    border: solid;
+    border-radius: 50%;
+    border-width: 1px;
+    border-color: white;
+    background-color: rgba(0,0,0, 0.5);
+
+    text-align: center;
     font-size: 0.7rem;
     padding: 0.07rem;
+    margin: 2px 1ch 0ch 1ch; /* Offset from top by 1ch */
+
+    width: 3ch;
+    height: 3ch;
     cursor: default;
     color: white;
 }
 
 @media (max-width: 600px) {
-    @media (max-width: 600px) {
-        button:hover {
-            background-color: rgba(0,0,0, 0.5);
-            border: none;
-            transition: none;
-        }
-        button:focus {
-            border: none;
-            transition: none;
-            outline: none;
-            box-shadow: none;
-        }
-        button:active {
-            border: none;
-            transition: none;
-            outline: none;
-            box-shadow: none;
-        }
-    }
-
-    button {
-        outline: none !important;
-        box-shadow: none !important;
-        transition: none !important;
+    .descriptionPopupCard {
+        left: 50% !important;
     }
 }
-
-
-

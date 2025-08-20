@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import DataManager from '../components/DataManager.tsx';
-import StatManager from '../components/StatManager.tsx';
+import DataManager from '../components/DataManager';
+import StatManager from '../components/StatManager';
 import fakemonData from '../assets/fakemondata.json';
-import DropdownMenu from '../components/DropdownMenu.tsx';
-import type { Stages, StatRange } from '../components/StatManager.tsx';
+import DropdownMenu from '../components/DropdownMenu';
+import type { Stages, StatRange } from '../components/StatManager';
 import styles from '../styles/EvolutionManager.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
+import { QuestionMark } from '../components/DescriptionPopup';
 
 function EvolutionManager() {
     const [numStages, setNumStages] = useState<number>(1);
@@ -47,9 +48,12 @@ function EvolutionManager() {
     return (
         <>
             <div className={styles.evolutionComponent}>
-                <label className="title">
-                    Fakemon Prompter
-                </label>
+                <div className={styles.title}>
+                    <h1 className="title">
+                        Fakemon Prompter
+                    </h1>
+                    <QuestionMark title={"Introduction"} text={fakemonData.Descriptions.Introduction} />
+                </div>
 
                 <div className="card">
                     <div>
@@ -74,9 +78,9 @@ function EvolutionManager() {
                         >
                             <FontAwesomeIcon icon={faCircleMinus} />
                         </button>
-                        <label className={styles.value}>
+                        <h2 className={styles.value}>
                             {numStages}
-                        </label>
+                        </h2>
                         <button
                             type="button"
                             className={styles.plusminus}
@@ -101,9 +105,9 @@ function EvolutionManager() {
                         >
                             <FontAwesomeIcon icon={faCircleMinus} />
                         </button>
-                        <label className={styles.value}>
+                        <h2 className={styles.value}>
                             {statIncrement}
-                        </label>
+                        </h2>
                         <button
                             type="button"
                             className={styles.plusminus}

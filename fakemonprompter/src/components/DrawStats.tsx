@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import styles from '../styles/DrawStats.module.css';
-import type { Stats } from './StatManager.tsx';
+import type { Stats } from './StatManager';
 
 const canvasSize = 200;
 const minRadius: number = 1;
@@ -74,8 +74,6 @@ function drawLinesAndText(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = '#ffdb4d';
-    const degrees = -90;
-    const rotationOffset = degrees * (Math.PI / 180)
 
     for (let i = 0; i < Object.entries(customOrder).length; i++) {
         const key: string = customOrder[i];

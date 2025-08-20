@@ -1,4 +1,7 @@
 {
+  "Descriptions": {
+    "Introduction": "Fakemon Prompter is a tool for generating Fakemon data. This data may serve as a base for artists who desire to draw/paint/design their own Fakemon from a semi-random prompt."
+  },
   "Data": {
     "Size": {
       "Description": "The general size category of the Fakemon. Currently sizes include: ",
