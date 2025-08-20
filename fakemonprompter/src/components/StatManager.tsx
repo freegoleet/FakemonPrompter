@@ -196,7 +196,7 @@ export function StatManager(props: { stages: Stages; numStages: number; statIncr
             RandomizeAllStatsOfStage(stage + 1, stats);
         }
         return stats;
-    }, [currentStats, stages, props.stages, props.numStages, props.statIncrement, getRandomStatKey]);
+    }, [currentStats, stages, props.stages, props.numStages, props.statIncrement]);
 
     useEffect(() => {
         if (JSON.stringify(prevStages.current) === JSON.stringify(props.stages)) {
