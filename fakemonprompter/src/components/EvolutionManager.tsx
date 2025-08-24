@@ -7,7 +7,6 @@ import fakemonData from '../assets/fakemondata.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
-import { QuestionMark } from '../components/DescriptionPopup';
 
 function EvolutionManager() {
     const [numStages, setNumStages] = useState<number>(1);
@@ -47,12 +46,7 @@ function EvolutionManager() {
     return (
         <>
             <div className={styles.evolutionComponent}>
-                <div className={styles.title}>
-                    <h1 className="title">
-                        Fakemon Prompter
-                    </h1>
-                    <QuestionMark title={"Introduction"} text={fakemonData.Descriptions.Introduction} />
-                </div>
+                
 
                 <div className="card">
                     <div>

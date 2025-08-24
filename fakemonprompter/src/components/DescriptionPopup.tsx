@@ -5,17 +5,18 @@ import { createPortal } from 'react-dom';
 interface PopupProps {
     top: number;
     left: number;
+    reverseDir: boolean;
     text?: string;
     children?: React.ReactNode;
 }
 
-const Popup: React.FC<PopupProps> = ({ top, left, text, children }) => {
+const Popup: React.FC<PopupProps> = ({ top, left, text, children, reverseDir }) => {
     const [transform, setTransform] = useState("translate(4%, calc(-100% - 2ch))");
     const popupRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (top < 120) {
-            if (isMobileDevice() === true) { 
+        if (reverseDir == false) {
+            if (isMobileDevice() === true) {
                 setTransform("translate(-50%, 0px)");
                 return;
             }
@@ -27,7 +28,7 @@ const Popup: React.FC<PopupProps> = ({ top, left, text, children }) => {
             }
             setTransform("translate(4%, calc(-100% - 2ch))");
         }
-    }, [top]);
+    }, [reverseDir]);
 
     return (
         <div
@@ -59,6 +60,7 @@ let closeAllPopups: (() => void)[] = [];
 export function QuestionMark({ title, text }: { title: string, text: string }) {
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [popupPos, setPopupPos] = useState<{ x: number, y: number } | null>(null);
+    const [reverseDir, setReverseDir] = useState<boolean>(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
@@ -78,7 +80,8 @@ export function QuestionMark({ title, text }: { title: string, text: string }) {
                 x: rect.left + window.scrollX,
                 y: rect.bottom + window.scrollY
             });
-            
+            setReverseDir(rect.bottom > window.innerHeight * 0.5);
+            console.log(rect.bottom);
         }
     }, [isPopupOpen]);
 
@@ -122,7 +125,7 @@ export function QuestionMark({ title, text }: { title: string, text: string }) {
                 ?
             </button>
             {isPopupOpen && popupPos && createPortal(
-                <Popup text={text} left={popupPos.x} top={popupPos.y} />,
+                <Popup text={text} left={popupPos.x} top={popupPos.y} reverseDir={reverseDir} />,
                 document.body
             )}
         </>

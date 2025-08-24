@@ -1,0 +1,13 @@
+.title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    fill: white;
+    width: 300px;
+}
+
+.logoQuestionMark {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

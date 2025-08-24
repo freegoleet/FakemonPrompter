@@ -2,11 +2,6 @@
     margin: 4px;
 }
 
-.title {
-    display: flex;
-    align-items: center;
-}
-
 .presetText {
     font-size: 1.2rem;
     text-align: center;
