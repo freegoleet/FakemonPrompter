@@ -7,7 +7,7 @@ import fakemonData from '../assets/fakemondata.json'
 const Header: React.FC = () => {
     return (
         <>
-            <header className={styles.title}>
+            <header className={styles.title}> 
                 <Logo />
                 <div className={styles.logoQuestionMark}>
                     <QuestionMark title={"Introduction"} text={fakemonData.Descriptions.Introduction} />

@@ -3,18 +3,22 @@ import fakemonData from '../assets/fakemondata.json';
 import styles from '../styles/DataManager.module.css';
 import { climateSvgComponentMap, dietSvgComponentMap, habitatSvgComponentMap, sizeSvgComponentMap, typeSvgComponentMap } from '../assets/DataSvgManager';
 import { QuestionMark } from '../components/DescriptionPopup';
+import { Habitat, Climate, DataField, Size, Diet, Type, fakemonAttributes, type DataMap } from '../assets/utils/FakemonUtils';
 
 const defaultColor: string = "#000000";
 
-function DataManager() {
+type DataManagerProps = {
+    currentData: DataMap;
+    onChange?: (data: DataMap) => void;
+};
+
+function DataManager({ currentData, onChange }: DataManagerProps) {
     const [datamap] = useState<Record<string, { Description: string; Values: Record<string, string> }>>(
         fakemonData.Data
     );
-    const [types] = useState<{
-        Description: Record<string, string>;
-        Values: Record<string, string>;
-    }>(fakemonData.Types);
-    const [currentData, setCurrentData] = useState<Record<string, string>>({});
+    const [types] = useState<{ Description: Record<string, string>; Values: Record<string, string>; }>(
+        fakemonData.Types
+    );
     const [colors, setColors] = useState<string[]>([defaultColor, defaultColor]);
 
     useEffect(() => {
@@ -25,35 +29,60 @@ function DataManager() {
         document.body.style.background = `linear-gradient(to right, ${colors[0]}, ${colors[1]})`;
     }, [colors]);
 
-    function randomizeData() {
-        const tempData: Record<string, string> = Object.keys(datamap).reduce((acc, key) => {
-            acc[key] = "";
-            return acc;
-        }, {} as Record<string, string>);
+    useEffect(() => {
+        randomizeData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-        for (const key in datamap) {
-            const values = datamap[key].Values;
-            const valueKeys = Object.keys(values);
-            if (valueKeys.length > 0) {
-                const randomKey = valueKeys[Math.floor(Math.random() * valueKeys.length)];
-                tempData[key] = randomKey;
+    function randomizeData() {
+        const tempData: DataMap = Object.keys(datamap).reduce((acc, key) => {
+            switch (key) {
+                case DataField.Size:
+                    acc[key] = Size.Medium;
+                    break;
+                case DataField.Diet:
+                    acc[key] = Diet.Omnivore;
+                    break;
+                case DataField.Climate:
+                    acc[key] = Climate.Temperate;
+                    break;
+                case DataField.Habitat:
+                    acc[key] = Habitat.Hills;
+                    break;
+                case DataField.PrimaryType:
+                    acc[key] = Type.Normal;
+                    break;
+                case DataField.SecondaryType:
+                    acc[key] = Type.Normal;
+                    break;
+            }
+            return acc;
+        }, {} as DataMap);
+
+        for (const key in tempData) {
+            const dataField = key as DataField;
+            const attributes = fakemonAttributes[dataField];
+            if (attributes) {
+                const randomValue = attributes[Math.floor(Math.random() * attributes.length)];
+                tempData[dataField] = randomValue;
             }
         }
 
+        tempData[DataField.Habitat] = Habitat.Field;
+
         const tempColors = [defaultColor, defaultColor];
-        const typeKeys = Object.keys(types.Values);
-        const randomTypeKey = typeKeys[Math.floor(Math.random() * typeKeys.length)];
-        const firstType: string = randomTypeKey;
-        tempData["Primary Type"] = firstType;
-        const secondType: string = typeKeys[Math.floor(Math.random() * typeKeys.length)];
+        const enumValues = Object.values(Type);
+        const firstType = enumValues[Math.floor(Math.random() * enumValues.length)] as Type;
+        const secondType = enumValues[Math.floor(Math.random() * enumValues.length)] as Type;
+
+        tempData[DataField.PrimaryType] = firstType;
         tempColors[0] = types.Values[firstType];
         if (secondType !== firstType) {
-            tempData["Secondary Type"] = secondType;
+            tempData[DataField.SecondaryType] = secondType;
             tempColors[1] = types.Values[secondType];
         }
-        console.log("Randomized Data:", tempData);
         setColors(tempColors);
-        setCurrentData(tempData);
+        onChange?.(tempData);
     }
 
     function getDescription(key: string): string {
@@ -83,40 +112,35 @@ function DataManager() {
 
     function writeAllData() {
         const result: ReactElement[] = [];
-
-        if (Object.entries(currentData).length === 0) {
-            randomizeData();
-        }
-
         for (const key in currentData) {
             const dataType = <div className={styles.dataTypeText} key={key + "_dataType"}>{key}</div>;
             const questionMark = <QuestionMark title={key} text={getDescription(key)} />
-            const value = <div className={styles.valueText} key={key + "_value"}>{currentData[key]}</div>;
-            const icon: string = currentData[key];
+            const value = <div className={styles.valueText} key={key + "_value"}>{currentData[key as DataField]}</div>;
+            const icon: string = currentData[key as DataField];
             let IconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>> = typeSvgComponentMap[icon];
             let fillColor: string | undefined = types.Values[icon];
             switch (key) {
-                case "Primary Type":
+                case DataField.PrimaryType:
                     IconSvg = typeSvgComponentMap[icon];
                     break;
-                case "Secondary Type":
+                case DataField.SecondaryType:
                     IconSvg = typeSvgComponentMap[icon];
                     break;
-                case "Size":
+                case DataField.Size:
                     IconSvg = sizeSvgComponentMap[icon];
-                    fillColor = datamap["Size"].Values[currentData[key]];
+                    fillColor = datamap[DataField.Size].Values[currentData[key]];
                     break;
-                case "Climate":
+                case DataField.Climate:
                     IconSvg = climateSvgComponentMap[icon];
-                    fillColor = datamap["Climate"].Values[currentData[key]];
+                    fillColor = datamap[DataField.Climate].Values[currentData[key]];
                     break;
-                case "Habitat":
+                case DataField.Habitat:
                     IconSvg = habitatSvgComponentMap[icon];
-                    fillColor = datamap["Habitat"].Values[currentData[key]];
+                    fillColor = datamap[DataField.Habitat].Values[currentData[key]];
                     break;
-                case "Diet":
+                case DataField.Diet:
                     IconSvg = dietSvgComponentMap[icon];
-                    fillColor = datamap["Diet"].Values[currentData[key]];
+                    fillColor = datamap[DataField.Diet].Values[currentData[key]];
                     break;
             }
 

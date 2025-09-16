@@ -4,6 +4,8 @@
     margin-right: auto;
     fill: white;
     width: 300px;
+    z-index: 1;
+    position: relative;
 }
 
 .logoQuestionMark {

@@ -4,4 +4,6 @@
     margin-top: 2rem;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    z-index: 1;
+    position: relative;
 }

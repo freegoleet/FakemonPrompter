@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48.340466mm"
+   height="367.8399mm"
+   viewBox="0 0 48.340465 367.83991"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="rain_jungle"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="48.340466"
+       height="367.8399"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-90.28487,172.58576)">
+    <path
+       style="fill:#000000;stroke-width:0.264583"
+       d="m 114.78218,-172.58576 c -8.64327,21.87902 -26.759635,333.58654 -24.263423,344.62538 0.106634,13.32092 6.380781,22.45286 23.934383,23.21455 14.48541,-0.19232 22.52353,-7.5106 24.11434,-21.95485 1.16335,-20.08631 -15.50936,-324.19007 -23.7853,-345.88508 z"
+       id="path1"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+</svg>

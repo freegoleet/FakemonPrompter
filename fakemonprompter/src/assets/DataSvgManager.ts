@@ -42,8 +42,22 @@ import Small from "../assets/sizes/size-s.svg?react";
 import Medium from "../assets/sizes/size-m.svg?react";
 import Large from "../assets/sizes/size-l.svg?react";
 import Huge from "../assets/sizes/size-xl.svg?react";
+//  Backgrounds
+import CoastBg from "../assets/background/bg_coast.svg?react";
+import DesertBg from "../assets/background/bg_desert.svg?react";
+import FieldBg from "../assets/background/bg_fields3.svg?react";
+import ForestBg from "../assets/background/bg_forest.svg?react";
+import HillsBg from "../assets/background/bg_hill.svg?react";
+import MountainBg from "../assets/background/bg_mountain.svg?react";
+import RiverBg from "../assets/background/bg_river2.svg?react";
+// Weather Effects
+import ContinentalWeather from "../assets/weather/weather_continental.svg?react";
+import TropicalWeather from "../assets/weather/weather_tropical.svg?react";
+import DryWeather from "../assets/weather/weather_dry.svg?react";
 
-export const typeSvgComponentMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
+export type SvgComponent = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+
+export const typeSvgComponentMap: Record<string, SvgComponent> = {
     "Dragon": Dragon,
     "Steel": Steel,
     "Dark": Dark,
@@ -64,7 +78,8 @@ export const typeSvgComponentMap: Record<string, React.FunctionComponent<React.S
     "Fire": Fire,
 };
 
-export const climateSvgComponentMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
+
+export const climateSvgComponentMap: Record<string, SvgComponent> = {
     "Continental": Continental,
     "Dry": Dry,
     "Temperate": Temperate,
@@ -72,7 +87,7 @@ export const climateSvgComponentMap: Record<string, React.FunctionComponent<Reac
     "Tropical": Tropical,
 };
 
-export const habitatSvgComponentMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
+export const habitatSvgComponentMap: Record<string, SvgComponent> = {
     "Forest": Forest,
     "Coast": Coast,
     "Mountain": Mountain,
@@ -82,16 +97,34 @@ export const habitatSvgComponentMap: Record<string, React.FunctionComponent<Reac
     "Field": Field,
 };
 
-export const dietSvgComponentMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
+export const dietSvgComponentMap: Record<string, SvgComponent> = {
     "Carnivore": Carnivore,
     "Herbivore": Herbivore,
     "Omnivore": Omnivore,
 };
 
-export const sizeSvgComponentMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
+export const sizeSvgComponentMap: Record<string, SvgComponent> = {
     "Tiny": Tiny,
     "Small": Small,
     "Medium": Medium,
     "Large": Large,
     "Huge": Huge,
 };
+
+export const backgroundMap: Record<string, SvgComponent> = {
+    "Forest": ForestBg,
+    "Coast": CoastBg,
+    "Mountain": MountainBg,
+    "Desert": DesertBg,
+    "Hills": HillsBg,
+    "River": RiverBg,
+    "Field": FieldBg,
+};
+
+export const weatherMap: Record<string, SvgComponent> = {
+    "Continental": ContinentalWeather,
+    "Tropical": TropicalWeather,
+    "Dry": DryWeather,
+    "Polar": Polar,
+    "Temperate": Temperate,
+}

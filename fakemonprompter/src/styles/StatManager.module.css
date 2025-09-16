@@ -1,3 +1,13 @@
+.statComponent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
 .statCard {
     display: 'flex';
     margin: 0px 4px 0px 4px;
@@ -13,13 +23,6 @@
 .statSpread {
     display: flex;
     gap: 1rem;
-    width: 100%;
-}
-.statComponent {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     width: 100%;
 }
 

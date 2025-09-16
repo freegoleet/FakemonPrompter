@@ -1,21 +1,36 @@
-import { useState } from 'react';
-import DataManager from '../components/DataManager';
-import StatManager, { type Stages, type StatRange } from '../components/StatManager';
+import { type Stages, type StatRange } from '../components/StatManager';
 import DropdownMenu from '../components/DropdownMenu';
 import styles from '../styles/EvolutionManager.module.css';
 import fakemonData from '../assets/fakemondata.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
-import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
+import { faCircleMinus } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 
-function EvolutionManager() {
-    const [numStages, setNumStages] = useState<number>(1);
-    const [stages, setStages] = useState<Stages>({});
-    const [statIncrement, setStatIncrement] = useState<number>(5);
+type EvolutionManagerProps = {
+    numStages: number,
+    stages: Stages,
+    statIncrement: number,
+    onChange?: (values: { numStages: number; stages: Stages; statIncrement: number }) => void;
+};
 
-    if (stages[1] === undefined) {
-        pickPreset("Starter");
+function EvolutionManager({ numStages, stages, statIncrement, onChange }: EvolutionManagerProps) {
+    function notifyChange(newNumStages: number, newStages: Stages, newStatIncrement: number) {
+        if (onChange) {
+            onChange({
+                numStages: newNumStages,
+                stages: newStages,
+                statIncrement: newStatIncrement,
+            });
+        }
     }
+
+    useEffect(() => {
+        if (stages[1] === undefined) {
+            pickPreset("Starter");
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [stages]);
 
     function pickPreset(presetName: keyof typeof fakemonData.Stats.Presets) {
         const preset = Object.values(fakemonData.Stats.Presets[presetName]);
@@ -30,8 +45,7 @@ function EvolutionManager() {
             const statRange: StatRange = { value: preset[i] };
             tempStages[i + 1] = statRange;
         }
-        setNumStages(preset.length);
-        setStages(tempStages);
+        notifyChange(preset.length, tempStages, statIncrement);
     }
 
     function setupPresetButtons() {
@@ -43,16 +57,21 @@ function EvolutionManager() {
         );
     }
 
+    function handleNumStagesChange(newNumStages: number) {
+        notifyChange(newNumStages, stages, statIncrement);
+    }
+
+    function handleStatIncrementChange(newStatIncrement: number) {
+        notifyChange(numStages, stages, newStatIncrement);
+    }
+
     return (
         <>
             <div className={styles.evolutionComponent}>
-                
-
                 <div className="card">
                     <div>
                         Preset:
                     </div>
-
                     <div className={styles.presets}>
                         {setupPresetButtons()}
                     </div>
@@ -66,7 +85,7 @@ function EvolutionManager() {
                         <button
                             type="button"
                             className={styles.plusminus}
-                            onClick={() => { if (numStages > 1) setNumStages(numStages - 1); }}
+                            onClick={() => { if (numStages > 1) handleNumStagesChange(numStages - 1); }}
                             aria-label="Decrease stages"
                         >
                             <FontAwesomeIcon icon={faCircleMinus} />
@@ -77,7 +96,7 @@ function EvolutionManager() {
                         <button
                             type="button"
                             className={styles.plusminus}
-                            onClick={() => { if (numStages < 5) setNumStages(numStages + 1); }}
+                            onClick={() => { if (numStages < 5) handleNumStagesChange(numStages + 1); }}
                             aria-label="Increase stages"
                         >
                             <FontAwesomeIcon icon={faCirclePlus} />
@@ -93,7 +112,7 @@ function EvolutionManager() {
                         <button
                             type="button"
                             className={styles.plusminus}
-                            onClick={() => { if (statIncrement > 1) setStatIncrement(statIncrement - 1); }}
+                            onClick={() => { if (statIncrement > 1) handleStatIncrementChange(statIncrement - 1); }}
                             aria-label="Decrease increment"
                         >
                             <FontAwesomeIcon icon={faCircleMinus} />
@@ -104,7 +123,7 @@ function EvolutionManager() {
                         <button
                             type="button"
                             className={styles.plusminus}
-                            onClick={() => { if (statIncrement < 20) setStatIncrement(statIncrement + 1); }}
+                            onClick={() => { if (statIncrement < 20) handleStatIncrementChange(statIncrement + 1); }}
                             aria-label="Increase increment"
                         >
                             <FontAwesomeIcon icon={faCirclePlus} />
@@ -113,13 +132,7 @@ function EvolutionManager() {
                 </div>
             </div>
 
-            <>
-                <DataManager />
-            </>
 
-            <>
-                <StatManager stages={stages} numStages={numStages} statIncrement={statIncrement} />
-            </>
         </>
     );
 }
