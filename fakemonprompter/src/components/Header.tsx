@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../assets/fakemonlogo.svg?react';
 import styles from '../styles/Header.module.css'
 import { QuestionMark } from '../components/DescriptionPopup';
-import fakemonData from '../assets/fakemondata.json'
+import fakemonData from '../assets/fakemon-data.json'
 
 const Header: React.FC = () => {
     return (

@@ -1,5 +1,5 @@
 import { useState, useEffect, type ReactElement } from 'react';
-import fakemonData from '../assets/fakemondata.json';
+import fakemonData from '../assets/fakemon-data.json';
 import styles from '../styles/DataManager.module.css';
 import { climateSvgComponentMap, dietSvgComponentMap, habitatSvgComponentMap, sizeSvgComponentMap, typeSvgComponentMap } from '../assets/DataSvgManager';
 import { QuestionMark } from '../components/DescriptionPopup';

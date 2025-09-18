@@ -1,7 +1,7 @@
 import { type Stages, type StatRange } from '../components/StatManager';
 import DropdownMenu from '../components/DropdownMenu';
 import styles from '../styles/EvolutionManager.module.css';
-import fakemonData from '../assets/fakemondata.json';
+import fakemonData from '../assets/fakemon-data.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faCircleMinus } from '@fortawesome/free-solid-svg-icons';

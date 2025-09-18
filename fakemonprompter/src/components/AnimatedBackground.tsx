@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from '../styles/AnimatedBackground.module.css';
 import {
-    climateSvgComponentMap,
-    backgroundMap
+    backgroundMap,
+    weatherMap
 } from '../assets/DataSvgManager';
 import { isMobileScreen } from '../assets/utils/ScreenUtils';
 import { DataField, Habitat, Climate, type DataMap } from '../assets/utils/FakemonUtils';
 import { randomRange, inverseLerp, randomSign } from '../assets/utils/MathUtils';
+import backgroundData from '../assets/background-data.json';
 
 export interface vector2 {
     x: number;
@@ -40,6 +41,7 @@ interface WeatherProps {
     maxWidth: number;
     minHeight: number;
     maxHeight: number;
+    randomStartRot: boolean;
     rotationSpeed: number;
     sizeVariance: number;
     moveSpeed: number;
@@ -64,24 +66,6 @@ interface BgProps {
 type SvgComponent = React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined;
 const getRandomXPos = (width: number) => Math.random() * (window.innerWidth - width);
 
-const bgProps: Record<Habitat, BgProps> = {
-    [Habitat.Forest]: { Rows: 5, RowScale: 0.3, Amount: 10, Width: 300, Height: 300, SizeVariance: 1.5, YOffsetVariance: 0.1, mRows: 3, mRowScale: 0.2, mAmount: 10, mWidth: 100, mHeight: 100 },
-    [Habitat.Desert]: { Rows: 3, RowScale: 0.2, Amount: 1, Width: 5000, Height: 300, SizeVariance: 1.5, YOffsetVariance: 0.1, mRows: 3, mRowScale: 0.2, mAmount: 3, mWidth: 1000, mHeight: 150 },
-    [Habitat.River]: { Rows: 1, RowScale: 0.2, Amount: 1, Width: 3000, Height: 1000, SizeVariance: 1.5, YOffsetVariance: 0.1, mRows: 1, mRowScale: 0.2, mAmount: 1, mWidth: 1000, mHeight: 500 },
-    [Habitat.Coast]: { Rows: 1, RowScale: 0.2, Amount: 1, Width: 3000, Height: 1000, SizeVariance: 1.5, YOffsetVariance: 0.1, mRows: 1, mRowScale: 0.2, mAmount: 1, mWidth: 1000, mHeight: 1000 },
-    [Habitat.Mountain]: { Rows: 2, RowScale: 0.2, Amount: 4, Width: 800, Height: 800, SizeVariance: 2, YOffsetVariance: 0.1, mRows: 2, mRowScale: 0.2, mAmount: 4, mWidth: 225, mHeight: 225 },
-    [Habitat.Field]: { Rows: 1, RowScale: 0.2, Amount: 1, Width: 4000, Height: 600, SizeVariance: 1.5, YOffsetVariance: 0.1, mRows: 2, mRowScale: 0.2, mAmount: 4, mWidth: 200, mHeight: 75 },
-    [Habitat.Hills]: { Rows: 4, RowScale: 0.2, Amount: 4, Width: 500, Height: 300, SizeVariance: 1.5, YOffsetVariance: 0.1, mRows: 2, mRowScale: 0.2, mAmount: 3, mWidth: 300, mHeight: 125 }
-};
-
-const weatherProps: Record<Climate, WeatherProps> = {
-    [Climate.Tropical]: { spawnRate: 1000, minWidth: 20, maxWidth: 60, minHeight: 20, maxHeight: 60, rotationSpeed: 6, moveSpeed: 20, moveDirection: { x: 0, y: 1 }, sizeVariance: 1.5 },
-    [Climate.Continental]: { spawnRate: 1000, minWidth: 20, maxWidth: 60, minHeight: 20, maxHeight: 60, rotationSpeed: 6, moveSpeed: 10, moveDirection: { x: 0, y: 1 }, sizeVariance: 1.5 },
-    [Climate.Dry]: { spawnRate: 1000, minWidth: 60, maxWidth: 60, minHeight: 60, maxHeight: 120, rotationSpeed: 6, moveSpeed: 20, moveDirection: { x: 1, y: 0 }, sizeVariance: 1.5 },
-    [Climate.Polar]: { spawnRate: 1000, minWidth: 20, maxWidth: 60, minHeight: 20, maxHeight: 60, rotationSpeed: 6, moveSpeed: 10, moveDirection: { x: 0, y: 1 }, sizeVariance: 1.5 },
-    [Climate.Temperate]: { spawnRate: 1000, minWidth: 20, maxWidth: 60, minHeight: 20, maxHeight: 60, rotationSpeed: 6, moveSpeed: 10, moveDirection: { x: 0, y: 1 }, sizeVariance: 1.5 },
-}
-
 const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children }: AnimatedBackgroundProps) => {
     const [svgInstances, setSvgInstances] = useState<SvgInstance[]>([]);
     const [nextId, setNextId] = useState(0);
@@ -89,17 +73,40 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children 
     const [SvgClimate, setSvgClimate] = useState<React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined>(undefined);
     const [habitatFeatureNodes, setHabitatFeatureNodes] = useState<React.ReactNode[]>([]);
 
+    const [bgProps] = useState<Record<Habitat, BgProps>>(Object.keys(backgroundData.Background).reduce((acc, key) => {
+        const habitatKey = Habitat[key as keyof typeof Habitat];
+        if (habitatKey !== undefined) {
+            acc[habitatKey] = backgroundData.Background[key as keyof typeof backgroundData.Background];
+        }
+        return acc;
+    }, {} as Record<Habitat, BgProps>));
+
+    const [weatherProps] = useState<Record<Climate, WeatherProps>>(Object.keys(backgroundData.Weather).reduce((acc, key) => {
+        const climateKey = Climate[key as keyof typeof Climate];
+        if (climateKey !== undefined) {
+            acc[climateKey] = backgroundData.Weather[key as keyof typeof backgroundData.Weather];
+        }
+        return acc;
+    }, {} as Record<Climate, WeatherProps>));
+
     // Spawning new SVGs
     useEffect(() => {
         const props = weatherProps[data[DataField.Climate] as Climate];
+        let horizontal = false;
+        if (props.moveDirection.x === -1) {
+            horizontal = true;
+        }
         const interval = setInterval(() => {
             const randomVal = Math.random();
+            const x = horizontal ? window.innerWidth + props.maxWidth : getRandomXPos(props.maxWidth);
+            const y = horizontal ? Math.random() * window.innerHeight : -props.minHeight;
+            console.log(y);
             setSvgInstances(instances => [
                 ...instances,
                 {
                     id: nextId,
-                    y: -props.minHeight,
-                    x: getRandomXPos(props.maxWidth),
+                    x: x,
+                    y: y,
                     width: randomRange(props.minWidth, props.maxWidth, randomVal),
                     height: randomRange(props.minHeight, props.maxHeight, randomVal),
                     scale: inverseLerp(props.minHeight, props.maxHeight, randomRange(props.minHeight, props.maxHeight)),
@@ -107,6 +114,7 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children 
                     flipX: false,
                     moveSpeed: props.moveSpeed * (1 + randomVal) * 0.03,
                     moveDirection: props.moveDirection,
+                    rotation: props.randomStartRot ? Math.random() * 360 : 0,
                     rotationTime: props.rotationSpeed
                 }
             ]);
@@ -121,23 +129,25 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children 
             setSvgInstances(instances =>
                 instances
                     .map(inst => {
-                        const cycleDuration = inst.rotationTime;
-                        const framesPerSecond = 60;
-                        const totalFrames = cycleDuration * framesPerSecond;
-                        const xScaleDelta = 2 / totalFrames;
-                        
-                        // Fix: Use inst.xScale instead of always starting from 1
-                        let newXScale = inst.xScale !== undefined ? inst.xScale + xScaleDelta * inst.xScaleDirection : 1 + xScaleDelta * inst.xScaleDirection;
+                        let newXScale = 1;
                         let newDirection = inst.xScaleDirection;
 
-                        if (newXScale > 1) {
-                            newXScale = 1;
-                            newDirection = -inst.xScaleDirection;
-                        } else if (newXScale < -1) {
-                            newXScale = -1;
-                            newDirection = -inst.xScaleDirection;
-                        }
+                        if (inst.rotationTime !== 0) {
+                            const cycleDuration = inst.rotationTime;
+                            const framesPerSecond = 60;
+                            const totalFrames = cycleDuration * framesPerSecond;
+                            const xScaleDelta = 2 / totalFrames;
 
+                            newXScale = inst.xScale !== undefined ? inst.xScale + xScaleDelta * inst.xScaleDirection : 1 + xScaleDelta * inst.xScaleDirection;
+
+                            if (newXScale > 1) {
+                                newXScale = 1;
+                                newDirection = -inst.xScaleDirection;
+                            } else if (newXScale < -1) {
+                                newXScale = -1;
+                                newDirection = -inst.xScaleDirection;
+                            }
+                        }
                         return {
                             ...inst,
                             x: inst.x + inst.moveDirection.x * inst.moveSpeed,
@@ -148,7 +158,7 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children 
                             xScaleDirection: newDirection,
                         };
                     })
-                    .filter(inst => inst.y < window.innerHeight)
+                    .filter(inst => inst.y < window.innerHeight && inst.x + inst.width > 0)
             );
             requestRef.current = requestAnimationFrame(animate);
         };
@@ -160,7 +170,7 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children 
 
     // Setting Climate
     useEffect(() => {
-        const svgClimate = data['Climate'] ? climateSvgComponentMap[data['Climate']] : undefined;
+        const svgClimate = data['Climate'] ? weatherMap[data['Climate']] : undefined;
         if (typeof svgClimate === 'function') {
             setSvgClimate(() => svgClimate);
         }

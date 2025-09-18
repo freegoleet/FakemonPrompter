@@ -6,7 +6,7 @@ import { StatManager, type Stages } from './components/StatManager'
 import Footer from './components/Footer'
 import AnimatedBackground from './components/AnimatedBackground'
 import { useState } from "react";
-import fakemonData from './assets/fakemondata.json';
+import fakemonData from './assets/fakemon-data.json';
 import { type DataMap, DataField, Habitat, Climate, Diet, Size, Type } from './assets/utils/FakemonUtils';
 
 function convertStageKeys(
