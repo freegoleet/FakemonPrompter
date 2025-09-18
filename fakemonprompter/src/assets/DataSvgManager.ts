@@ -78,7 +78,6 @@ export const typeSvgComponentMap: Record<string, SvgComponent> = {
     "Fire": Fire,
 };
 
-
 export const climateSvgComponentMap: Record<string, SvgComponent> = {
     "Continental": Continental,
     "Dry": Dry,

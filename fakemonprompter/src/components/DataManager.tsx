@@ -68,8 +68,6 @@ function DataManager({ currentData, onChange }: DataManagerProps) {
             }
         }
 
-        tempData[DataField.Habitat] = Habitat.Field;
-
         const tempColors = [defaultColor, defaultColor];
         const enumValues = Object.values(Type);
         const firstType = enumValues[Math.floor(Math.random() * enumValues.length)] as Type;

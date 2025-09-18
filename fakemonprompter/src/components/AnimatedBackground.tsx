@@ -69,6 +69,7 @@ const getRandomXPos = (width: number) => Math.random() * (window.innerWidth - wi
 const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children }: AnimatedBackgroundProps) => {
     const [svgInstances, setSvgInstances] = useState<SvgInstance[]>([]);
     const [nextId, setNextId] = useState(0);
+    const [climate, setClimate] = useState<Climate>();
     const requestRef = useRef<number>(10);
     const [SvgClimate, setSvgClimate] = useState<React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined>(undefined);
     const [habitatFeatureNodes, setHabitatFeatureNodes] = useState<React.ReactNode[]>([]);
@@ -89,8 +90,19 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children 
         return acc;
     }, {} as Record<Climate, WeatherProps>));
 
+    useEffect(() => {
+        const newClimate = data[DataField.Climate] as Climate;
+        if (newClimate === climate) {
+            return;
+        }
+        setClimate(newClimate);
+        setSvgInstances([]);
+
+    }, [data, climate])
+
     // Spawning new SVGs
     useEffect(() => {
+        // Remove all existing spawned SVGs on data change
         const props = weatherProps[data[DataField.Climate] as Climate];
         let horizontal = false;
         if (props.moveDirection.x === -1) {
@@ -100,7 +112,6 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children 
             const randomVal = Math.random();
             const x = horizontal ? window.innerWidth + props.maxWidth : getRandomXPos(props.maxWidth);
             const y = horizontal ? Math.random() * window.innerHeight : -props.minHeight;
-            console.log(y);
             setSvgInstances(instances => [
                 ...instances,
                 {
@@ -121,7 +132,7 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ data, children 
             setNextId(id => id + 1);
         }, props.spawnRate);
         return () => clearInterval(interval);
-    }, [nextId, data]);
+    }, [nextId, weatherProps, data]);
 
     // Animating SVGs
     useEffect(() => {

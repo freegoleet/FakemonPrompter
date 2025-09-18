@@ -125,7 +125,7 @@
       "sizeVariance": 1.5
     },
     "Dry": {
-      "spawnRate": 2000,
+      "spawnRate": 4000,
       "minWidth": 800,
       "maxWidth": 1000,
       "minHeight": 60,
