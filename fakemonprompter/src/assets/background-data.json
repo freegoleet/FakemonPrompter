@@ -8,11 +8,11 @@
       "Height": 300,
       "SizeVariance": 1.5,
       "YOffsetVariance": 0.1,
-      "mRows": 3,
-      "mRowScale": 0.2,
-      "mAmount": 10,
-      "mWidth": 100,
-      "mHeight": 100
+      "mRows": 7,
+      "mRowScale": 0.15,
+      "mAmount": 2,
+      "mWidth": 200,
+      "mHeight": 200
     },
     "Desert": {
       "Rows": 3,
@@ -22,11 +22,11 @@
       "Height": 300,
       "SizeVariance": 1.5,
       "YOffsetVariance": 0.1,
-      "mRows": 3,
+      "mRows": 5,
       "mRowScale": 0.2,
       "mAmount": 3,
-      "mWidth": 1000,
-      "mHeight": 150
+      "mWidth": 2000,
+      "mHeight": 200
     },
     "River": {
       "Rows": 1,
@@ -40,7 +40,7 @@
       "mRowScale": 0.2,
       "mAmount": 1,
       "mWidth": 1000,
-      "mHeight": 500
+      "mHeight": 1000
     },
     "Coast": {
       "Rows": 1,
@@ -64,11 +64,11 @@
       "Height": 800,
       "SizeVariance": 2,
       "YOffsetVariance": 0.1,
-      "mRows": 2,
+      "mRows": 4,
       "mRowScale": 0.2,
-      "mAmount": 4,
-      "mWidth": 225,
-      "mHeight": 225
+      "mAmount": 2,
+      "mWidth": 400,
+      "mHeight": 400
     },
     "Field": {
       "Rows": 1,
@@ -81,8 +81,8 @@
       "mRows": 2,
       "mRowScale": 0.2,
       "mAmount": 4,
-      "mWidth": 200,
-      "mHeight": 75
+      "mWidth": 2000,
+      "mHeight": 800
     },
     "Hills": {
       "Rows": 4,
@@ -92,52 +92,65 @@
       "Height": 300,
       "SizeVariance": 1.5,
       "YOffsetVariance": 0.1,
-      "mRows": 2,
+      "mRows": 7,
       "mRowScale": 0.2,
-      "mAmount": 3,
+      "mAmount": 2,
       "mWidth": 300,
-      "mHeight": 125
+      "mHeight": 250
     }
   },
   "Weather": {
     "Tropical": {
-      "spawnRate": 50,
-      "minWidth": 6,
-      "maxWidth": 12,
-      "minHeight": 12,
-      "maxHeight": 24,
+      "spawnRate": 20,
+      "mSpawnRate": 50,
+      "minWidth": 4,
+      "maxWidth": 8,
+      "minHeight": 200,
+      "maxHeight": 400,
       "randomStartRot": false,
       "rotationSpeed": 0,
       "moveSpeed": 300,
-      "moveDirection": { "x": 0, "y": 1 },
+      "moveDirection": {
+        "x": 0.3,
+        "y": 1
+      },
       "sizeVariance": 1.5
     },
     "Continental": {
       "spawnRate": 1500,
+      "mSpawnRate": 3000,
       "minWidth": 10,
       "maxWidth": 30,
       "minHeight": 20,
       "maxHeight": 60,
       "randomStartRot": true,
       "rotationSpeed": 6,
-      "moveSpeed": 10,
-      "moveDirection": { "x": 0, "y": 1 },
+      "moveSpeed": 20,
+      "moveDirection": {
+        "x": 0.3,
+        "y": 1
+      },
       "sizeVariance": 1.5
     },
     "Dry": {
       "spawnRate": 4000,
-      "minWidth": 800,
+      "mSpawnRate": 2000,
+      "minWidth":  500,
       "maxWidth": 1000,
       "minHeight": 60,
       "maxHeight": 120,
       "randomStartRot": false,
       "rotationSpeed": 0,
       "moveSpeed": 50,
-      "moveDirection": { "x": -1, "y": 0 },
+      "moveDirection": {
+        "x": -1,
+        "y": 0
+      },
       "sizeVariance": 1.5
     },
     "Polar": {
       "spawnRate": 1000,
+      "mSpawnRate": 2000,
       "minWidth": 20,
       "maxWidth": 60,
       "minHeight": 20,
@@ -145,19 +158,26 @@
       "randomStartRot": true,
       "rotationSpeed": 8,
       "moveSpeed": 10,
-      "moveDirection": { "x": 0, "y": 1 },
+      "moveDirection": {
+        "x": 0,
+        "y": 1
+      },
       "sizeVariance": 1.5
     },
     "Temperate": {
-      "spawnRate": 1500,
+      "spawnRate": 1000,
+      "mSpawnRate": 3000,
       "minWidth": 20,
       "maxWidth": 60,
       "minHeight": 20,
       "maxHeight": 60,
       "randomStartRot": true,
       "rotationSpeed": 8,
-      "moveSpeed": 10,
-      "moveDirection": { "x": 0, "y": 1 },
+      "moveSpeed": 20,
+      "moveDirection": {
+        "x": 0,
+        "y": 1
+      },
       "sizeVariance": 1.5
     }
   }

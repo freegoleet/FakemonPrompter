@@ -1,0 +1,34 @@
+.background {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+.habitat {
+    opacity: 1;
+    z-index: 0;
+    position: absolute;
+    bottom: 0;
+    pointer-events: none;
+}
+.coast {
+    /*height: 50%;
+    width: 150%;*/
+    overflow: hidden;
+    right: 0;
+}
+.river {
+    /*    right: 0;
+    left: auto;*/
+    overflow: hidden;
+}
+.desert {
+    align-self: center;
+}

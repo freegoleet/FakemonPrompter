@@ -68,6 +68,8 @@ function DataManager({ currentData, onChange }: DataManagerProps) {
             }
         }
 
+        tempData[DataField.Climate] = Climate.Temperate; 
+
         const tempColors = [defaultColor, defaultColor];
         const enumValues = Object.values(Type);
         const firstType = enumValues[Math.floor(Math.random() * enumValues.length)] as Type;

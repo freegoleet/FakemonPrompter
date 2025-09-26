@@ -1,6 +1,28 @@
 // MathUtils.tsx
 // Utility functions for mathematical operations
 
+export interface vector2 {
+    x: number;
+    y: number;
+}
+
+/**
+ * 
+ * @param min
+ * @param max
+ * @param coef
+ * @returns
+ */
+export function normalizeVector2(vector: vector2): vector2 {
+    const mag = Math.sqrt(vector.x * vector.x + vector.y * vector.y);
+    if (mag > 0) {
+        vector.x /= mag;
+        vector.y /= mag;
+    }
+
+    return vector;
+}
+
 /**
  * Returns a random integer between min (inclusive) and max (inclusive).
  */
@@ -34,3 +56,4 @@ export function inverseLerp(a: number, b: number, v: number): number {
 }
 
 export const randomSign = (): number => Math.random() > 0.5 ? 1 : -1;
+

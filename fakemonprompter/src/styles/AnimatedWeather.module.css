@@ -1,0 +1,7 @@
+.precipitation {
+    position: absolute;
+    pointer-events: none;
+    aspect-ratio: auto;
+    fill: white;
+    opacity: 0.5;
+}
