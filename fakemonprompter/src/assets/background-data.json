@@ -22,11 +22,11 @@
       "Height": 300,
       "SizeVariance": 1.5,
       "YOffsetVariance": 0.1,
-      "mRows": 5,
+      "mRows": 7,
       "mRowScale": 0.2,
       "mAmount": 3,
       "mWidth": 2000,
-      "mHeight": 200
+      "mHeight": 100
     },
     "River": {
       "Rows": 1,
@@ -100,85 +100,166 @@
     }
   },
   "Weather": {
-    "Tropical": {
-      "spawnRate": 20,
-      "mSpawnRate": 50,
-      "minWidth": 4,
-      "maxWidth": 8,
-      "minHeight": 200,
-      "maxHeight": 400,
-      "randomStartRot": false,
-      "rotationSpeed": 0,
-      "moveSpeed": 300,
-      "moveDirection": {
-        "x": 0.3,
-        "y": 1
+    "Precipitation": {
+      "Tropical": {
+        "spawnRate": 20,
+        "mSpawnRate": 50,
+        "spawnAreaStart": {
+          "x": -0.05,
+          "y": -0.1
+        },
+        "spawnAreaEnd": {
+          "x": 0.9,
+          "y": 0.9
+        },
+        "mSpawnAreaStart": {
+          "x": -0.2,
+          "y": 0
+        },
+        "mSpawnAreaEnd": {
+          "x": 0.8,
+          "y": 0.95
+        },
+        "minWidth": 4,
+        "maxWidth": 8,
+        "minHeight": 200,
+        "maxHeight": 400,
+        "randomStartRot": false,
+        "rotationSpeed": 0,
+        "moveSpeed": 300,
+        "moveDirection": {
+          "x": 0.3,
+          "y": 0.8
+        },
+        "sizeVariance": 1.5
       },
-      "sizeVariance": 1.5
-    },
-    "Continental": {
-      "spawnRate": 1500,
-      "mSpawnRate": 3000,
-      "minWidth": 10,
-      "maxWidth": 30,
-      "minHeight": 20,
-      "maxHeight": 60,
-      "randomStartRot": true,
-      "rotationSpeed": 6,
-      "moveSpeed": 20,
-      "moveDirection": {
-        "x": 0.3,
-        "y": 1
+      "Continental": {
+        "spawnRate": 1000,
+        "mSpawnRate": 700,
+        "spawnAreaStart": {
+          "x": -0.05,
+          "y": 0
+        },
+        "spawnAreaEnd": {
+          "x": 0.9,
+          "y": 0.9
+        },
+        "mSpawnAreaStart": {
+          "x": -0.1,
+          "y": 0
+        },
+        "mSpawnAreaEnd": {
+          "x": 0.9,
+          "y": 0.8
+        },
+        "minWidth": 10,
+        "maxWidth": 30,
+        "minHeight": 20,
+        "maxHeight": 60,
+        "randomStartRot": true,
+        "rotationSpeed": 6,
+        "moveSpeed": 20,
+        "moveDirection": {
+          "x": 0.3,
+          "y": 1
+        },
+        "sizeVariance": 1.5
       },
-      "sizeVariance": 1.5
+      "Polar": {
+        "spawnRate": 700,
+        "mSpawnRate": 1000,
+        "spawnAreaStart": {
+          "x": 0.01,
+          "y": 0
+        },
+        "spawnAreaEnd": {
+          "x": 0.99,
+          "y": 0
+        },
+        "mSpawnAreaStart": {
+          "x": 0.01,
+          "y": 0
+        },
+        "mSpawnAreaEnd": {
+          "x": 0.99,
+          "y": 0
+        },
+        "minWidth": 20,
+        "maxWidth": 60,
+        "minHeight": 20,
+        "maxHeight": 60,
+        "randomStartRot": true,
+        "rotationSpeed": 8,
+        "moveSpeed": 10,
+        "moveDirection": {
+          "x": 0,
+          "y": 1
+        },
+        "sizeVariance": 1.5
+      },
+      "Temperate": {
+        "spawnRate": 700,
+        "mSpawnRate": 700,
+        "spawnAreaStart": {
+          "x": -0.2,
+          "y": 0
+        },
+        "spawnAreaEnd": {
+          "x": 0.9,
+          "y": 0.8
+        },
+        "mSpawnAreaStart": {
+          "x": -0.05,
+          "y": 0
+        },
+        "mSpawnAreaEnd": {
+          "x": 0.8,
+          "y": 0.8
+        },
+        "minWidth": 20,
+        "maxWidth": 60,
+        "minHeight": 20,
+        "maxHeight": 60,
+        "randomStartRot": true,
+        "rotationSpeed": 8,
+        "moveSpeed": 20,
+        "moveDirection": {
+          "x": 0,
+          "y": 1
+        },
+        "sizeVariance": 1.5
+      }
     },
     "Dry": {
-      "spawnRate": 4000,
-      "mSpawnRate": 2000,
-      "minWidth":  500,
-      "maxWidth": 1000,
-      "minHeight": 60,
-      "maxHeight": 120,
-      "randomStartRot": false,
-      "rotationSpeed": 0,
-      "moveSpeed": 50,
-      "moveDirection": {
-        "x": -1,
-        "y": 0
-      },
-      "sizeVariance": 1.5
-    },
-    "Polar": {
-      "spawnRate": 1000,
-      "mSpawnRate": 2000,
-      "minWidth": 20,
-      "maxWidth": 60,
-      "minHeight": 20,
-      "maxHeight": 60,
-      "randomStartRot": true,
-      "rotationSpeed": 8,
-      "moveSpeed": 10,
-      "moveDirection": {
-        "x": 0,
-        "y": 1
-      },
-      "sizeVariance": 1.5
-    },
-    "Temperate": {
-      "spawnRate": 1000,
-      "mSpawnRate": 3000,
-      "minWidth": 20,
-      "maxWidth": 60,
-      "minHeight": 20,
-      "maxHeight": 60,
-      "randomStartRot": true,
-      "rotationSpeed": 8,
-      "moveSpeed": 20,
-      "moveDirection": {
-        "x": 0,
-        "y": 1
-      },
-      "sizeVariance": 1.5
+      "baseSize": 500,
+      "intensity": 1,
+      "color": "#FFFFFF",
+      "Layers": {
+        "Orb": {
+          "baseScale": 0.5,
+          "pulseScale": 0.1,
+          "pulseSpeed": 5, 
+          "rotationSpeed": 0 
+        },
+        "InnerGlare": {
+          "baseScale": 0.5,
+          "pulseScale": 0.2,
+          "pulseSpeed": 5, 
+          "rotationSpeed": 10 
+        },
+        "MiddleGlare": {
+          "baseScale": 0.8,
+          "pulseScale": 0.4,
+          "pulseSpeed": -6,
+          "rotationSpeed": -15 
+        },
+        "OuterGlare": {
+          "baseScale": 1.2,
+          "pulseScale": 0.6,
+          "pulseSpeed": 7, 
+          "rotationSpeed": 15 
+        }
+      }
     }
   }
 }

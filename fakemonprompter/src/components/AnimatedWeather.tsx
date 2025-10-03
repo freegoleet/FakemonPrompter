@@ -1,14 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { randomRange, inverseLerp, randomSign, normalizeVector2, type vector2 } from '../assets/utils/MathUtils';
+import { randomRange, inverseLerp, lerp, randomSign, normalizeVector2, type vector2 } from '../assets/utils/MathUtils';
 import { DataField, Climate, type DataMap } from '../assets/utils/FakemonUtils';
 import backgroundData from '../assets/background-data.json';
 import { isMobileScreen } from '../assets/utils/ScreenUtils';
 import { weatherMap } from '../assets/DataSvgManager';
 import styles from '../styles/AnimatedWeather.module.css';
+import { deepCopy } from '../assets/utils/GeneralUtils';
+import AnimatedSun from './AnimatedSun'
 
 interface WeatherProps {
-    spawnRate: number; // per second
+    spawnRate: number; // In milliseconds
     mSpawnRate: number;
+    spawnAreaStart: vector2;
+    spawnAreaEnd: vector2;
+    mSpawnAreaStart: vector2;
+    mSpawnAreaEnd: vector2;
     minWidth: number;
     maxWidth: number;
     minHeight: number;
@@ -29,7 +35,7 @@ interface AnimatedSvg {
     rotation?: number;
     xScale?: number;
     speed: number;
-    direction: vector2;
+    moveDirection: vector2;
     currentDirection: vector2;
     xScaleDirection: number;
     flipX: boolean;
@@ -43,66 +49,98 @@ interface Flutter {
     flutterInterval: number;
     flutterDuration: number;
     flutterDirection: vector2;
+    startDirection: vector2;
+    targetDirection: vector2;
+    elapsedFlutterTime: number;
 }
 interface AnimatedWeatherProps {
     data: DataMap;
     children?: React.ReactNode;
 }
-const getRandomXPos = (width: number) => Math.random() * (window.innerWidth - width);
-function deepCopy<T>(obj: T): T {
-    return JSON.parse(JSON.stringify(obj));
-}
 
 const AnimatedWeather: React.FC<AnimatedWeatherProps> = ({ data, children }: AnimatedWeatherProps) => {
     const [animSvgInstances, setAnimSvgInstances] = useState<AnimatedSvg[]>([]);
     const [nextId, setNextId] = useState(0);
-    const [climate, setClimate] = useState<Climate>();
+    const [climate, setClimate] = useState<Climate>(data[DataField.Climate] as Climate);
     const requestRef = useRef<number>(10);
     const [SvgClimate, setSvgClimate] = useState<React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined>(undefined);
-    const [weatherProps] = useState<Record<Climate, WeatherProps>>(Object.keys(backgroundData.Weather).reduce((acc, key) => {
-        const climateKey = Climate[key as keyof typeof Climate];
-        if (climateKey !== undefined) {
-            acc[climateKey] = backgroundData.Weather[key as keyof typeof backgroundData.Weather];
-        }
-        return acc;
-    }, {} as Record<Climate, WeatherProps>));
+    const [weatherProps] = useState<Record<Climate, WeatherProps>>(
+        Object.entries(backgroundData.Weather.Precipitation).reduce((acc, [key, value]) => {
+            const climateKey = key as Climate;
+            if (climateKey !== undefined) {
+                acc[climateKey] = value as WeatherProps;
+            }
+            return acc;
+        }, {} as Record<Climate, WeatherProps>));
     const lastFrameTimeRef = useRef<number>(performance.now());
 
+    // Setting Climate
     useEffect(() => {
         const newClimate = data[DataField.Climate] as Climate;
         if (newClimate === climate) {
             return;
         }
-        setClimate(newClimate);
         setAnimSvgInstances([]);
-
+        setClimate(newClimate);
     }, [data, climate])
 
+    // Spawning SVGs6
     useEffect(() => {
-        const props = weatherProps[data[DataField.Climate] as Climate];
-        let horizontal = false;
-        if (props.moveDirection.x === -1) {
-            horizontal = true;
-        }
-        const MAX_INSTANCES = 1; // Set your desired maximum here
+        if (climate === Climate.Dry) {
+            setAnimSvgInstances([]);
 
+            return;
+        }
+
+        const props = weatherProps[climate];
+        const MAX_INSTANCES = 100; // Set your desired maximum here
         const interval = setInterval(() => {
             setAnimSvgInstances(instances => {
                 if (instances.length >= MAX_INSTANCES) {
-                    return instances; // Do not spawn more if at limit
+                    return instances;
                 }
+                const startArea = isMobileScreen() ? props.mSpawnAreaStart : props.spawnAreaStart;
+                const endArea = isMobileScreen() ? props.mSpawnAreaEnd : props.spawnAreaEnd;
+                const screenheight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+                const screenwidth = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth);
+
+                const spawnAreaWidth = screenwidth * (endArea.x - startArea.x);
+                const spawnAreaHeight = screenheight * (endArea.y - startArea.y);
+
+                const xOffset = screenwidth * startArea.x;
+                const yOffset = screenheight * startArea.y;
+                const xVsY = spawnAreaWidth / (spawnAreaWidth + spawnAreaHeight * 0.5);
+                const spawnX: boolean = Math.random() < xVsY;
+
                 const randomVal = Math.random();
-                const width = randomRange(props.minWidth, props.maxWidth, randomVal);
-                const height = randomRange(props.minHeight, props.maxHeight, randomVal);
-                const x = horizontal ? window.innerWidth + props.maxWidth : getRandomXPos(props.maxWidth);
-                const y = horizontal ? Math.random() * window.innerHeight : -props.minHeight;
+                const svgWidth = randomRange(props.minWidth, props.maxWidth, randomVal);
+                const svgHeight = randomRange(props.minHeight, props.maxHeight, randomVal);
+
+                let x = 0;
+                let y = 0;
+
+                if (spawnX) {
+                    x = Math.random() * spawnAreaWidth + xOffset;
+                    y = -props.maxHeight;
+                }
+                else {
+                    x = -props.maxWidth;
+                    y = Math.random() * spawnAreaHeight + yOffset;
+                }
+
                 let flutter: Flutter | undefined = undefined;
                 const dir = normalizeVector2(props.moveDirection);
 
-                if (data[DataField.Climate] as Climate === Climate.Temperate || data.Climate === Climate.Continental ? true : false) {
+                if (climate === Climate.Temperate || climate === Climate.Continental ? true : false) {
                     const flutterDir: vector2 = normalizeVector2({ x: 0.7, y: 0.6 });
                     flutter = {
-                        flutterPhase: Math.random() * Math.PI * 2, flutterInterval: randomRange(3000, 5000), flutterDuration: randomRange(1000, 2000), flutterDirection: flutterDir
+                        flutterPhase: Math.random() * Math.PI * 2,
+                        flutterInterval: randomRange(3000, 5000),
+                        flutterDuration: randomRange(2, 8),
+                        flutterDirection: flutterDir,
+                        startDirection: deepCopy(dir),
+                        targetDirection: flutterDir,
+                        elapsedFlutterTime: 0
                     }
                 }
 
@@ -112,13 +150,13 @@ const AnimatedWeather: React.FC<AnimatedWeatherProps> = ({ data, children }: Ani
                         id: nextId,
                         x: x,
                         y: y,
-                        width: width,
-                        height: height,
+                        width: svgWidth,
+                        height: svgHeight,
                         scale: inverseLerp(props.minHeight, props.maxHeight, randomRange(props.minHeight, props.maxHeight)),
                         xScaleDirection: randomSign(),
                         flipX: false,
                         speed: props.moveSpeed * (1 + randomVal) * 0.03,
-                        direction: dir,
+                        moveDirection: dir,
                         currentDirection: deepCopy(dir),
                         rotation: props.randomStartRot ? Math.random() * 360 : 0,
                         rotationTime: props.rotationSpeed,
@@ -131,7 +169,7 @@ const AnimatedWeather: React.FC<AnimatedWeatherProps> = ({ data, children }: Ani
             setNextId(id => id + 1);
         }, isMobileScreen() ? props.mSpawnRate : props.spawnRate);
         return () => clearInterval(interval);
-    }, [nextId, weatherProps, data]);
+    }, [nextId, weatherProps, data, climate]);
 
     // Animating SVGs
     useEffect(() => {
@@ -142,44 +180,38 @@ const AnimatedWeather: React.FC<AnimatedWeatherProps> = ({ data, children }: Ani
             setAnimSvgInstances(instances =>
                 instances
                     .map(inst => {
-                        const direction: vector2 = inst.currentDirection;
+                        let direction: vector2 = inst.currentDirection;
                         const speed: number = inst.speed * 100;
 
                         if (inst.flutter !== undefined) {
-                            const timeSinceLastChange = now - inst.lastFlutterTime;
-                            const interval = inst.flutter.flutterInterval;
                             const duration = inst.flutter.flutterDuration;
-                            const timeInInterval = timeSinceLastChange % interval;
 
-                            if (timeInInterval < duration) {
-                                const targetX = timeInInterval < duration * 0.5 ? inst.flutter.flutterDirection.x : inst.direction.x;
-                                const targetY = timeInInterval < duration + 0.5 ? inst.flutter.flutterDirection.y : inst.direction.y;
-
-                                // Use a time-based interpolation so direction only reaches target at the end of flutter duration
-                                const progress = Math.min(timeInInterval / duration, 1);
-                                // Ease in-out for smoother transition
-                                const ease = 0.5 - 0.5 * Math.cos(Math.PI * progress);
-                                direction.x = direction.x + (targetX - direction.x) * ease;
-                                direction.y = direction.y + (targetY - direction.y) * ease;
-
-
-                                const dir = normalizeVector2(direction);
-                                direction.x = dir.x;
-                                direction.y = dir.y;
-
+                            if (inst.flutter.elapsedFlutterTime < duration) {
+                                inst.flutter.elapsedFlutterTime += deltaTime;
+                                direction = lerp(
+                                    inst.flutter.startDirection,
+                                    inst.flutter.targetDirection,
+                                    Math.min(inst.flutter.elapsedFlutterTime / duration, 1)
+                                );
+                            } else {
+                                inst.flutter.elapsedFlutterTime = 0;
+                                inst.flutter.startDirection = inst.flutter.targetDirection === inst.flutter.flutterDirection ? inst.flutter.flutterDirection : inst.moveDirection;
+                                inst.flutter.targetDirection = inst.flutter.targetDirection === inst.flutter.flutterDirection ? inst.moveDirection : inst.flutter.flutterDirection;
                             }
-                            //console.log(`mag: `, mag);
                         }
 
                         if (climate === Climate.Tropical) {
                             const angleRad = Math.atan2(direction.y, direction.x);
-                            const angleDeg = angleRad * (-20 / Math.PI);
+                            const angleDeg = angleRad * (-50 / Math.PI); // TODO: Angle
                             inst.rotation = angleDeg;
+                        }
+
+                        if (climate === Climate.Polar) {
+                            inst.rotation = 0;
                         }
 
                         inst.x = inst.x + direction.x * speed * deltaTime;
                         inst.y = inst.y + direction.y * speed * deltaTime;
-
                         let newXScale = 1;
                         let newDirection = inst.xScaleDirection;
 
@@ -209,7 +241,10 @@ const AnimatedWeather: React.FC<AnimatedWeatherProps> = ({ data, children }: Ani
                             flutterPhase: inst.flutter?.flutterPhase !== undefined ? inst.flutter?.flutterPhase : Math.random() * Math.PI * 2
                         };
                     })
-                    .filter(inst => inst.y < window.innerHeight && inst.x + inst.width > 0)
+                    .filter(inst =>
+                        inst.y < Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) &&
+                        inst.x < Math.max(document.documentElement.scrollWidth, document.body.scrollWidth)
+                    )
             );
             requestRef.current = requestAnimationFrame(animate);
         };
@@ -231,16 +266,19 @@ const AnimatedWeather: React.FC<AnimatedWeatherProps> = ({ data, children }: Ani
     }, [data]);
 
     return (
-        <div >
+        <div className={styles.weather}>
+            {climate === Climate.Dry ? <AnimatedSun /> : null}
             {animSvgInstances.map(inst =>
                 SvgClimate ? (
                     <div
                         key={inst.id}
                         className={styles.precipitation}
                         style={{
+                            width: inst.width * 2,
+                            height: inst.height * 2,
                             left: inst.x,
                             top: inst.y,
-                            transform: `scaleX(${inst.xScale}) rotate(${inst.rotation ?? 0}deg)`
+                            transform: `rotate(${inst.rotation}deg)`,
                         }}
                     >
                         <SvgClimate
@@ -248,9 +286,9 @@ const AnimatedWeather: React.FC<AnimatedWeatherProps> = ({ data, children }: Ani
                             height={inst.height}
                             style={{
                                 fill: 'white',
-                                transform: `rotate(${inst.rotation ?? 0}deg)`
+                                transform: `scaleX(${inst.xScale})`,
+                                transformOrigin: '50% 50%'
                             }}
-
                             preserveAspectRatio={"none"}
                         />
                     </div>

@@ -54,8 +54,12 @@ import RiverBg from "../assets/background/bg_river2.svg?react";
 import ContinentalWeather from "../assets/weather/weather_continental.svg?react";
 import TropicalWeather from "../assets/weather/weather_tropical.svg?react";
 import DryWeather from "../assets/weather/weather_dry.svg?react";
+import Dry1 from "../assets/weather/weather_dry_orb.svg?react";
+import Dry2 from "../assets/weather/weather_dry_inner.svg?react";
+import Dry3 from "../assets/weather/weather_dry_middle.svg?react";
+import Dry4 from "../assets/weather/weather_dry_outer.svg?react";
 
-export type SvgComponent = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+export type SvgComponent = React.FC<React.SVGProps<SVGSVGElement>>;
 
 export const typeSvgComponentMap: Record<string, SvgComponent> = {
     "Dragon": Dragon,
@@ -126,4 +130,8 @@ export const weatherMap: Record<string, SvgComponent> = {
     "Dry": DryWeather,
     "Polar": Polar,
     "Temperate": Temperate,
+    "Dry1": Dry1,
+    "Dry2": Dry2,
+    "Dry3": Dry3,
+    "Dry4": Dry4
 }

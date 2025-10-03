@@ -68,7 +68,7 @@ function DataManager({ currentData, onChange }: DataManagerProps) {
             }
         }
 
-        tempData[DataField.Climate] = Climate.Temperate; 
+        tempData[DataField.Habitat] = Habitat.Desert;
 
         const tempColors = [defaultColor, defaultColor];
         const enumValues = Object.values(Type);

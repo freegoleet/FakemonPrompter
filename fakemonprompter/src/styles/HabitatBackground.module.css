@@ -11,6 +11,7 @@
     overflow: hidden;
     display: flex;
 }
+
 .habitat {
     opacity: 1;
     z-index: 0;

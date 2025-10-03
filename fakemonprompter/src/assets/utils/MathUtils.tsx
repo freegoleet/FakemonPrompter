@@ -50,6 +50,21 @@ export function average(numbers: number[]): number {
     return numbers.reduce((sum, n) => sum + n, 0) / numbers.length;
 }
 
+
+export function lerp(a: number, b: number, t: number): number;
+export function lerp(a: vector2, b: vector2, t: number): vector2;
+export function lerp(a: number | vector2, b: number | vector2, t: number): number | vector2 {
+    if (typeof a === "number" && typeof b === "number") {
+        return a + (b - a) * t;
+    } else if (typeof a === "object" && typeof b === "object") {
+        return {
+            x: a.x + (b.x - a.x) * t,
+            y: a.y + (b.y - a.y) * t
+        };
+    }
+    throw new Error("Invalid arguments for lerp");
+}
+
 export function inverseLerp(a: number, b: number, v: number): number {
     if (a === b) return 0;
     return (v - a) / (b - a);

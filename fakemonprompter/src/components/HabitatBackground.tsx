@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/HabitatBackground.module.css';
 import {
-    backgroundMap
+    type SvgComponent, backgroundMap
 } from '../assets/DataSvgManager';
 import { isMobileScreen } from '../assets/utils/ScreenUtils';
 import { DataField, Habitat, type DataMap } from '../assets/utils/FakemonUtils';
@@ -10,7 +10,6 @@ import backgroundData from '../assets/background-data.json';
 
 interface HabitatBackgroundProps {
     data: DataMap;
-    children?: React.ReactNode;
 }
 
 interface BgProps {
@@ -27,9 +26,12 @@ interface BgProps {
     mWidth: number;
     mHeight: number;
 }
-type SvgComponent = React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined;
+const mRiverYOffset: number = -200; // TODO: Variable   
+const mCoastYOffset: number = -500; // TODO: Variable
+const desertYOffset: number = 140; // TODO: Variable
+const mDesertYOffset: number = 170; // TODO: Variable
 
-const HabitatBackground: React.FC<React.PropsWithChildren<HabitatBackgroundProps>> = ({ data, children }) => {
+const HabitatBackground: React.FC<React.PropsWithChildren<HabitatBackgroundProps>> = ({ data }) => {
     const [habitatFeatureNodes, setHabitatFeatureNodes] = useState<React.ReactNode[]>([]);
 
     const [bgProps] = useState<Record<Habitat, BgProps>>(Object.keys(backgroundData.Background).reduce((acc, key) => {
@@ -48,7 +50,7 @@ const HabitatBackground: React.FC<React.PropsWithChildren<HabitatBackgroundProps
         }
 
         const props: BgProps = bgProps[habitat];
-        const svgHabitat = habitat ? backgroundMap[habitat] : undefined;
+        const svgHabitat = backgroundMap[habitat];
 
         switch (data[DataField.Habitat]) {
             case Habitat.Desert:
@@ -131,13 +133,16 @@ const HabitatBackground: React.FC<React.PropsWithChildren<HabitatBackgroundProps
         const width = isMobileScreen() ? props.mWidth : props.Width;
         const height = isMobileScreen() ? props.mHeight : props.Height;
         const rows = isMobileScreen() ? props.mRows : props.Rows;
-        const botCoef = isMobileScreen() ? 200 : 100; //TODO: Variable
+        let botOffset = isMobileScreen() ? mDesertYOffset : desertYOffset; //TODO: Variab   le
+        const botCoef = 0.9;
 
         for (let i = 0; i < rows; i++) {
             const flipX: number = (i + 1) % 2 === 0 ? 1 : -1;
             const leftCoef: number = Math.random() * (maxLeft - minLeft) + minLeft;
             const leftOffset: number = window.innerWidth * leftCoef;
-            const yOffset: number = botCoef * i;
+            const yOffset: number = botOffset * i
+            botOffset = botOffset *  botCoef;
+            console.log(`yOffset ${i}: ${yOffset}`);
             content.push(
                 <div className={`${styles.habitat} ${styles.desert}`}
                     key={`dune${i}`}
@@ -174,7 +179,7 @@ const HabitatBackground: React.FC<React.PropsWithChildren<HabitatBackgroundProps
         const content: React.ReactNode[] = [];
         const width = isMobileScreen() ? props.mWidth : props.Width;
         const height = isMobileScreen() ? props.mHeight : props.Height;
-        const left = isMobileScreen() ? -200 : 0; // TODO: Variable
+        const left = isMobileScreen() ? mRiverYOffset : 0; // TODO: Variable
 
         content.push(
             <div className={`${styles.river} ${styles.habitat}`}
@@ -191,7 +196,7 @@ const HabitatBackground: React.FC<React.PropsWithChildren<HabitatBackgroundProps
         const content: React.ReactNode[] = [];
         const width = isMobileScreen() ? props.mWidth : props.Width;
         const height = isMobileScreen() ? props.mHeight : props.Height;
-        const left = isMobileScreen() ? -500 : 0; // TODO: Variable
+        const left = isMobileScreen() ? mCoastYOffset : 0; // TODO: Variable
         content.push(
             <div className={`${styles.coast} ${styles.habitat}`}
                 key={`coast`}
@@ -217,7 +222,6 @@ const HabitatBackground: React.FC<React.PropsWithChildren<HabitatBackgroundProps
     return (
         <div className={styles.background}>
             {habitatFeatureNodes}
-            {children}
         </div>
     );
 }

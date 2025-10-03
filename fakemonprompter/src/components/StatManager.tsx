@@ -27,17 +27,22 @@ function getStatRange(
     stages: Stages
 ): StatRange {
     let range: StatRange = { value: {} };
-    let skipStatRanges: boolean = false;
 
     if (stages[stage] !== undefined) {
         for (const key in stages[stage].value) {
-            if (stats.value[key] < stages[stage].value[key][0]) {
-                skipStatRanges = true;
-                break;
+            if (key === 'Total') {
+                range.value[key] = [...stages[stage].value[key]];
+                continue;
             }
-        }
-        if (skipStatRanges == false) {
-            range = JSON.parse(JSON.stringify(stages[stage]));
+            if (stats.value[key] < stages[stage].value[key][0]) {
+                range.value[key] = [stats.value[key], stages[stage].value[key][1]];
+            }
+            else if (stats.value[key] >= stages[stage].value[key][1]) {
+                range.value[key] = [stages[stage].value[key][0], stats.value[key] + 50];
+            }
+            else {
+                range.value[key] = [...stages[stage].value[key]];
+            }
         }
     }
 
