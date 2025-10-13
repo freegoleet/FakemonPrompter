@@ -5,7 +5,7 @@ import fakemonData from '../assets/fakemon-data.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faCircleMinus } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type EvolutionManagerProps = {
     numStages: number,
@@ -15,6 +15,16 @@ type EvolutionManagerProps = {
 };
 
 function EvolutionManager({ numStages, stages, statIncrement, onChange }: EvolutionManagerProps) {
+    const dropDownRef = useRef<HTMLDivElement>(null);
+    const [dropdownData, setDropdownData] = useState({ left: 0, top: 0, width: 0 });
+
+    useEffect(() => {
+        if (dropDownRef.current) {
+            const rect = dropDownRef.current.getBoundingClientRect();
+            setDropdownData({ left: rect.left, top: rect.bottom, width: rect.width * 0.5 });
+        }
+    }, []);
+
     function notifyChange(newNumStages: number, newStages: Stages, newStatIncrement: number) {
         if (onChange) {
             onChange({
@@ -53,6 +63,9 @@ function EvolutionManager({ numStages, stages, statIncrement, onChange }: Evolut
             <DropdownMenu
                 options={Object.keys(fakemonData.Stats.Presets)}
                 onSelect={(selectedKey: string) => pickPreset(selectedKey as keyof typeof fakemonData.Stats.Presets)}
+                left={dropdownData.left + dropdownData.width}
+                top={dropdownData.top}
+                portalParent={document.body}
             />
         );
     }
@@ -67,12 +80,12 @@ function EvolutionManager({ numStages, stages, statIncrement, onChange }: Evolut
 
     return (
         <>
-            <div className={styles.evolutionComponent}>
+            <div className={styles.evolutionComponent} >
                 <div className="card">
                     <div>
                         Preset:
                     </div>
-                    <div className={styles.presets}>
+                    <div className={styles.presets} ref={dropDownRef}>
                         {setupPresetButtons()}
                     </div>
                 </div>

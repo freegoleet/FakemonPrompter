@@ -4,6 +4,8 @@ import styles from '../styles/DataManager.module.css';
 import { climateSvgComponentMap, dietSvgComponentMap, habitatSvgComponentMap, sizeSvgComponentMap, typeSvgComponentMap } from '../assets/DataSvgManager';
 import { QuestionMark } from '../components/DescriptionPopup';
 import { Habitat, Climate, DataField, Size, Diet, Type, fakemonAttributes, type DataMap } from '../assets/utils/FakemonUtils';
+import { saveToStorage, loadFromStorage } from '../assets/utils/GeneralUtils';
+
 
 const defaultColor: string = "#000000";
 
@@ -19,7 +21,7 @@ function DataManager({ currentData, onChange }: DataManagerProps) {
     const [types] = useState<{ Description: Record<string, string>; Values: Record<string, string>; }>(
         fakemonData.Types
     );
-    const [colors, setColors] = useState<string[]>([defaultColor, defaultColor]);
+    const [colors, setColors] = useState<string[]>(loadFromStorage('bgColors', [defaultColor, defaultColor]));
 
     useEffect(() => {
         if (colors[1] === defaultColor) {
@@ -30,7 +32,8 @@ function DataManager({ currentData, onChange }: DataManagerProps) {
     }, [colors]);
 
     useEffect(() => {
-        randomizeData();
+        setBgColors(colors, false);
+        //randomizeData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -68,8 +71,6 @@ function DataManager({ currentData, onChange }: DataManagerProps) {
             }
         }
 
-        tempData[DataField.Habitat] = Habitat.Desert;
-
         const tempColors = [defaultColor, defaultColor];
         const enumValues = Object.values(Type);
         const firstType = enumValues[Math.floor(Math.random() * enumValues.length)] as Type;
@@ -81,8 +82,20 @@ function DataManager({ currentData, onChange }: DataManagerProps) {
             tempData[DataField.SecondaryType] = secondType;
             tempColors[1] = types.Values[secondType];
         }
-        setColors(tempColors);
+        setBgColors(tempColors, true);
         onChange?.(tempData);
+    }
+
+    function setBgColors(colors: string[], save: boolean = false) {
+        if (save === true) {
+            setColors(colors);
+            saveToStorage('bgColors', colors);
+        }
+        if (colors[1] === defaultColor) {
+            document.body.style.background = `linear-gradient(${colors[0]}, ${colors[1]})`;
+            return;
+        }
+        document.body.style.background = `linear-gradient(to right, ${colors[0]}, ${colors[1]})`;
     }
 
     function getDescription(key: string): string {

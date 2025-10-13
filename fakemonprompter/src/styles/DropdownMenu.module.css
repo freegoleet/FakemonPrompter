@@ -4,11 +4,9 @@
 
 .dropDown {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
     border: 2px solid #ccc;
     border-radius: 4px;
+    align-content: center;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -22,6 +20,8 @@
     padding: 8px;
     cursor: pointer;
     background-color: rgba(0,0,0,0.5);
+    color: white;
+    text-align: center;
 }
     .option:hover {
         background-color: rgba(0,0,0,0.1);

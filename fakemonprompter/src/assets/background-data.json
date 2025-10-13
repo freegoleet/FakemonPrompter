@@ -126,7 +126,7 @@
         "maxHeight": 400,
         "randomStartRot": false,
         "rotationSpeed": 0,
-        "moveSpeed": 300,
+        "moveSpeed": 750,
         "moveDirection": {
           "x": 0.3,
           "y": 0.8

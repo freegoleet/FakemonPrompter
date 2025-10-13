@@ -1,13 +1,14 @@
 import './App.css'
 import Header from './components/Header'
 import EvolutionManager from './components/EvolutionManager'
-import DataManager from './components/DataManager'
-import { StatManager, type Stages } from './components/StatManager'
-import Footer from './components/Footer'
-import AnimatedBackground from './components/AnimatedBackground'
+import DataManager from './components/DataManager';
+import { StatManager, type Stages } from './components/StatManager';
+import Footer from './components/Footer';
+import AnimatedBackground from './components/AnimatedBackground';
 import { useState } from "react";
 import fakemonData from './assets/fakemon-data.json';
 import { type DataMap, DataField, Habitat, Climate, Diet, Size, Type } from './assets/utils/FakemonUtils';
+import { saveToStorage, loadFromStorage } from './assets/utils/GeneralUtils';
 
 function convertStageKeys(
     stagesObj: Record<string, Record<string, number[]>>
@@ -32,7 +33,7 @@ function App() {
         [DataField.PrimaryType]: Type[Object.keys(Type)[0] as keyof typeof Type],
         [DataField.SecondaryType]: Type[Object.keys(Type)[0] as keyof typeof Type],
     };
-    const [currentData, setCurrentData] = useState<DataMap>(initialData);
+    const [currentData, setCurrentData] = useState<DataMap>(loadFromStorage('fakemonData', initialData));
 
     function handleEvolutionManagerChange(values: { numStages: number; stages: Stages; statIncrement: number }) {
         setNumStages(values.numStages);
@@ -42,6 +43,7 @@ function App() {
 
     function handleDataManagerChange(data: DataMap) {
         setCurrentData(data);
+        saveToStorage('fakemonData', data);
     }
 
     function handleStatManagerChange(stages: Stages) {

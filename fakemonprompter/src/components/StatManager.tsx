@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef, type ReactElement } from 'react';
 import styles from '../styles/StatManager.module.css';
 import StatCard from './StatCard';
+import { saveToStorage, loadFromStorage } from '../assets/utils/GeneralUtils'
 
 export type Stats = {
     value: Record<string, number>;
@@ -21,6 +22,9 @@ type StatManagerProps = {
     onChange: (stages: Stages) => void;
 }
 
+const newEvoTotalIncrease: number = 50;
+const newEvoMaxRangeIncrease: number = 20;
+
 function getStatRange(
     stage: number,
     stats: Stats,
@@ -38,7 +42,7 @@ function getStatRange(
                 range.value[key] = [stats.value[key], stages[stage].value[key][1]];
             }
             else if (stats.value[key] >= stages[stage].value[key][1]) {
-                range.value[key] = [stages[stage].value[key][0], stats.value[key] + 50];
+                range.value[key] = [stages[stage].value[key][0], stats.value[key] + newEvoTotalIncrease];
             }
             else {
                 range.value[key] = [...stages[stage].value[key]];
@@ -52,11 +56,11 @@ function getStatRange(
         }
         for (const key in range.value) {
             if (key === 'Total') {
-                range.value[key][0] += 50;
-                range.value[key][1] += 50;
+                range.value[key][0] += newEvoTotalIncrease;
+                range.value[key][1] += newEvoTotalIncrease;
                 continue;
             }
-            range.value[key][1] += 20;
+            range.value[key][1] += newEvoMaxRangeIncrease;
         }
     }
 
@@ -123,9 +127,23 @@ function randomRange(min: number, max: number) {
 }
 
 export function StatManager({ stages, numStages, statIncrement, onChange }: StatManagerProps) {
-    const [currentStats, setCurrentStats] = useState<Record<number, Stats>>({});
+    const [currentStats, setCurrentStats] = useState<Record<number, Stats>>(() =>
+        loadFromStorage('currentStats', {})
+    );
     const prevStages = useRef<Stages>(stages);
-    const [statCardRanges, setStatCardRanges] = useState<Record<number, StatRange>>(stages);
+    const [statCardRanges, setStatCardRanges] = useState<Record<number, StatRange>>(() =>
+        loadFromStorage('statCardRanges', stages)
+    );
+
+    useEffect(() => {
+        saveToStorage('currentStats', currentStats);
+    }, [currentStats]);
+    useEffect(() => {
+        saveToStorage('statCardRanges', statCardRanges);
+    }, [statCardRanges]);
+    useEffect(() => {
+        saveToStorage('stages', stages);
+    }, [stages]);
 
     const RandomizeAllStatsOfStage = useCallback((stage: number, prevStats: Stats = { value: {} }, reset: boolean = false): Stats => {
         let stats: Stats = JSON.parse(JSON.stringify(prevStats));
@@ -171,7 +189,6 @@ export function StatManager({ stages, numStages, statIncrement, onChange }: Stat
 
         let difference: number = goalSum - currentSum;
 
-        // Prevent endless loop by tracking attempts and possible stat keys
         let attempts = 0;
         const maxAttempts = 1000;
         while (difference !== 0 && attempts < maxAttempts) {
@@ -223,6 +240,9 @@ export function StatManager({ stages, numStages, statIncrement, onChange }: Stat
     }, [stages, RandomizeAllStatsOfStage, onChange]);
 
     useEffect(() => {
+        if (currentStats !== undefined) {
+            return;
+        }
         RandomizeAllStatsOfStage(1);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
