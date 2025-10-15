@@ -1,25 +1,15 @@
-import { useState, useEffect, useCallback, useRef, type ReactElement } from 'react';
+import { useState, useEffect, useRef, type ReactElement } from 'react';
 import styles from '../styles/StatManager.module.css';
 import StatCard from './StatCard';
-import { saveToStorage, loadFromStorage } from '../assets/utils/GeneralUtils'
-
-export type Stats = {
-    value: Record<string, number>;
-}
-
-export type StatRange = {
-    value: Record<string, number[]>;
-}
-
-export type Stages = {
-    [key: number]: StatRange;
-}
+import { Stat, type StatMap, type StageRange, type StatRangeMap, type StageStats, getDefaultStatMap, getDefaultStatRange } from '../assets/utils/FakemonUtils';
 
 type StatManagerProps = {
-    stages: Stages;
+    stats: StageStats;
+    stages: StageRange;
     numStages: number;
     statIncrement: number;
-    onChange: (stages: Stages) => void;
+    onStageChange: (stages: StageRange) => void;
+    onStatChange: (stats: StageStats) => void;
 }
 
 const newEvoTotalIncrease: number = 50;
@@ -27,77 +17,79 @@ const newEvoMaxRangeIncrease: number = 20;
 
 function getStatRange(
     stage: number,
-    stats: Stats,
-    stages: Stages
-): StatRange {
-    let range: StatRange = { value: {} };
-
-    if (stages[stage] !== undefined) {
-        for (const key in stages[stage].value) {
-            if (key === 'Total') {
-                range.value[key] = [...stages[stage].value[key]];
+    stats: StatMap,
+    stagesRange: StageRange
+): StatRangeMap {
+    let range: StatRangeMap = getDefaultStatRange();
+    if (stage === 3) {
+        console.log()
+    }
+    if (JSON.stringify(stagesRange[stage]) !== JSON.stringify(range)) {
+        for (const key in stagesRange[stage]) {
+            const statKey = key as Stat;
+            if (statKey === Stat.Total) {
+                range[statKey] = [...stagesRange[stage][statKey]];
                 continue;
             }
-            if (stats.value[key] < stages[stage].value[key][0]) {
-                range.value[key] = [stats.value[key], stages[stage].value[key][1]];
+            if (stats[statKey] < stagesRange[stage][statKey][0]) {
+                range[statKey] = [stats[statKey], stagesRange[stage][statKey][1]];
             }
-            else if (stats.value[key] >= stages[stage].value[key][1]) {
-                range.value[key] = [stages[stage].value[key][0], stats.value[key] + newEvoTotalIncrease];
+            else if (stats[statKey] >= stagesRange[stage][statKey][1]) {
+                range[statKey] = [stagesRange[stage][statKey][0], stats[statKey] + newEvoMaxRangeIncrease];
             }
             else {
-                range.value[key] = [...stages[stage].value[key]];
+                range[statKey] = [...stagesRange[stage][statKey]];
             }
         }
     }
-
-    if (Object.keys(range.value).length === 0) {
-        if (Object.keys(stages[stage - 1].value).length > 0) {
-            range = JSON.parse(JSON.stringify(stages[stage - 1]));
-        }
-        for (const key in range.value) {
-            if (key === 'Total') {
-                range.value[key][0] += newEvoTotalIncrease;
-                range.value[key][1] += newEvoTotalIncrease;
+    else {
+        range = JSON.parse(JSON.stringify(stagesRange[stage - 1]));
+        for (const key in stats) {
+            const statKey = key as Stat;
+            if (statKey === Stat.Total) {
+                range[statKey][0] = stats[statKey] + newEvoTotalIncrease;
+                range[statKey][1] = stats[statKey] + newEvoTotalIncrease;
                 continue;
             }
-            range.value[key][1] += newEvoMaxRangeIncrease;
+            range[statKey][0] = stats[statKey];
+            range[statKey][1] = stagesRange[stage - 1][statKey][1] + newEvoMaxRangeIncrease;
         }
     }
 
-    for (const key in range.value) {
-        if (stats.value[key] > range.value[key][0]) {
-            range.value[key][0] = stats.value[key];
+    for (const key in range) {
+        const statKey = key as Stat;
+        if (stats[statKey] > range[statKey][0]) {
+            range[statKey][0] = stats[statKey];
         }
     }
     return range;
 }
 
 function getValidStats(
-    stats: Stats,
-    range: StatRange,
-    currentStats: Record<number, Stats>,
+    stats: StatMap,
+    range: StatRangeMap,
+    currentStats: StageStats,
     stage: number,
     reset: boolean
-): Stats {
-    const sum: number = Object.entries(stats.value)
-        .filter(([key]) => key !== 'Total')
+): StatMap {
+    const sum: number = Object.entries(stats)
+        .filter(([key]) => key !== Stat.Total)
         .reduce((acc, [, val]) => acc + val, 0);
 
-    if (sum > stats.value['Total']) {
-        return {
-            value: Object.fromEntries(
-                Object.keys(range.value).map(key => [key, 0])
-            )
-        };
-    } else if (Object.keys(stats.value).length === 0) {
+    if (sum > stats[Stat.Total]) {
+        const newStats: StatMap = getDefaultStatMap();
+
+        for (const key in range) {
+            const statKey = key as Stat;
+            newStats[statKey] = range[statKey][0];
+        }
+
+        return newStats;
+    } else if (Object.keys(stats).length === 0) {
         if (currentStats[stage - 1] !== undefined && reset == false) {
             return JSON.parse(JSON.stringify(currentStats[stage - 1]));
         } else {
-            return {
-                value: Object.fromEntries(
-                    Object.keys(range.value).map(key => [key, 0])
-                )
-            };
+            return JSON.parse(JSON.stringify(range));
         }
     }
     return stats;
@@ -126,35 +118,37 @@ function randomRange(min: number, max: number) {
     return Math.floor(Math.random() * (maxRange - minRange) + minRange);
 }
 
-export function StatManager({ stages, numStages, statIncrement, onChange }: StatManagerProps) {
-    const [currentStats, setCurrentStats] = useState<Record<number, Stats>>(() =>
-        loadFromStorage('currentStats', {})
+export function StatManager({ stats, stages, numStages, statIncrement, onStageChange, onStatChange }: StatManagerProps) {
+    const [currentStats, setCurrentStats] = useState<StageStats>(
+        stats
     );
-    const prevStages = useRef<Stages>(stages);
-    const [statCardRanges, setStatCardRanges] = useState<Record<number, StatRange>>(() =>
-        loadFromStorage('statCardRanges', stages)
+    const [statCardRanges, setStatCardRanges] = useState<StageRange>(
+        stages
     );
+    const prevNumStages = useRef<number>(numStages);
 
-    useEffect(() => {
-        saveToStorage('currentStats', currentStats);
-    }, [currentStats]);
-    useEffect(() => {
-        saveToStorage('statCardRanges', statCardRanges);
-    }, [statCardRanges]);
-    useEffect(() => {
-        saveToStorage('stages', stages);
-    }, [stages]);
+    const allStats: StageStats = { ...currentStats };
 
-    const RandomizeAllStatsOfStage = useCallback((stage: number, prevStats: Stats = { value: {} }, reset: boolean = false): Stats => {
-        let stats: Stats = JSON.parse(JSON.stringify(prevStats));
-        let range: StatRange = {
-            value: {}
-        };
+    function RandomizeAllStatsOfStage(stage: number, prevStats: StatMap = getDefaultStatMap(), reset: boolean = false): StatMap {
+        let stats: StatMap = JSON.parse(JSON.stringify(prevStats));
+        let range: StatRangeMap = getDefaultStatRange();
+        console.log(`Randomizing stats for stage ${stage}`);
 
-        // Stats Setup
-        if (stats.value === undefined || Object.keys(stats.value).length === 0) {
-            if (currentStats[stage - 1] !== undefined && reset == false) {
-                stats = JSON.parse(JSON.stringify(currentStats[stage - 1]));
+        if (JSON.stringify(prevStats) == JSON.stringify(getDefaultStatMap())) {
+            if (allStats[stage - 1] !== undefined) {
+                stats = JSON.parse(JSON.stringify(allStats[stage - 1]));
+            }
+            else {
+                for (const [key, value] of Object.entries(stages[stage])) {
+                    const statKey = key as Stat;
+                    stats[statKey] = value[0];
+                }
+            }
+        }
+
+        if (stats == getDefaultStatMap()) {
+            if (allStats[stage - 1] !== undefined && reset == false) {
+                stats = JSON.parse(JSON.stringify(allStats[stage - 1]));
             }
             else if (stages[stage - 1] !== undefined) {
                 stats = JSON.parse(JSON.stringify(stages[stage - 1]));
@@ -163,7 +157,7 @@ export function StatManager({ stages, numStages, statIncrement, onChange }: Stat
 
         range = getStatRange(stage, stats, stages);
 
-        onChange({
+        onStageChange({
             ...stages,
             [stage]: range
         });
@@ -173,17 +167,17 @@ export function StatManager({ stages, numStages, statIncrement, onChange }: Stat
             [stage]: range
         }));
 
-        stats = getValidStats(stats, range, currentStats, stage, reset);
+        stats = getValidStats(stats, range, allStats, stage, reset);
 
-        // Randomize Stats
-        const goalSum = randomizeStat(range.value.Total[0], range.value.Total[1], statIncrement);
-        stats.value['Total'] = goalSum;
+        const goalSum = randomizeStat(range.Total[0], range.Total[1], statIncrement);
+        stats[Stat.Total] = goalSum;
 
         let currentSum = 0;
-        for (const key in range.value) {
-            if (key === 'Total') continue;
-            const value = randomizeStat(range.value[key][0], range.value[key][1], statIncrement);
-            stats.value[key] = value;
+        for (const key in range) {
+            const statKey = key as Stat;
+            if (statKey === Stat.Total) continue;
+            const value = randomizeStat(range[statKey][0], range[statKey][1], statIncrement);
+            stats[statKey] = value;
             currentSum += value;
         }
 
@@ -192,124 +186,126 @@ export function StatManager({ stages, numStages, statIncrement, onChange }: Stat
         let attempts = 0;
         const maxAttempts = 1000;
         while (difference !== 0 && attempts < maxAttempts) {
-            const statKeys = Object.keys(range.value).filter(key => key !== 'Total');
+            const statKeys = Object.keys(range).filter(key => key !== Stat.Total);
             const modifiableKeys = statKeys.filter(key => {
+                const statKey = key as Stat;
                 if (difference > 0) {
-                    return stats.value[key] < range.value[key][1];
+                    return stats[statKey] < range[statKey][1];
                 } else {
-                    return stats.value[key] > range.value[key][0];
+                    return stats[statKey] > range[statKey][0];
                 }
             });
             if (modifiableKeys.length === 0) {
                 break;
             }
-            const statToModify = modifiableKeys[Math.floor(Math.random() * modifiableKeys.length)];
+            const statToModify = modifiableKeys[Math.floor(Math.random() * modifiableKeys.length)] as Stat;
 
             if (difference > 0) {
-                stats.value[statToModify] += statIncrement;
+                stats[statToModify] += statIncrement;
                 difference -= statIncrement;
             } else {
-                stats.value[statToModify] -= statIncrement;
+                stats[statToModify] -= statIncrement;
                 difference += statIncrement;
             }
             attempts++;
         }
 
-        setCurrentStats(prevStats => ({
-            ...prevStats,
-            [stage]: {
-                value: { ...stats.value }
-            }
-        }));
+        allStats[stage] = { ...stats };
 
         if (stage < numStages) {
             RandomizeAllStatsOfStage(stage + 1, stats);
         }
+
         return stats;
-    }, [currentStats, stages, numStages, statIncrement, onChange]);
+    }
+
+    // When you want to randomize all stages, call this wrapper and send the final result
+    function randomizeAllStagesAndSend(stage: number) {
+        RandomizeAllStatsOfStage(stage);
+        setCurrentStats({ ...allStats });
+        onStatChange({ ...allStats });
+    }
 
     useEffect(() => {
-        const prevStagesValue = prevStages.current;
-        if (JSON.stringify(prevStagesValue) === JSON.stringify(stages)) {
+        if (Object.entries(currentStats).length !== 0) {
             return;
         }
-        prevStages.current = stages;
-        setCurrentStats({});
-        RandomizeAllStatsOfStage(1, undefined, true);
-        onChange(stages);
-    }, [stages, RandomizeAllStatsOfStage, onChange]);
 
-    useEffect(() => {
-        if (currentStats !== undefined) {
-            return;
-        }
         RandomizeAllStatsOfStage(1);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [stats]);
 
-    const addNewStages = useCallback((stagesToAdd: number) => {
-        let minStats: Stats = {
-            value: {}
-        };
-
-        for (let i = 1; i <= stagesToAdd; i++) {
-            const newStage: number = numStages;
-
-            minStats = {
-                value: Object.fromEntries(
-                    Object.entries(currentStats[newStage - 1].value)
-                        .map(([key, value]) => [key, value])
-                )
-            };
-
-            minStats = RandomizeAllStatsOfStage(newStage, minStats);
+    function addNewStages(from: number, to: number) {
+        for (let i = 1; i <= to; i++) {
+            const newStage = from + i;
+            RandomizeAllStatsOfStage(newStage);
         }
-    }, [numStages, currentStats, RandomizeAllStatsOfStage]);
+    };
+
+    useEffect(() => {
+        if (prevNumStages.current !== numStages) {
+            const diff = numStages - prevNumStages.current;
+            if (diff > 0) {
+                addNewStages(numStages - diff, diff);
+            }
+            prevNumStages.current = numStages;
+        }
+    }, [numStages, addNewStages]);
 
     useEffect(() => {
         if (numStages > Object.keys(stages).length) {
             console.log(`numStages: ${numStages}. stages ${Object.keys(stages).length}`);
-            addNewStages(1);
+            //addNewStages();
             return;
         }
-    }, [numStages, stages, addNewStages]);
+    }, [numStages, stages]);
 
     function createStatCards() {
         const result: ReactElement[] = [];
 
         for (let i = 1; i < numStages + 1; i++) {
+            if (currentStats[i] === undefined) {
+                console.error(`currentStats for stage ${i} is undefined.`);
+                break;
+            }
+            if (statCardRanges[i] === undefined) {
+                console.error(`statCardRanges for stage ${i} is undefined.`);
+                break;
+            }
             result.push(
-                <StatCard key={`Stage${i}`} stage={i} stats={currentStats[i]} statRange={statCardRanges[i]} randomizeCallback={RandomizeAllStatsOfStage} setRangeCallback={modifyStatRange} />
+                <StatCard
+                    key={`Stage${i}`}
+                    stage={i}
+                    stats={currentStats[i]}
+                    statRange={statCardRanges[i]}
+                    randomizeCallback={randomizeAllStagesAndSend}
+                    setRangeCallback={modifyStatRange}
+                />
             );
         }
 
         return result;
     }
 
-    function modifyStatRange(stage: number, stat: string, min: number, max: number) {
-        // Replace setStages with onChange
-        onChange({
+    function modifyStatRange(stage: number, stat: Stat, min: number, max: number) {
+        onStageChange({
             ...stages,
             [stage]: {
-                value: {
-                    ...stages[stage].value,
-                    [stat]: [min, max]
-                }
+                ...stages[stage],
+                [stat]: [min, max]
             }
         });
 
-        if (min < currentStats[stage - 1]?.value[stat]) {
+        if (min < currentStats[stage - 1][stat]) {
             return;
         }
 
-        if (max > stages[stage + 1]?.value[stat][1]) {
-            onChange({
+        if (max > stages[stage + 1][stat][1]) {
+            onStageChange({
                 ...stages,
                 [stage + 1]: {
-                    value: {
-                        ...stages[stage + 1].value,
-                        [stat]: [currentStats[stage].value[stat], max]
-                    }
+                    ...stages[stage + 1],
+                    [stat]: [currentStats[stage][stat], max]
                 }
             });
         }

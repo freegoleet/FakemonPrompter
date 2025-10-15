@@ -32,8 +32,9 @@ function DataManager({ currentData, onChange }: DataManagerProps) {
     }, [colors]);
 
     useEffect(() => {
-        setBgColors(colors, false);
-        //randomizeData();
+        if (JSON.stringify(colors) === JSON.stringify([defaultColor, defaultColor])) {
+            randomizeData();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

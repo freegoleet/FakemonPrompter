@@ -1,62 +1,56 @@
 import { type ReactElement } from 'react';
-import { type Stats, type StatRange } from '../components/StatManager';
+import { type StatMap, type StatRangeMap, type Stat } from '../assets/utils/FakemonUtils';
 import { DrawStats } from '../components/DrawStats';
 import styles from '../styles/StatCard.module.css';
 
 interface StatCardProps {
     stage: number;
-    stats: Stats;
-    statRange: StatRange;
+    stats: StatMap;
+    statRange: StatRangeMap;
     randomizeCallback: (stage: number) => void;
-    setRangeCallback: (stage: number, stat: string, min: number, max: number) => void;
+    setRangeCallback: (stage: number, stat: Stat, min: number, max: number) => void;
 }
 
 const StatCard: React.FC<StatCardProps> = ({ stage, stats, statRange, randomizeCallback, setRangeCallback }) => {
-    if (stats === undefined) {
-        return;
-    }
     function WriteStatSpread() {
         const spread: ReactElement[] = [];
 
-        if (stats === undefined) {
-            return;
-        }
-        for (const key in stats.value) {
-            if (stats.value[key] === undefined) {
+        for (const [key, value] of Object.entries(stats)) {
+            const statKey = key as Stat;
+            if (stats[statKey] === undefined) {
                 break;
             }
-            const statValue = stats.value[key];
+            const statValue = value;
             spread.push(
                 <div key={key} className={styles.statSpread}>
                     <div className={styles.statName}>{key}:</div>
                     <div className={styles.statValue}>{statValue}</div>
-                    <div className={styles.statRange}>{WriteStatRange(key)}</div>
+                    <div className={styles.statRange}>{WriteStatRange(statKey)}</div>
                 </div>
             );
         }
         return spread;
     }
 
-    function WriteStatRange(stat: string) {
+    function WriteStatRange(stat: Stat) {
         return (
             <label style={{ whiteSpace: 'nowrap' }}>
                 <input
                     name="min"
-                    value={statRange.value[stat][0]}
+                    value={statRange[stat][0]}
                     style={{ width: `3ch` }}
-                    onChange={(e) => setRangeCallback(stage, stat, Number(e.target.value), statRange.value[stat][1])}
+                    onChange={(e) => setRangeCallback(stage, stat, Number(e.target.value), statRange[stat][1])}
                 />
                 -
                 <input
                     name="max"
-                    value={statRange.value[stat][1]}
+                    value={statRange[stat][1]}
                     style={{ width: `3ch` }}
-                    onChange={(e) => setRangeCallback(stage, stat, statRange.value[stat][0], Number(e.target.value))}
+                    onChange={(e) => setRangeCallback(stage, stat, statRange[stat][0], Number(e.target.value))}
                 />
             </label>
         )
     }
-
 
     return (
         <div

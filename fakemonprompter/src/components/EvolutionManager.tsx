@@ -1,4 +1,3 @@
-import { type Stages, type StatRange } from '../components/StatManager';
 import DropdownMenu from '../components/DropdownMenu';
 import styles from '../styles/EvolutionManager.module.css';
 import fakemonData from '../assets/fakemon-data.json';
@@ -6,12 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faCircleMinus } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState } from 'react';
+import { type StageRange, type StatRangeMap } from '../assets/utils/FakemonUtils';
 
 type EvolutionManagerProps = {
-    numStages: number,
-    stages: Stages,
-    statIncrement: number,
-    onChange?: (values: { numStages: number; stages: Stages; statIncrement: number }) => void;
+    numStages: number;
+    stages: StageRange;
+    statIncrement: number;
+    onChange?: (numStages: number, stages: StageRange, statIncrement: number) => void;
 };
 
 function EvolutionManager({ numStages, stages, statIncrement, onChange }: EvolutionManagerProps) {
@@ -25,13 +25,13 @@ function EvolutionManager({ numStages, stages, statIncrement, onChange }: Evolut
         }
     }, []);
 
-    function notifyChange(newNumStages: number, newStages: Stages, newStatIncrement: number) {
+    function notifyChange(newNumStages: number, newStages: StageRange, newStatIncrement: number) {
         if (onChange) {
-            onChange({
-                numStages: newNumStages,
-                stages: newStages,
-                statIncrement: newStatIncrement,
-            });
+            onChange(
+                numStages = newNumStages,
+                stages = newStages,
+                statIncrement = newStatIncrement,
+            );
         }
     }
 
@@ -50,9 +50,9 @@ function EvolutionManager({ numStages, stages, statIncrement, onChange }: Evolut
             return;
         }
 
-        const tempStages: Stages = {};
+        const tempStages: StageRange = {};
         for (let i = 0; i < preset.length; i++) {
-            const statRange: StatRange = { value: preset[i] };
+            const statRange: StatRangeMap = preset[i];
             tempStages[i + 1] = statRange;
         }
         notifyChange(preset.length, tempStages, statIncrement);

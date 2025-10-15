@@ -61,12 +61,63 @@ export enum Type {
     Water = 'Water'
 }
 
-export type FakemonAttribute = Habitat | Climate | Diet | Size | Type;
+export enum Stat {
+    Hp = 'Hp',
+    Attack = 'Attack',
+    Defense = 'Defense',
+    SpecialAttack = 'Sp. Atk.',
+    SpecialDefense = 'Sp. Def.',
+    Speed = 'Speed',
+    Total = 'Total'
+}
 
-export type DataMap = Record<
-    DataField,
-    FakemonAttribute
->;
+export type FakemonAttribute = Habitat | Climate | Diet | Size | Type;
+export type DataMap = Record<DataField, FakemonAttribute>;
+export type StatMap = Record<Stat, number>;
+export type StageStats = Record<number, StatMap>;
+export type StageRange = Record<number, StatRangeMap>;
+export type StatRangeMap = Record<Stat, number[]>;
+
+export const defaultStatRange: StatRangeMap = {
+    [Stat.Hp]: [0,0],
+    [Stat.Attack]: [0, 0],
+    [Stat.Defense]: [0, 0],
+    [Stat.SpecialAttack]: [0, 0],
+    [Stat.SpecialDefense]: [0, 0],
+    [Stat.Speed]: [0, 0],
+    [Stat.Total]: [0, 0]
+}
+
+export const defaultStatMap: StatMap = {
+    [Stat.Hp]: 0,
+    [Stat.Attack]: 0,
+    [Stat.Defense]: 0,
+    [Stat.SpecialAttack]: 0,
+    [Stat.SpecialDefense]: 0,
+    [Stat.Speed]: 0,
+    [Stat.Total]: 0
+};
+
+export const defaultDataMap: DataMap = {
+    [DataField.Habitat]: Habitat[Object.keys(Habitat)[0] as keyof typeof Habitat],
+    [DataField.Climate]: Climate[Object.keys(Climate)[0] as keyof typeof Climate],
+    [DataField.Diet]: Diet[Object.keys(Diet)[0] as keyof typeof Diet],
+    [DataField.Size]: Size[Object.keys(Size)[0] as keyof typeof Size],
+    [DataField.PrimaryType]: Type[Object.keys(Type)[0] as keyof typeof Type],
+    [DataField.SecondaryType]: Type[Object.keys(Type)[0] as keyof typeof Type],
+};
+
+export function getDefaultStatMap(): StatMap {
+    return { ...defaultStatMap };
+}
+
+export function getDefaultStatRange(): StatRangeMap {
+    return { ...defaultStatRange };
+}
+
+export function getDefaultDataMap(): DataMap {
+    return { ...defaultDataMap };
+}
 
 function getEnumValues<T extends object>(enumObj: T): Array<T[keyof T]> {
     return Object.values(enumObj) as Array<T[keyof T]>;

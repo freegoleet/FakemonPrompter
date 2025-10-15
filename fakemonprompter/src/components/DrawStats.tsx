@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import styles from '../styles/DrawStats.module.css';
-import type { Stats } from './StatManager';
+import type { StatMap, Stat } from '../assets/utils/FakemonUtils';
 
 const canvasSize = 200;
 const minRadius: number = 1;
@@ -9,7 +9,7 @@ const centerX: number = 100;
 const centerY: number = 100;
 const textOffset: number = 24;
 const degrees = -90;
-const rotationOffset = degrees * (Math.PI / 180)
+const rotationOffset = degrees * (Math.PI / 180);
 const fontSize: number = 12;
 const valueOffset: number = 2;
 
@@ -18,12 +18,12 @@ type CustomOrder = {
 }
 const customOrder: CustomOrder = { [0]: "Hp", [1]: "Attack", [2]: "Defense", [3]: "Speed", [4]: "Sp. Def.", [5]: "Sp. Atk." }
 
-function drawBackgroundHexagon(ctx: CanvasRenderingContext2D, stats: Stats) {
+function drawBackgroundHexagon(ctx: CanvasRenderingContext2D, stats: StatMap) {
     ctx.beginPath();
 
     for (let i = 0; i < Object.entries(customOrder).length; i++) {
         const key: string = customOrder[i];
-        if (stats.value[key] === undefined) {
+        if (stats[key as Stat] === undefined) {
             console.warn(`Key "${key}" not found in stats.value. Make sure the customOrder values match those in the json.`);
         }
         const angle = (Math.PI / 3) * i + rotationOffset;
@@ -47,15 +47,15 @@ function drawBackgroundHexagon(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.globalAlpha = 1.0;
 }
 
-function drawPolygon(ctx: CanvasRenderingContext2D, stats: Stats) {
+function drawPolygon(ctx: CanvasRenderingContext2D, stats: StatMap) {
     ctx.beginPath();
 
     for (let i = 0; i < Object.entries(customOrder).length; i++) {
-        const key: string = customOrder[i];
-        if (stats.value[key] === undefined) {
+        const key: Stat = customOrder[i] as Stat;
+        if (stats[key] === undefined) {
             console.warn(`Key "${key}" not found in stats.value. Make sure the customOrder values match those in the json.`);
         }
-        const normalized = Math.max(0, Math.min(1, stats.value[key] / 200));
+        const normalized = Math.max(0, Math.min(1, stats[key] / 200));
         const radius = minRadius + (maxRadius - minRadius) * normalized;
         const angle = (Math.PI / 3) * i + rotationOffset;
         const x = centerX + radius * Math.cos(angle);
@@ -69,7 +69,7 @@ function drawPolygon(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.fill();
 }
 
-function drawLinesAndText(ctx: CanvasRenderingContext2D, stats: Stats) {
+function drawLinesAndText(ctx: CanvasRenderingContext2D, stats: StatMap) {
     ctx.beginPath();
     ctx.font = `${fontSize}px Arial`;
     ctx.textAlign = "center";
@@ -77,8 +77,8 @@ function drawLinesAndText(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.fillStyle = '#ffdb4d';
 
     for (let i = 0; i < Object.entries(customOrder).length; i++) {
-        const key: string = customOrder[i];
-        if (stats.value[key] === undefined) {
+        const key: Stat = customOrder[i] as Stat;
+        if (stats[key] === undefined) {
             console.warn(`Key "${key}" not found in stats.value. Make sure the customOrder values match those in the json.`);
         }
 
@@ -97,7 +97,7 @@ function drawLinesAndText(ctx: CanvasRenderingContext2D, stats: Stats) {
         ctx.fillStyle = '#ffdb4d';
         ctx.fillText(key, textX, textY);
         ctx.fillStyle = 'white';
-        ctx.fillText(stats.value[key].toString(), textX, textY + fontSize + valueOffset);
+        ctx.fillText(stats[key].toString(), textX, textY + fontSize + valueOffset);
     }
 
     ctx.closePath();
@@ -108,7 +108,7 @@ function drawLinesAndText(ctx: CanvasRenderingContext2D, stats: Stats) {
     ctx.globalAlpha = 1.0;
 }
 
-export function DrawStats({ stats }: { stats: Stats }) {
+export function DrawStats({ stats }: { stats: StatMap }) {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
     useEffect(() => {
